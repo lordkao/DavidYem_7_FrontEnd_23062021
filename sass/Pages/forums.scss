@@ -1,0 +1,16 @@
+.forums{
+    @include bloc-size($height:500px);
+    padding: 10px;
+    &__multimedia{
+        @include full;
+        display: block;
+        background-color: aqua;
+        border: 1px red solid;
+    }
+    &__chat{
+        @include full;
+        display: none;
+        background-color: rgb(10, 87, 87);
+        border: 1px red solid;
+    }
+}
