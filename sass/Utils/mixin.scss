@@ -2,3 +2,17 @@
     height: $height;
     border: 1px black solid;
 }
+@mixin display($direction:row){
+    flex-direction: $direction;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin auto($height:auto,$width:auto){
+    width: $width;
+    height: $height;
+}
+@mixin full{
+    width: 100%;
+    height: 100%;
+}
