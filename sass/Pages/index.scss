@@ -1,9 +1,9 @@
-section{
+.accueil{
     position:relative;
     z-index: 0;
     @include bloc-size($height:500px);
     padding: 10px;
-    & h2{
+    &__titre{
         @include display;
         @include full($height:10%);
         @include nomarge;
@@ -11,7 +11,7 @@ section{
         font-size: 2rem;
         border: 1px black solid;
     }
-    & div{
+    &__presentation{
         @include full($height:90%);
         & div{
             @include full($height:70%);

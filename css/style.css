@@ -86,14 +86,14 @@ footer ul li a {
   font-size: 2rem;
 }
 
-section {
+.accueil {
   position: relative;
   z-index: 0;
   height: 500px;
   border: 1px black solid;
   padding: 10px;
 }
-section h2 {
+.accueil__titre {
   flex-direction: row;
   display: flex;
   justify-content: center;
@@ -106,19 +106,19 @@ section h2 {
   font-size: 2rem;
   border: 1px black solid;
 }
-section div {
+.accueil__presentation {
   width: 100%;
   height: 90%;
 }
-section div div {
+.accueil__presentation div {
   width: 100%;
   height: 70%;
 }
-section div div img {
+.accueil__presentation div img {
   width: 100%;
   height: 100%;
 }
-section div p {
+.accueil__presentation p {
   flex-direction: row;
   display: flex;
   justify-content: center;
@@ -254,6 +254,26 @@ section div p {
 }
 .inscription__form--password input {
   width: 68%;
+}
+
+.forums {
+  height: 500px;
+  border: 1px black solid;
+  padding: 10px;
+}
+.forums__multimedia {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: aqua;
+  border: 1px red solid;
+}
+.forums__chat {
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: #0a5757;
+  border: 1px red solid;
 }
 
 /*# sourceMappingURL=style.css.map */
