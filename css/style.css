@@ -286,8 +286,17 @@ footer ul li a {
 .forums__chat {
   width: 100%;
   height: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   display: none;
-  background-color: #0a5757;
+}
+.forums__chat h2 {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .publication {
@@ -326,6 +335,27 @@ footer ul li a {
 .publication__contenue--texte {
   font-size: 1.4rem;
   margin: 10px;
+}
+
+.message {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: flex-start;
+  margin: 10px;
+  border: 1px black solid;
+  border-radius: 5px;
+}
+.message__auteur {
+  margin: 5px;
+  font-size: 1.6rem;
+}
+.message__texte {
+  padding: 0;
+  margin: 0;
+  margin: 5px;
+  font-size: 1.6rem;
 }
 
 /*# sourceMappingURL=style.css.map */

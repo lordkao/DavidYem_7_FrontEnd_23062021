@@ -12,8 +12,13 @@
     }
     &__chat{
         @include full;
+        @include display($direction:column);
         display: none;
-        background-color: rgb(10, 87, 87);
+        & h2{
+            @include nomarge;
+            margin-bottom: 10px;
+            text-align: center;
+        }
     }
 }
 .publication{
@@ -40,5 +45,21 @@
             font-size:1.4rem;
             margin: 10px;
         }
+    }
+}
+.message{
+    @include display($direction:column);
+    align-items: flex-start;
+    margin: 10px;
+    border: 1px black solid;
+    border-radius: 5px;
+    &__auteur{
+        margin: 5px;
+        font-size: 1.6rem;
+    }
+    &__texte{
+        @include nomarge;
+        margin: 5px;
+        font-size: 1.6rem;
     }
 }
