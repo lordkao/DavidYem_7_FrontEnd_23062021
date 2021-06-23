@@ -1,0 +1,39 @@
+header{
+    @include display($direction:column);
+    @include bloc-size($height:100px);
+    background: $color-primary;
+    & h1{
+        @include auto($height:65%);
+        overflow: hidden;
+        margin: 10px;
+        & img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    & nav{
+        @include display;
+        width: 100%;
+        height: 35%;
+        padding: 0;
+        & ul{
+            @include display;
+            list-style-type: none;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            & li{
+                @include display;
+                width: 50%;
+                height: 100%;
+                padding: 0;
+                text-align: center;
+                & button{
+                    @include button;
+                    @include full;
+                }
+            }
+        }
+    }
+}
