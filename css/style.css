@@ -149,6 +149,7 @@ footer ul li a {
   display: flex;
   justify-content: center;
   align-items: center;
+  align-items: unset;
   padding: 90px 20px;
 }
 .connexion__form--email {
@@ -177,6 +178,11 @@ footer ul li a {
 .connexion__form--password input {
   width: 68%;
 }
+.connexion__form--validation {
+  width: 50%;
+  height: 35px;
+  align-self: center;
+}
 
 .inscription {
   width: 100%;
@@ -198,6 +204,7 @@ footer ul li a {
   display: flex;
   justify-content: center;
   align-items: center;
+  align-items: unset;
   padding: 60px 20px;
 }
 .inscription__form--prenom {
@@ -251,6 +258,11 @@ footer ul li a {
 }
 .inscription__form--password input {
   width: 68%;
+}
+.inscription__form--inscription {
+  width: 50%;
+  height: 35px;
+  align-self: center;
 }
 
 .forums {
@@ -312,6 +324,7 @@ footer ul li a {
   height: 100%;
 }
 .publication__contenue--texte {
+  font-size: 1.4rem;
   margin: 10px;
 }
 

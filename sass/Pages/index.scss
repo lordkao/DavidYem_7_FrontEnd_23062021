@@ -41,6 +41,7 @@
     background:$color-secondary;
     &__form{
         @include display($direction:column);
+        align-items: unset;
         padding: 90px 20px;
         &--email{
             @include display;
@@ -62,6 +63,10 @@
                 width: 68%;
             }
         }
+        &--validation{
+            @include full($height:35px,$width: 50%);
+            align-self: center;
+        }
     }
 }
 .inscription{
@@ -76,6 +81,7 @@
     background:$color-tertiary;
     &__form{
         @include display($direction:column);
+        align-items: unset;
         padding: 60px 20px;
         &--prenom{
             @include display;
@@ -116,6 +122,10 @@
             & input{
                 width: 68%;
             }
+        }
+        &--inscription{
+            @include full($height:35px,$width: 50%);
+            align-self: center;
         }
     }
 }
