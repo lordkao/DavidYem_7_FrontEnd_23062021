@@ -1,4 +1,6 @@
 section{
+    position:relative;
+    z-index: 0;
     @include bloc-size($height:500px);
     padding: 10px;
     & h2{
@@ -6,7 +8,7 @@ section{
         @include full($height:10%);
         @include nomarge;
         text-align: center;
-        font-size: 2.4rem;
+        font-size: 2rem;
         border: 1px black solid;
     }
     & div{
@@ -22,8 +24,98 @@ section{
             @include full($height:30%);
             @include nomarge;
             text-align: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
             border: 1px black solid;
+        }
+    }
+}
+.connexion{
+    @include full($height:250px);
+    @include display($direction:column);
+    position: absolute;
+    z-index: 1;
+    opacity: 1;
+    top: 90px;
+    left: 0px;
+    display: none;
+    background:$color-secondary;
+    &__form{
+        @include display($direction:column);
+        padding: 90px 20px;
+        &--email{
+            @include display;
+            margin-bottom: 10px;
+            & label{
+                width: 32%;
+            }
+            & input{
+                width: 68%;
+            }
+        }
+        &--password{
+            @include display;
+            margin-bottom: 10px;
+            & label{
+                width: 32%;
+            }
+            & input{
+                width: 68%;
+            }
+        }
+    }
+}
+.inscription{
+    @include full($height:250px);
+    @include display($direction:column);
+    position: absolute;
+    z-index: 1;
+    opacity: 1;
+    top: 90px;
+    left: 0px;
+    display: none;
+    background:$color-tertiary;
+    &__form{
+        @include display($direction:column);
+        padding: 60px 20px;
+        &--prenom{
+            @include display;
+            margin-bottom: 10px;
+            & label{
+                width: 32%;
+            }
+            & input{
+                width: 68%;
+            }
+        }
+        &--nom{
+            @include display;
+            margin-bottom: 10px;
+            & label{
+                width: 32%;
+            }
+            & input{
+                width: 68%;
+            }
+        }
+        &--email{
+            @include display;
+            margin-bottom: 10px;
+            & label{
+                width: 32%;
+            }
+            & input{
+                width: 68%;
+            }
+        }
+        &--password{
+            @include display;
+            margin-bottom: 10px;
+            & label{
+                width: 32%;
+            }
+            & input{
+                width: 68%;
+            }
         }
     }
 }

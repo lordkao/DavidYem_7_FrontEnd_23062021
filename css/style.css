@@ -15,7 +15,7 @@ header {
   align-items: center;
   height: 100px;
   border: 1px black solid;
-  background: linear-gradient(#a2abff, #3131cc);
+  background: linear-gradient(#a2abff, #131370);
 }
 header h1 {
   width: auto;
@@ -70,7 +70,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(#a2abff, #3131cc);
+  background: linear-gradient(#a2abff, #131370);
 }
 footer ul {
   padding: 0;
@@ -82,11 +82,13 @@ footer ul li {
 }
 footer ul li a {
   text-decoration: none;
-  color: black;
+  color: white;
   font-size: 2rem;
 }
 
 section {
+  position: relative;
+  z-index: 0;
   height: 500px;
   border: 1px black solid;
   padding: 10px;
@@ -101,7 +103,7 @@ section h2 {
   padding: 0;
   margin: 0;
   text-align: center;
-  font-size: 2.4rem;
+  font-size: 2rem;
   border: 1px black solid;
 }
 section div {
@@ -126,8 +128,132 @@ section div p {
   padding: 0;
   margin: 0;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.8rem;
   border: 1px black solid;
+}
+
+.connexion {
+  width: 100%;
+  height: 250px;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+  opacity: 1;
+  top: 90px;
+  left: 0px;
+  display: none;
+  background: linear-gradient(#f7b1b1, #ee7676);
+}
+.connexion__form {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 90px 20px;
+}
+.connexion__form--email {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.connexion__form--email label {
+  width: 32%;
+}
+.connexion__form--email input {
+  width: 68%;
+}
+.connexion__form--password {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.connexion__form--password label {
+  width: 32%;
+}
+.connexion__form--password input {
+  width: 68%;
+}
+
+.inscription {
+  width: 100%;
+  height: 250px;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+  opacity: 1;
+  top: 90px;
+  left: 0px;
+  display: none;
+  background: #8fdb8f;
+}
+.inscription__form {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+.inscription__form--prenom {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.inscription__form--prenom label {
+  width: 32%;
+}
+.inscription__form--prenom input {
+  width: 68%;
+}
+.inscription__form--nom {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.inscription__form--nom label {
+  width: 32%;
+}
+.inscription__form--nom input {
+  width: 68%;
+}
+.inscription__form--email {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.inscription__form--email label {
+  width: 32%;
+}
+.inscription__form--email input {
+  width: 68%;
+}
+.inscription__form--password {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.inscription__form--password label {
+  width: 32%;
+}
+.inscription__form--password input {
+  width: 68%;
 }
 
 /*# sourceMappingURL=style.css.map */

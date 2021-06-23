@@ -12,8 +12,8 @@
         <h1><img src="./images/white_logo.png" alt=""></h1>
         <nav>
             <ul>
-                <li><button role="button">Connexion</button></li>
-                <li><button role="button">Inscription</button></li>
+                <li><button id="connect" role="button">Connexion</button></li>
+                <li><button id="signup" role="button">Inscription</button></li>
             </ul>
         </nav>
     </header>
@@ -23,6 +23,40 @@
             <div><img src="./images/icon.png" alt="logo globe terrestre"></div>
             <p>Bienvenue sur le réseau social de Groupomania, celui-ci est à votre disposition afin d'améliorer vos relations professionnelles.</p>
         </div>
+        <div id="connexion" class="connexion">
+            <form class="connexion__form" action="">
+                <div class="connexion__form--email">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder="ex:test@hotmail.fr">
+                </div>
+                <div class="connexion__form--password">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" placeholder="ex:123">
+                </div>
+                <input type="submit" value="Validation">
+            </form>
+        </div>
+        <div id="inscription" class="inscription">
+            <form class="inscription__form" action="">
+                <div class="inscription__form--nom">
+                    <label for="nom">Nom:</label>
+                    <input type="text" name="nom" id="nom" placeholder="ex:Legrand">
+                </div>
+                <div class="inscription__form--prenom">
+                    <label for="prenom">Prénom:</label>
+                    <input type="text" name="prenom" id="prenom" placeholder="ex:David">
+                </div>
+                <div class="inscription__form--email">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder="ex:test@hotmail.fr">
+                </div>
+                <div class="inscription__form--password">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" placeholder="ex:123">
+                </div>
+                <input type="submit" value="Inscription">
+            </form>
+        </div>
     </section>
     <footer>
         <ul>
@@ -31,5 +65,6 @@
             <li><a href="">Contact</a></li>
         </ul>
     </footer>
+    <script async src="./src/index.js"></script>
 </body>
 </html>
