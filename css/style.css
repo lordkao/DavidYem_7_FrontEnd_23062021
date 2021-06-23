@@ -66,10 +66,67 @@ header nav ul li button {
 footer {
   height: 200px;
   border: 1px black solid;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(#a2abff, #3131cc);
+}
+footer ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+footer ul li {
+  margin: 10px;
+}
+footer ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 2rem;
 }
 
 section {
-  height: 400px;
+  height: 500px;
+  border: 1px black solid;
+  padding: 10px;
+}
+section h2 {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 2.4rem;
+  border: 1px black solid;
+}
+section div {
+  width: 100%;
+  height: 90%;
+}
+section div div {
+  width: 100%;
+  height: 70%;
+}
+section div div img {
+  width: 100%;
+  height: 100%;
+}
+section div p {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 30%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 2rem;
   border: 1px black solid;
 }
 

@@ -1,3 +1,17 @@
 footer{
-    @include bloc-size;
+    @include bloc-size($height:200px);
+    @include display;
+    background: $color-primary;
+    & ul{
+        @include nomarge;
+        list-style-type: none;
+        & li{
+            margin: 10px;
+            & a{
+                text-decoration: none;
+                color: black;
+                font-size: 2rem;
+            }
+        };
+    }
 }
