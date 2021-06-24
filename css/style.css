@@ -14,7 +14,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100px;
-  background: linear-gradient(#a2abff, #131370);
+  background: #22228f;
 }
 .header__title {
   width: auto;
@@ -62,7 +62,12 @@ body {
   height: 100%;
 }
 .header__nav--links li button i {
+  transform: scale(1.5);
   margin-right: 10px;
+  color: black;
+}
+.header__nav--links li button span {
+  display: none;
 }
 
 footer {
@@ -71,7 +76,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(#a2abff, #131370);
+  background: #22228f;
 }
 footer ul {
   padding: 0;
@@ -269,7 +274,9 @@ footer ul li a {
 }
 
 .forums {
-  height: 500px;
+  width: auto;
+  height: auto;
+  min-height: 500px;
   margin: 10px 5px;
 }
 .forums__multimedia {
@@ -309,7 +316,7 @@ footer ul li a {
   align-items: center;
   border: 1px black solid;
   border-radius: 10px;
-  margin: 10px 0;
+  margin: 20px 0;
 }
 .publication__contenue {
   flex-direction: column;

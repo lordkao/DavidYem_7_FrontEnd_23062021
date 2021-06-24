@@ -1,5 +1,6 @@
 .forums{
-    @include bloc-size($height:500px);
+    @include auto;
+    min-height: 500px;
     margin: 10px 5px;
     &__multimedia{
         @include full;
@@ -25,7 +26,7 @@
     @include display;
     border: 1px black solid;
     border-radius: 10px;
-    margin: 10px 0;
+    margin: 20px 0;
     &__contenue{
         @include display($direction:column);
         &--auteur{

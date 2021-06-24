@@ -28,7 +28,12 @@
                     @include button;
                     @include full;
                     & i{
+                        transform: scale(1.5);
                         margin-right: 10px;
+                        color: $color-icone;
+                    }
+                    & span{
+                        display: none;
                     }
                 }
             }
