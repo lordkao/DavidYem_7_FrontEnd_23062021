@@ -5,15 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/e5b08f2689.js" crossorigin="anonymous"></script>
     <title>Groupomania</title>
 </head>
 <body>
-    <header>
-        <h1><img src="./images/white_logo.png" alt=""></h1>
-        <nav>
-            <ul>
-                <li><button id="connect" role="button">Connexion</button></li>
-                <li><button id="signup" role="button">Inscription</button></li>
+    <header class="header">
+        <h1 class="header__title"><img src="./images/white_logo.png" alt=""></h1>
+        <nav class="header__nav">
+            <ul class="header__nav--links">
+                <li><button id="connect" role="button"><i class="fas fa-user"></i>Se connecter</button></li>
+                <li><button id="signup" role="button"><i class="fas fa-user-plus"></i>Créer un compte</button></li>
             </ul>
         </nav>
     </header>
@@ -33,7 +34,7 @@
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password" placeholder="ex:123">
                 </div>
-                <input type="submit" value="Validation">
+                <input class="connexion__form--validation" type="submit" value="Validation">
             </form>
         </div>
         <div id="inscription" class="inscription">
@@ -54,11 +55,11 @@
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password" placeholder="ex:123">
                 </div>
-                <input type="submit" value="Inscription">
+                <input class="inscription__form--inscription" type="submit" value="Inscription">
             </form>
         </div>
     </section>
-    <footer>
+    <footer class="index-footer">
         <ul>
             <li><a href="">Politique de confidentialité</a></li>
             <li><a href="">Règlement</a></li>

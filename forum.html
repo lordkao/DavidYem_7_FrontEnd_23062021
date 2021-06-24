@@ -5,24 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/e5b08f2689.js" crossorigin="anonymous"></script>
     <title>Groupomania forums</title>
 </head>
 <body>
-    <header>
-        <h1><img src="./images/white_logo.png" alt=""></h1>
-        <nav>
-            <ul>
-                <li><button id="btn-multi" role="button">Multimédia</button></li>
-                <li><button id="btn-chat" role="button">Chat</button></li>
+    <header class="header">
+        <h1 class="header__title"><img src="./images/white_logo.png" alt=""></h1>
+        <nav class="header__nav">
+            <ul class="header__nav--links">
+                <li><button id="btn-multi" role="button"><i class="fas fa-home"></i><span>Accueil</span></button></li>
+                <li><button id="btn-chat" role="button"><i class="fas fa-comments"></i><span>Chat</span></button></li>
+                <li><button id="btn-profil" role="button"><i class="fas fa-user-circle"></i><span>Profil</span></button></li>
             </ul>
         </nav>
     </header>
     <section class="forums">
         <article id="multimedia" class="forums__multimedia">
-
+            <h2>Forum multimedia</h2>
+            <div class="publication">
+                <div class="publication__contenue">
+                    <h3 class="publication__contenue--auteur">date et user</h3>
+                    <div class="publication__contenue--photo"><img src=".//images/icon-left-font.png" alt=""></div>
+                    <p class="publication__contenue--texte">Hello, je suis encore en vacance !!</p>
+                </div>
+            </div>
+            <div class="publication">
+                <div class="publication__contenue">
+                    <h3 class="publication__contenue--auteur">date et user</h3>
+                    <div class="publication__contenue--photo"><img src="" alt=""></div>
+                    <p class="publication__contenue--texte">Slt moi je suis encore au travail !!</p>
+                </div>
+            </div>
         </article>
         <article id="chat" class="forums__chat">
-
+            <h2>Forum chat</h2>
+            <div class="message">
+                <div class="message__auteur">date et auteur</div>
+                <p class="message__texte">Bonsoir à tous !! Comment vous allez?</p>
+            </div>
+            <div class="message">
+                <div class="message__auteur">date et auteur</div>
+                <p class="message__texte">Slt on est là toujours en forme !!</p>
+            </div>
         </article>
     </section>
     <footer>

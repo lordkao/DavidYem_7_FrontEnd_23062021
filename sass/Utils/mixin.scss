@@ -1,6 +1,5 @@
 @mixin bloc-size($height:200px){
     height: $height;
-    border: 1px black solid;
 }
 @mixin display($direction:row){
     flex-direction: $direction;

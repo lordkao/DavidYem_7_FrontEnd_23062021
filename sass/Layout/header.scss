@@ -1,8 +1,8 @@
-header{
+.header{
     @include display($direction:column);
     @include bloc-size($height:100px);
     background: $color-primary;
-    & h1{
+    &__title{
         @include auto($height:65%);
         overflow: hidden;
         margin: 10px;
@@ -10,11 +10,11 @@ header{
             @include full;
         }
     }
-    & nav{
+    &__nav{
         @include display;
         @include full($height:35%);
         padding: 0;
-        & ul{
+        &--links{
             @include display;
             list-style-type: none;
             @include full;
@@ -27,6 +27,14 @@ header{
                 & button{
                     @include button;
                     @include full;
+                    & i{
+                        transform: scale(1.5);
+                        margin-right: 10px;
+                        color: $color-icone;
+                    }
+                    & span{
+                        display: none;
+                    }
                 }
             }
         }

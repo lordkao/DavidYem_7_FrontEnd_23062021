@@ -1,16 +1,66 @@
 .forums{
-    @include bloc-size($height:500px);
-    padding: 10px;
+    @include auto;
+    min-height: 500px;
+    margin: 10px 5px;
     &__multimedia{
         @include full;
+        @include display($direction:column);
         display: block;
-        background-color: aqua;
-        border: 1px red solid;
+        & h2{
+            @include nomarge;
+            text-align: center;
+        }
     }
     &__chat{
         @include full;
+        @include display($direction:column);
         display: none;
-        background-color: rgb(10, 87, 87);
-        border: 1px red solid;
+        & h2{
+            @include nomarge;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+    }
+}
+.publication{
+    @include display;
+    border: 1px black solid;
+    border-radius: 10px;
+    margin: 20px 0;
+    &__contenue{
+        @include display($direction:column);
+        &--auteur{
+            margin: 10px;
+        }
+        &--photo{
+            @include display;
+            @include full($height:150px,$width:95%);
+            border-radius: 15px;
+            overflow: hidden;
+            display: block;
+            & img{
+                @include full;
+            }
+        }
+        &--texte{
+            font-size:1.4rem;
+            margin: 10px;
+        }
+    }
+}
+.message{
+    @include display($direction:column);
+    align-items: flex-start;
+    margin: 10px;
+    border: 1px black solid;
+    border-radius: 5px;
+    &__auteur{
+        margin: 5px;
+        font-size: 1.6rem;
+    }
+    &__texte{
+        @include nomarge;
+        margin: 5px;
+        font-size: 1.6rem;
     }
 }

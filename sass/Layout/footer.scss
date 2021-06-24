@@ -1,5 +1,5 @@
 footer{
-    @include bloc-size($height:200px);
+    @include bloc-size($height:150px);
     @include display;
     background: $color-primary;
     & ul{
@@ -10,7 +10,7 @@ footer{
             & a{
                 text-decoration: none;
                 color: white;
-                font-size: 2rem;
+                font-size: 1.6rem;
             }
         };
     }
