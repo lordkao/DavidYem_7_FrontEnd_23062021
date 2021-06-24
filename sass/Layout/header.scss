@@ -27,40 +27,6 @@
                 & button{
                     @include button;
                     @include full;
-                }
-            }
-        }
-    }
-}
-.header-index{
-    @include display($direction:column);
-    @include bloc-size($height:100px);
-    background: $color-primary;
-    &__title{
-        @include auto($height:65%);
-        overflow: hidden;
-        margin: 10px;
-        & img{
-            @include full;
-        }
-    }
-    &__nav{
-        @include display;
-        @include full($height:35%);
-        padding: 0;
-        &--links{
-            @include display;
-            list-style-type: none;
-            @include full;
-            @include nomarge;
-            & li{
-                @include display;
-                @include full($width:50%);
-                padding: 0;
-                text-align: center;
-                & button{
-                    @include button;
-                    @include full;
                     & i{
                         margin-right: 10px;
                     }
