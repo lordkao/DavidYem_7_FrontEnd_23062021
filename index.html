@@ -13,8 +13,8 @@
         <h1 class="header__title"><img src="./images/white_logo.png" alt=""></h1>
         <nav class="header__nav">
             <ul class="header__nav--links">
-                <li><button id="connect" role="button"><i class="fas fa-user"></i>Se connecter</button></li>
-                <li><button id="signup" role="button"><i class="fas fa-user-plus"></i>Créer un compte</button></li>
+                <li><button id="connect" role="button"><i class="fas fa-user"></i><span id="connecter">Se connecter</span></button></li>
+                <li><button id="signup" role="button"><i class="fas fa-user-plus"></i><span id="creer">Créer un compte</span></button></li>
             </ul>
         </nav>
     </header>
@@ -34,7 +34,7 @@
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password" placeholder="ex:123">
                 </div>
-                <input class="connexion__form--validation" type="submit" value="Validation">
+                <input id="validation-connexion" class="connexion__form--validation" type="button" value="Validation">
             </form>
         </div>
         <div id="inscription" class="inscription">
@@ -55,7 +55,7 @@
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password" placeholder="ex:123">
                 </div>
-                <input class="inscription__form--inscription" type="submit" value="Inscription">
+                <input id="validation-creation" class="inscription__form--inscription" type="button" value="Inscription">
             </form>
         </div>
     </section>

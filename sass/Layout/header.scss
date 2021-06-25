@@ -25,18 +25,26 @@
                 padding: 0;
                 text-align: center;
                 & button{
+                    @include display;
                     @include button;
                     @include full;
+                    text-align: center;
                     & i{
                         transform: scale(1.5);
-                        margin-right: 10px;
                         color: $color-icone;
                     }
                     & span{
+                        margin-left: 10px;
                         display: none;
                     }
                 }
             }
         }
     }
+}
+#connecter{
+    display: block;
+}
+#creer{
+    display: block;
 }
