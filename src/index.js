@@ -23,3 +23,19 @@ signup.addEventListener("click",function(e){
     }
     connexion.style.display = "none"
 })
+
+let btnValidationConnexion = document.getElementById("validation-connexion")
+let btnValidationCreation = document.getElementById("validation-creation")
+
+function forum(){
+    document.location.href="forum.html"
+}
+
+btnValidationConnexion.addEventListener("click",function(e){
+    e.preventDefault
+    forum()
+})
+btnValidationCreation.addEventListener("click",function(e){
+    e.preventDefault
+    forum()
+})
