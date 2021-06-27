@@ -58,7 +58,7 @@ function showMessage(){
             const auteur = document.createElement('div')
                 auteur.classList.add('message__auteur')
                 auteur.setAttribute('id','auteur')
-                auteur.innerText = `(${response.dateTime}) ${response.auteur} : `
+                auteur.innerText = `(${response.date}) ${response.nom}.${response.prenom} : `
 
             const texte = document.createElement('p')
                 texte.classList.add('message__texte')
@@ -89,7 +89,7 @@ function showPublications(){
         for(let response of responses){
             const auteur = document.createElement('h3')
                 auteur.classList.add('publication__contenue--auteur')
-                auteur.innerText = `${response.auteur}`
+                auteur.innerText = `${response.nom}.${response.prenom}(${response.date})`
 
             const publication = document.createElement('div')
                 publication.classList.add('publication__contenue--photo')
@@ -98,7 +98,7 @@ function showPublications(){
 
             const texte = document.createElement('p')
                 texte.classList.add('publication__contenue--texte')
-                texte.innerText = `${response.texte}`
+                texte.innerText = `${response.message}`
 
             publicationWindow.appendChild(auteur)
             publicationWindow.appendChild(publication)
