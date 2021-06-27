@@ -38,8 +38,8 @@ btnProfil.addEventListener("click",function(e){
     btnProfil.style.borderBottom = "transparent"
 })
 
-const urlChat ='http://localhost:3000/chat'
-const urlPublications ='http://localhost:3000/publications'
+const urlChat ='http://localhost:3000/api/chat'
+const urlPublications ='http://localhost:3000/api/publications'
 
 function showMessage(){
     fetch(urlChat)
