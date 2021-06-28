@@ -70,9 +70,15 @@ btnValidationConnexion.addEventListener("click",function(e){
             }
         })
         .then(function(response){
-            console.log(response)
-            if(response.userId && response.token){
-                forum()
+            try{
+                if(response.userId && response.token){
+                    const token = response
+                    localStorage.setItem('access',JSON.stringify(token))
+                    forum()
+                }
+            }
+            catch(error){
+                console.log({ error : 'Mot de passe incorrect '})
             }
         })
         .catch(function(err){
@@ -127,10 +133,16 @@ btnValidationCreation.addEventListener("click",function(e){
             }
         })
         .then(function(response){
-            console.log(response)
-            if(response.userId && response.token){
-                forum()
-            }
+                try{
+                    if(response.userId && response.token){
+                        const token = response
+                        localStorage.setItem('access',JSON.stringify(token))
+                        forum()
+                    }
+                }
+                catch(error){
+                    console.log({ error : 'Adresse mail déjà utilisée'})
+                }
         })
         .catch(function(err){
             alert(err)
