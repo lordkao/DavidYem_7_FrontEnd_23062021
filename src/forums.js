@@ -5,6 +5,9 @@ const multimedia = document.getElementById("multimedia")
 const chat = document.getElementById("chat")
 const chatWindow = document.getElementById('chat-window')
 const publicationWindow = document.getElementById('publication')
+const access = JSON.parse(localStorage.getItem('access'))
+const userId = access.userId
+const token = access.token
 
 const borderBlock = ()=>{
     btnMultimedia.style.borderBottom = "1px grey solid"
@@ -42,7 +45,9 @@ const urlChat ='http://localhost:3000/api/chat'
 const urlPublications ='http://localhost:3000/api/publications'
 
 function showMessage(){
-    fetch(urlChat)
+    fetch(urlChat,{
+        headers : {'Authorization':'Bearer '+token}
+    })
     .then(function(res){
         if(res.ok){
             return res.json()
@@ -76,7 +81,9 @@ function showMessage(){
 showMessage()
 
 function showPublications(){
-    fetch(urlPublications)
+    fetch(urlPublications,{
+        headers : {'Authorization':'Bearer '+token}
+    })
     .then(function(res){
         if(res.ok){
             return res.json()
@@ -87,22 +94,26 @@ function showPublications(){
         console.log(responses)
 
         for(let response of responses){
+            const container = document.createElement('div')
+                container.classList.add('container')
+
             const auteur = document.createElement('h3')
-                auteur.classList.add('publication__contenue--auteur')
+                auteur.classList.add('container__auteur')
                 auteur.innerText = `${response.nom}.${response.prenom}(${response.date})`
 
             const publication = document.createElement('div')
-                publication.classList.add('publication__contenue--photo')
+                publication.classList.add('container__photo')
 
             const image = document.createElement('img')
 
             const texte = document.createElement('p')
-                texte.classList.add('publication__contenue--texte')
+                texte.classList.add('container__texte')
                 texte.innerText = `${response.message}`
 
-            publicationWindow.appendChild(auteur)
-            publicationWindow.appendChild(publication)
-            publicationWindow.appendChild(texte)
+            publicationWindow.appendChild(container)
+            container.appendChild(auteur)
+            container.appendChild(publication)
+            container.appendChild(texte)
             publication.appendChild(image)
 
 

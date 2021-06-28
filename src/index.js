@@ -72,8 +72,8 @@ btnValidationConnexion.addEventListener("click",function(e){
         .then(function(response){
             try{
                 if(response.userId && response.token){
-                    const token = response
-                    localStorage.setItem('access',JSON.stringify(token))
+                    const access = response
+                    localStorage.setItem('access',JSON.stringify(access))
                     forum()
                 }
             }
@@ -135,8 +135,8 @@ btnValidationCreation.addEventListener("click",function(e){
         .then(function(response){
                 try{
                     if(response.userId && response.token){
-                        const token = response
-                        localStorage.setItem('access',JSON.stringify(token))
+                        const access = response
+                        localStorage.setItem('access',JSON.stringify(access))
                         forum()
                     }
                 }

@@ -24,28 +24,37 @@
 }
 .publication{
     @include display;
-    border: 1px black solid;
     border-radius: 10px;
     margin: 20px 0;
     &__contenue{
         @include display($direction:column);
-        &--auteur{
-            margin: 10px;
+        @include full;
+        &--cadre{
+            width: 100%;
         }
-        &--photo{
-            @include display;
-            @include full($height:150px,$width:95%);
-            border-radius: 15px;
-            overflow: hidden;
-            display: block;
-            & img{
-                @include full;
-            }
+        
+    }
+}
+.container{
+    margin: 15px 0px;
+    border: 1px #d1d1d1 solid;
+    box-shadow: 0px 5px 5px 1px grey;
+    border-radius: 10px;
+    &__auteur{
+        margin: 10px;
+    }
+    &__photo{
+        @include display;
+        @include full($height:150px);
+        border-radius: 15px;
+        overflow: hidden;
+        & img{
+            @include full($width:95%);
         }
-        &--texte{
-            font-size:1.4rem;
-            margin: 10px;
-        }
+    }
+    &__texte{
+        font-size:1.4rem;
+        margin: 10px;
     }
 }
 .message{
