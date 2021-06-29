@@ -1,6 +1,7 @@
 const btnMultimedia = document.getElementById("btn-multi")
-const btnProfil = document.getElementById("btn-profil")
+const btnChat = document.getElementById("btn-chat")
 const chat = document.getElementById("chat")
+const deconnexion = document.getElementById("deconnexion")
 const chatWindow = document.getElementById('chat-window')
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
@@ -10,9 +11,9 @@ btnMultimedia.addEventListener("click",function(e){
     e.preventDefault()
     document.location.href="multimedia.html"
 })
-btnProfil.addEventListener("click",function(e){
+btnChat.addEventListener("click",function(e){
     e.preventDefault()
-    document.location.href="profil.html"
+    document.location.href="chat.html"
 })
 const urlChat ='http://localhost:3000/api/chat'
 /*Fonction qui affiche tous les messages du chat.*/
@@ -81,4 +82,9 @@ validationMessage.addEventListener("click",function(e){
         console.log(response)
     })
     .catch((err) => console.log({message:err}))
+})
+deconnexion.addEventListener("click",function(e){
+    e.preventDefault()
+    localStorage.clear()
+    document.location.href="index.html"
 })

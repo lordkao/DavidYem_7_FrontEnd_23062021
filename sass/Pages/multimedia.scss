@@ -29,6 +29,29 @@
             cursor: pointer;
         }
     }
+    &__container{
+        width: 100%;
+        margin: 15px 0px;
+        border: 1px #d1d1d1 solid;
+        box-shadow: 0px 5px 5px 1px grey;
+        border-radius: 10px;
+        &--auteur{
+            margin: 10px;
+        }
+        &--photo{
+            @include display;
+            @include full($height:150px);
+            border-radius: 15px;
+            overflow: hidden;
+            & img{
+                @include full($width:95%);
+            }
+        }
+        &--texte{
+            font-size:1.4rem;
+            margin: 10px;
+        }
+    }
 }
 .form{/*Formulaire des publications*/
     @include full;
