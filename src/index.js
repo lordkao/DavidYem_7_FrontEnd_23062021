@@ -33,7 +33,7 @@ let btnValidationCreation = document.getElementById("validation-creation")
 /*Redirection vers la page forum.html.*/
 /*************************************************/
 function forum(){
-    document.location.href="forum.html"
+    document.location.href="multimedia.html"
 }
 /*Déclaration des inputs de connection.*/
 /*************************************************/

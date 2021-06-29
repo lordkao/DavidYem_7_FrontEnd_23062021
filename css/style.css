@@ -61,6 +61,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px #b4b4b4 solid;
+  background-color: #c5c5c5;
   padding: 0;
   width: 100%;
   height: 100%;
@@ -321,6 +323,7 @@ footer ul li a {
   margin-bottom: 10px;
   text-align: center;
 }
+
 .publication {
   /*Cadre des publications*/
   flex-direction: column;
@@ -343,9 +346,9 @@ footer ul li a {
   box-shadow: 0px 5px 5px 1px grey;
   border-radius: 10px;
   padding: 15px 0;
+  overflow: hidden;
 }
 .publication__edit:hover {
-  background-color: #f2f2f2;
   cursor: pointer;
 }
 .publication__container {
@@ -395,15 +398,24 @@ footer ul li a {
   height: auto;
   margin-top: 5px;
 }
-.form__message--label {
-  margin: 0 5px;
-  width: 25%;
-}
 .form__message--input {
-  margin-right: 10px;
-  width: 75%;
-  border: 1px #c9c9c9 solid;
+  width: 95%;
+  resize: none;
+  border: 1px #959595 solid;
+  background-color: #ededed;
   border-radius: 5px;
+}
+.form__message--input::placeholder {
+  transform-origin: left;
+  transform: scale(0.95);
+  transition: transform 0.2s;
+}
+.form__message--input:focus {
+  background-color: white;
+}
+.form__message--input:focus::placeholder {
+  transform: scale(1);
+  transition: transform 0.2s;
 }
 .form__image {
   flex-direction: column;
@@ -414,31 +426,29 @@ footer ul li a {
   height: auto;
   margin-top: 5px;
 }
-.form__image--label {
-  width: 100%;
-  margin: 10px 0px 0px 10px;
-}
 .form__image--input {
-  width: 100%;
-  margin: 10px 0px 10px 10px;
+  width: 97%;
+  margin: 10px 0px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .form__publier {
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-right: 20px;
+  align-self: flex-end;
   width: 35%;
   height: auto;
 }
 
 .chat {
   /*Cadre des message du chat*/
-}
-.chat__edit {
-  flex-direction: column;
+  flex-direction: column-reverse;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
 }
-.chat__edit--form {
+.chat__edit {
   width: 100%;
   height: auto;
   flex-direction: column;
@@ -446,29 +456,399 @@ footer ul li a {
   justify-content: center;
   align-items: center;
 }
-.chat__edit--form textarea {
+.chat__edit--form {
   width: 100%;
-  margin: 10px 0;
+  height: auto;
+  margin: 10px;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.chat__message {
+.chat__edit--form textarea {
+  width: 91%;
+  margin: 10px 0;
+  border-radius: 5px;
+  resize: none;
+  border: 1px #959595 solid;
+  background-color: #ededed;
+}
+.chat__edit--form textarea::placeholder {
+  transform-origin: left;
+  transform: scale(0.95);
+  transition: transform 0.2s;
+}
+.chat__edit--form textarea:focus {
+  background-color: white;
+}
+.chat__edit--form textarea:focus::placeholder {
+  transform: scale(1);
+  transition: transform 0.2s;
+}
+
+.container-chat {
+  width: 100%;
+  height: auto;
+}
+.container-chat__message {
   flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: center;
   align-items: flex-start;
   margin: 10px;
-  border: 1px black solid;
+  border: 1px #959595 solid;
+  background-color: #ededed;
   border-radius: 5px;
 }
-.chat__message--auteur {
-  margin: 5px;
-  font-size: 1.6rem;
-}
-.chat__message--texte {
+.container-chat__message--texte {
   padding: 0;
   margin: 0;
   margin: 5px;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
+}
+.container-chat__auteur {
+  margin: 5px;
+  font-size: 1.4rem;
+}
+
+.forum {
+  width: auto;
+  height: auto;
+  min-height: 500px;
+  margin: 10px 5px;
+}
+.forum__multimedia {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: block;
+}
+.forum__multimedia--titre {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.publication {
+  /*Cadre des publications*/
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin: 20px 0;
+  width: 100%;
+  height: 100%;
+}
+.publication__edit {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px #d1d1d1 solid;
+  box-shadow: 0px 5px 5px 1px grey;
+  border-radius: 10px;
+  padding: 15px 0;
+  overflow: hidden;
+}
+.publication__edit:hover {
+  cursor: pointer;
+}
+
+.form {
+  /*Formulaire des publications*/
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form__message {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin-top: 5px;
+}
+.form__message--input {
+  width: 95%;
+  resize: none;
+  border: 1px #959595 solid;
+  background-color: #ededed;
+  border-radius: 5px;
+}
+.form__message--input::placeholder {
+  transform-origin: left;
+  transform: scale(0.95);
+  transition: transform 0.2s;
+}
+.form__message--input:focus {
+  background-color: white;
+}
+.form__message--input:focus::placeholder {
+  transform: scale(1);
+  transition: transform 0.2s;
+}
+.form__image {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin-top: 5px;
+}
+.form__image--input {
+  width: 97%;
+  margin: 10px 0px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.form__publier {
+  margin-top: 10px;
+  margin-right: 20px;
+  align-self: flex-end;
+  width: 35%;
+  height: auto;
+}
+
+.btn.multi {
+  border-bottom: none;
+  background-color: white;
+}
+
+.forum {
+  width: auto;
+  height: auto;
+  min-height: 500px;
+  margin: 10px 5px;
+}
+.forum__multimedia {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: block;
+}
+.forum__multimedia--titre {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.forum__chat {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.forum__chat h2 {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.publication {
+  /*Cadre des publications*/
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin: 20px 0;
+  width: 100%;
+  height: 100%;
+}
+.publication__edit {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px #d1d1d1 solid;
+  box-shadow: 0px 5px 5px 1px grey;
+  border-radius: 10px;
+  padding: 15px 0;
+  overflow: hidden;
+}
+.publication__edit:hover {
+  cursor: pointer;
+}
+.publication__container {
+  width: 100%;
+  margin: 15px 0px;
+  border: 1px #d1d1d1 solid;
+  box-shadow: 0px 5px 5px 1px grey;
+  border-radius: 10px;
+}
+.publication__container--auteur {
+  margin: 10px;
+}
+.publication__container--photo {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 150px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.publication__container--photo img {
+  width: 95%;
+  height: 100%;
+}
+.publication__container--texte {
+  font-size: 1.4rem;
+  margin: 10px;
+}
+
+.form {
+  /*Formulaire des publications*/
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form__message {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin-top: 5px;
+}
+.form__message--input {
+  width: 95%;
+  resize: none;
+  border: 1px #959595 solid;
+  background-color: #ededed;
+  border-radius: 5px;
+}
+.form__message--input::placeholder {
+  transform-origin: left;
+  transform: scale(0.95);
+  transition: transform 0.2s;
+}
+.form__message--input:focus {
+  background-color: white;
+}
+.form__message--input:focus::placeholder {
+  transform: scale(1);
+  transition: transform 0.2s;
+}
+.form__image {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin-top: 5px;
+}
+.form__image--input {
+  width: 97%;
+  margin: 10px 0px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.form__publier {
+  margin-top: 10px;
+  margin-right: 20px;
+  align-self: flex-end;
+  width: 35%;
+  height: auto;
+}
+
+.chat {
+  /*Cadre des message du chat*/
+  flex-direction: column-reverse;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chat__edit {
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chat__edit--form {
+  width: 100%;
+  height: auto;
+  margin: 10px;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chat__edit--form textarea {
+  width: 91%;
+  margin: 10px 0;
+  border-radius: 5px;
+  resize: none;
+  border: 1px #959595 solid;
+  background-color: #ededed;
+}
+.chat__edit--form textarea::placeholder {
+  transform-origin: left;
+  transform: scale(0.95);
+  transition: transform 0.2s;
+}
+.chat__edit--form textarea:focus {
+  background-color: white;
+}
+.chat__edit--form textarea:focus::placeholder {
+  transform: scale(1);
+  transition: transform 0.2s;
+}
+
+.container-chat {
+  width: 100%;
+  height: auto;
+}
+.container-chat__message {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: flex-start;
+  margin: 10px;
+  border: 1px #959595 solid;
+  background-color: #ededed;
+  border-radius: 5px;
+}
+.container-chat__message--texte {
+  padding: 0;
+  margin: 0;
+  margin: 5px;
+  font-size: 1.4rem;
+}
+.container-chat__auteur {
+  margin: 5px;
+  font-size: 1.4rem;
 }
 
 /*# sourceMappingURL=style.css.map */
