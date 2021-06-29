@@ -321,6 +321,7 @@ footer ul li a {
   margin-bottom: 10px;
   text-align: center;
 }
+
 .publication {
   /*Cadre des publications*/
   flex-direction: column;

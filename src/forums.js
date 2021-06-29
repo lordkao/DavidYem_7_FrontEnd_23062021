@@ -9,6 +9,7 @@ const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
 
+/*Matérialise une bordure aux boutons multimédia,chat et profil*/
 const borderBlock = ()=>{
     btnMultimedia.style.borderBottom = "1px grey solid"
     btnChat.style.borderBottom = "1px grey solid"
@@ -44,16 +45,17 @@ btnProfil.addEventListener("click",function(e){
 const urlChat ='http://localhost:3000/api/chat'
 const urlPublications ='http://localhost:3000/api/publications'
 
+/*Fonction qui affiche tous les messages du chat.*/
 function showMessage(){
     fetch(urlChat,{
         headers : {'Authorization':'Bearer '+token}
     })
-    .then(function(res){
+    .then((res) => {
         if(res.ok){
             return res.json()
         }
     })
-    .then(function(responses){
+    .then((responses) => {
         console.log(responses)
         
         for(let response of responses){
@@ -78,12 +80,10 @@ function showMessage(){
             message.appendChild(texte)
         }
     })
-    .catch(function(error){
-        console.log({ message: error})
-    })
+    .catch((err) => console.log({message:err}))
 }
 showMessage()
-
+/*Fonction pour afficher toutes les publications.*/
 function showPublications(){
     fetch(urlPublications,{
         headers : {'Authorization':'Bearer '+token}
@@ -128,3 +128,34 @@ function showPublications(){
     })
 }
 showPublications()
+
+const nouveauMessage = document.getElementById('chat-message')
+const validationMessage = document.getElementById('validation-message')
+
+validationMessage.addEventListener("click",function(e){
+    e.preventDefault()
+    const objetMessage = { 
+        message:nouveauMessage.value,
+        userId:userId,
+        token:token
+        }
+    console.log(objetMessage)
+    fetch(urlChat,{
+        method : 'POST',
+        headers: {
+            'Accept':'application/json',
+            'Content-Type':'application/json',
+            'Authorization': 'Bearer '+token
+        },
+        body:JSON.stringify(objetMessage)
+    })
+    .then((res) => {
+        if(res.ok){
+            return res.json()
+        }
+    })
+    .then((response) => {
+        console.log(response)
+    })
+    .catch((err) => console.log({message:err}))
+})
