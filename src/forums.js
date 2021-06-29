@@ -95,19 +95,19 @@ function showPublications(){
 
         for(let response of responses){
             const container = document.createElement('div')
-                container.classList.add('container')
+                container.classList.add('publication__container')
 
             const auteur = document.createElement('h3')
-                auteur.classList.add('container__auteur')
+                auteur.classList.add('publication__container--auteur')
                 auteur.innerText = `${response.nom}.${response.prenom}(${response.date})`
 
             const publication = document.createElement('div')
-                publication.classList.add('container__photo')
+                publication.classList.add('publication__container--photo')
 
             const image = document.createElement('img')
 
             const texte = document.createElement('p')
-                texte.classList.add('container__texte')
+                texte.classList.add('publication__container--texte')
                 texte.innerText = `${response.message}`
 
             publicationWindow.appendChild(container)

@@ -23,38 +23,74 @@
     }
 }
 .publication{
-    @include display;
+    @include display($direction:column);
     border-radius: 10px;
     margin: 20px 0;
-    &__contenue{
-        @include display($direction:column);
+    @include full;
+    &__edit{
         @include full;
-        &--cadre{
-            width: 100%;
+        @include display($direction:column);
+        border: 1px #d1d1d1 solid;
+        box-shadow: 0px 5px 5px 1px grey;
+        border-radius: 10px;
+        padding: 15px 0;
+        &:hover{
+            background-color: #f2f2f2;
+            cursor: pointer;
         }
-        
+    }
+    &__container{
+        width: 100%;
+        margin: 15px 0px;
+        border: 1px #d1d1d1 solid;
+        box-shadow: 0px 5px 5px 1px grey;
+        border-radius: 10px;
+        &--auteur{
+            margin: 10px;
+        }
+        &--photo{
+            @include display;
+            @include full($height:150px);
+            border-radius: 15px;
+            overflow: hidden;
+            & img{
+                @include full($width:95%);
+            }
+        }
+        &--texte{
+            font-size:1.4rem;
+            margin: 10px;
+        }
     }
 }
-.container{
-    margin: 15px 0px;
-    border: 1px #d1d1d1 solid;
-    box-shadow: 0px 5px 5px 1px grey;
-    border-radius: 10px;
-    &__auteur{
-        margin: 10px;
-    }
-    &__photo{
+.form{
+    @include full;
+    @include display($direction:column);
+    &__message{
         @include display;
-        @include full($height:150px);
-        border-radius: 15px;
-        overflow: hidden;
-        & img{
-            @include full($width:95%);
+        @include formBloc;
+        &--label{
+            @include formLabel;
+        }
+        &--input{
+            @include formInput;
         }
     }
-    &__texte{
-        font-size:1.4rem;
-        margin: 10px;
+    &__image{
+        @include display($direction:column);
+        @include formBloc;
+        &--label{
+            width: 100%;
+            margin: 10px 0px 0px 10px;
+        }
+        &--input{
+            width: 100%;
+            margin: 10px 0px 10px 10px;
+        }
+    }
+    &__publier{
+        margin-top: 20px;
+        @include auto($width:35%);
     }
 }
 .message{
