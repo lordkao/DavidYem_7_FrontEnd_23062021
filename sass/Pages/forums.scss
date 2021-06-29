@@ -1,4 +1,4 @@
-.forums{
+.forum{
     @include auto;
     min-height: 500px;
     margin: 10px 5px;
@@ -6,7 +6,7 @@
         @include full;
         @include display($direction:column);
         display: block;
-        & h2{
+        &--titre{
             @include nomarge;
             text-align: center;
         }
@@ -20,26 +20,44 @@
             margin-bottom: 10px;
             text-align: center;
         }
+        &--edit{
+            
+        }
     }
 }
-.publication{
-    @include display;
-    border: 1px black solid;
+.publication{/*Cadre des publications*/
+    @include display($direction:column);
     border-radius: 10px;
     margin: 20px 0;
-    &__contenue{
+    @include full;
+    &__edit{
+        @include full;
         @include display($direction:column);
+        border: 1px #d1d1d1 solid;
+        box-shadow: 0px 5px 5px 1px grey;
+        border-radius: 10px;
+        padding: 15px 0;
+        &:hover{
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+    }
+    &__container{
+        width: 100%;
+        margin: 15px 0px;
+        border: 1px #d1d1d1 solid;
+        box-shadow: 0px 5px 5px 1px grey;
+        border-radius: 10px;
         &--auteur{
             margin: 10px;
         }
         &--photo{
             @include display;
-            @include full($height:150px,$width:95%);
+            @include full($height:150px);
             border-radius: 15px;
             overflow: hidden;
-            display: block;
             & img{
-                @include full;
+                @include full($width:95%);
             }
         }
         &--texte{
@@ -48,19 +66,65 @@
         }
     }
 }
-.message{
+.form{/*Formulaire des publications*/
+    @include full;
     @include display($direction:column);
-    align-items: flex-start;
-    margin: 10px;
-    border: 1px black solid;
-    border-radius: 5px;
-    &__auteur{
-        margin: 5px;
-        font-size: 1.6rem;
+    &__message{
+        @include display;
+        @include formBloc;
+        &--label{
+            @include formLabel;
+        }
+        &--input{
+            @include formInput;
+        }
     }
-    &__texte{
-        @include nomarge;
-        margin: 5px;
-        font-size: 1.6rem;
+    &__image{
+        @include display($direction:column);
+        @include formBloc;
+        &--label{
+            width: 100%;
+            margin: 10px 0px 0px 10px;
+        }
+        &--input{
+            width: 100%;
+            margin: 10px 0px 10px 10px;
+        }
+    }
+    &__publier{
+        margin-top: 20px;
+        @include auto($width:35%);
+    }
+}
+.chat{/*Cadre des message du chat*/
+    &__edit{
+        @include display($direction:column);
+        margin: 10px;
+        &--form{
+            @include auto($width:100%);
+            @include display($direction:column);
+            & textarea{
+                width: 100%;
+                margin: 10px 0;
+            }
+            & input{
+            }
+        }
+    }
+    &__message{
+        @include display($direction:column);
+        align-items: flex-start;
+        margin: 10px;
+        border: 1px black solid;
+        border-radius: 5px;
+        &--auteur{
+            margin: 5px;
+            font-size: 1.6rem;
+        }
+        &--texte{
+            @include nomarge;
+            margin: 5px;
+            font-size: 1.6rem;
+        }
     }
 }

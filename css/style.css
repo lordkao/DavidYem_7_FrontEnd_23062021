@@ -286,13 +286,13 @@ footer ul li a {
   align-self: center;
 }
 
-.forums {
+.forum {
   width: auto;
   height: auto;
   min-height: 500px;
   margin: 10px 5px;
 }
-.forums__multimedia {
+.forum__multimedia {
   width: 100%;
   height: 100%;
   flex-direction: column;
@@ -301,12 +301,12 @@ footer ul li a {
   align-items: center;
   display: block;
 }
-.forums__multimedia h2 {
+.forum__multimedia--titre {
   padding: 0;
   margin: 0;
   text-align: center;
 }
-.forums__chat {
+.forum__chat {
   width: 100%;
   height: 100%;
   flex-direction: column;
@@ -315,52 +315,142 @@ footer ul li a {
   align-items: center;
   display: none;
 }
-.forums__chat h2 {
+.forum__chat h2 {
   padding: 0;
   margin: 0;
   margin-bottom: 10px;
   text-align: center;
 }
-
 .publication {
+  /*Cadre des publications*/
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin: 20px 0;
+  width: 100%;
+  height: 100%;
+}
+.publication__edit {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px #d1d1d1 solid;
+  box-shadow: 0px 5px 5px 1px grey;
+  border-radius: 10px;
+  padding: 15px 0;
+}
+.publication__edit:hover {
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+.publication__container {
+  width: 100%;
+  margin: 15px 0px;
+  border: 1px #d1d1d1 solid;
+  box-shadow: 0px 5px 5px 1px grey;
+  border-radius: 10px;
+}
+.publication__container--auteur {
+  margin: 10px;
+}
+.publication__container--photo {
   flex-direction: row;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px black solid;
-  border-radius: 10px;
-  margin: 20px 0;
+  width: 100%;
+  height: 150px;
+  border-radius: 15px;
+  overflow: hidden;
 }
-.publication__contenue {
+.publication__container--photo img {
+  width: 95%;
+  height: 100%;
+}
+.publication__container--texte {
+  font-size: 1.4rem;
+  margin: 10px;
+}
+
+.form {
+  /*Formulaire des publications*/
+  width: 100%;
+  height: 100%;
   flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.publication__contenue--auteur {
-  margin: 10px;
-}
-.publication__contenue--photo {
+.form__message {
   flex-direction: row;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 95%;
-  height: 150px;
-  border-radius: 15px;
-  overflow: hidden;
-  display: block;
-}
-.publication__contenue--photo img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  margin-top: 5px;
 }
-.publication__contenue--texte {
-  font-size: 1.4rem;
-  margin: 10px;
+.form__message--label {
+  margin: 0 5px;
+  width: 25%;
+}
+.form__message--input {
+  margin-right: 10px;
+  width: 75%;
+  border: 1px #c9c9c9 solid;
+  border-radius: 5px;
+}
+.form__image {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin-top: 5px;
+}
+.form__image--label {
+  width: 100%;
+  margin: 10px 0px 0px 10px;
+}
+.form__image--input {
+  width: 100%;
+  margin: 10px 0px 10px 10px;
+}
+.form__publier {
+  margin-top: 20px;
+  width: 35%;
+  height: auto;
 }
 
-.message {
+.chat {
+  /*Cadre des message du chat*/
+}
+.chat__edit {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+.chat__edit--form {
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chat__edit--form textarea {
+  width: 100%;
+  margin: 10px 0;
+}
+.chat__message {
   flex-direction: column;
   display: flex;
   justify-content: center;
@@ -370,11 +460,11 @@ footer ul li a {
   border: 1px black solid;
   border-radius: 5px;
 }
-.message__auteur {
+.chat__message--auteur {
   margin: 5px;
   font-size: 1.6rem;
 }
-.message__texte {
+.chat__message--texte {
   padding: 0;
   margin: 0;
   margin: 5px;

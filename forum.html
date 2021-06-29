@@ -19,18 +19,36 @@
             </ul>
         </nav>
     </header>
-    <section class="forums">
-        <article id="multimedia" class="forums__multimedia">
-            <h2>Forum multimedia</h2>
-            <div class="publication">
-                <div class="publication__contenue">
-                    <div id="publication"></div>
+    <section class="forum">
+        <article id="multimedia" class="forum__multimedia">
+            <h2 class="forum__multimedia--titre">Forum multimedia</h2>
+            <div id="publication" class="publication">
+                <div id="publication-edit" class="publication__edit">
+                    <span>Écrire une publication...</span>
+                    <form id="formulaire-publication" class="form">
+                        <div class="form__message">
+                            <label class="form__message--label" for="message">Message: </label>
+                            <textarea id="message" class="form__message--input" rows="5" cols="10"></textarea>
+                        </div>
+                        <div class="form__image">
+                            <label class="form__image--label" for="">Joindre une image: </label>
+                            <input class="form__image--input" type="file" id="image" accept="image/png, image/jpeg">
+                        </div>
+                        <input class="form__publier" id="publier" type="submit" value="Publier" for="formulaire-publication" >
+                    </form>
                 </div>
             </div>
         </article>
-        <article id="chat" class="forums__chat">
-            <h2>Forum chat</h2>
-            <div id="chat-window">
+        <article id="chat" class="forum__chat">
+            <h2 class="forum__chat--titre">Forum chat</h2>
+            <div id="chat-window" class="chat" >
+                <div class="chat__edit">
+                    <label for="chat-message">Écrire un message...</label>
+                    <form id="formulaire-chat" class="chat__edit--form" action="">
+                        <textarea id="chat-message" type="text" rows="2"></textarea>
+                        <input type="submit" value="Envoyer">
+                    </form>
+                </div>
             </div>
         </article>
     </section>

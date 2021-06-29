@@ -5,6 +5,9 @@ const multimedia = document.getElementById("multimedia")
 const chat = document.getElementById("chat")
 const chatWindow = document.getElementById('chat-window')
 const publicationWindow = document.getElementById('publication')
+const access = JSON.parse(localStorage.getItem('access'))
+const userId = access.userId
+const token = access.token
 
 const borderBlock = ()=>{
     btnMultimedia.style.borderBottom = "1px grey solid"
@@ -38,11 +41,13 @@ btnProfil.addEventListener("click",function(e){
     btnProfil.style.borderBottom = "transparent"
 })
 
-const urlChat ='http://localhost:3000/chat'
-const urlPublications ='http://localhost:3000/publications'
+const urlChat ='http://localhost:3000/api/chat'
+const urlPublications ='http://localhost:3000/api/publications'
 
 function showMessage(){
-    fetch(urlChat)
+    fetch(urlChat,{
+        headers : {'Authorization':'Bearer '+token}
+    })
     .then(function(res){
         if(res.ok){
             return res.json()
@@ -53,15 +58,15 @@ function showMessage(){
         
         for(let response of responses){
             const message = document.createElement('div')
-                message.classList.add('message')
+                message.classList.add('chat__message')
 
             const auteur = document.createElement('div')
-                auteur.classList.add('message__auteur')
+                auteur.classList.add('chat__message--auteur')
                 auteur.setAttribute('id','auteur')
                 auteur.innerText = `(${response.date}) ${response.nom}.${response.prenom} : `
 
             const texte = document.createElement('p')
-                texte.classList.add('message__texte')
+                texte.classList.add('chat__message--texte')
                 texte.innerText = `${response.message}`
 
             chatWindow.appendChild(message)
@@ -76,7 +81,9 @@ function showMessage(){
 showMessage()
 
 function showPublications(){
-    fetch(urlPublications)
+    fetch(urlPublications,{
+        headers : {'Authorization':'Bearer '+token}
+    })
     .then(function(res){
         if(res.ok){
             return res.json()
@@ -87,22 +94,26 @@ function showPublications(){
         console.log(responses)
 
         for(let response of responses){
+            const container = document.createElement('div')
+                container.classList.add('publication__container')
+
             const auteur = document.createElement('h3')
-                auteur.classList.add('publication__contenue--auteur')
+                auteur.classList.add('publication__container--auteur')
                 auteur.innerText = `${response.nom}.${response.prenom}(${response.date})`
 
             const publication = document.createElement('div')
-                publication.classList.add('publication__contenue--photo')
+                publication.classList.add('publication__container--photo')
 
             const image = document.createElement('img')
 
             const texte = document.createElement('p')
-                texte.classList.add('publication__contenue--texte')
+                texte.classList.add('publication__container--texte')
                 texte.innerText = `${response.message}`
 
-            publicationWindow.appendChild(auteur)
-            publicationWindow.appendChild(publication)
-            publicationWindow.appendChild(texte)
+            publicationWindow.appendChild(container)
+            container.appendChild(auteur)
+            container.appendChild(publication)
+            container.appendChild(texte)
             publication.appendChild(image)
 
 
