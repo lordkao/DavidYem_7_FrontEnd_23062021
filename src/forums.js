@@ -58,15 +58,15 @@ function showMessage(){
         
         for(let response of responses){
             const message = document.createElement('div')
-                message.classList.add('message')
+                message.classList.add('chat__message')
 
             const auteur = document.createElement('div')
-                auteur.classList.add('message__auteur')
+                auteur.classList.add('chat__message--auteur')
                 auteur.setAttribute('id','auteur')
                 auteur.innerText = `(${response.date}) ${response.nom}.${response.prenom} : `
 
             const texte = document.createElement('p')
-                texte.classList.add('message__texte')
+                texte.classList.add('chat__message--texte')
                 texte.innerText = `${response.message}`
 
             chatWindow.appendChild(message)

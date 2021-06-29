@@ -1,4 +1,4 @@
-.forums{
+.forum{
     @include auto;
     min-height: 500px;
     margin: 10px 5px;
@@ -6,7 +6,7 @@
         @include full;
         @include display($direction:column);
         display: block;
-        & h2{
+        &--titre{
             @include nomarge;
             text-align: center;
         }
@@ -20,9 +20,12 @@
             margin-bottom: 10px;
             text-align: center;
         }
+        &--edit{
+            
+        }
     }
 }
-.publication{
+.publication{/*Cadre des publications*/
     @include display($direction:column);
     border-radius: 10px;
     margin: 20px 0;
@@ -63,7 +66,7 @@
         }
     }
 }
-.form{
+.form{/*Formulaire des publications*/
     @include full;
     @include display($direction:column);
     &__message{
@@ -93,19 +96,35 @@
         @include auto($width:35%);
     }
 }
-.message{
-    @include display($direction:column);
-    align-items: flex-start;
-    margin: 10px;
-    border: 1px black solid;
-    border-radius: 5px;
-    &__auteur{
-        margin: 5px;
-        font-size: 1.6rem;
+.chat{/*Cadre des message du chat*/
+    &__edit{
+        @include display($direction:column);
+        margin: 10px;
+        &--form{
+            @include auto($width:100%);
+            @include display($direction:column);
+            & textarea{
+                width: 100%;
+                margin: 10px 0;
+            }
+            & input{
+            }
+        }
     }
-    &__texte{
-        @include nomarge;
-        margin: 5px;
-        font-size: 1.6rem;
+    &__message{
+        @include display($direction:column);
+        align-items: flex-start;
+        margin: 10px;
+        border: 1px black solid;
+        border-radius: 5px;
+        &--auteur{
+            margin: 5px;
+            font-size: 1.6rem;
+        }
+        &--texte{
+            @include nomarge;
+            margin: 5px;
+            font-size: 1.6rem;
+        }
     }
 }
