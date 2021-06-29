@@ -19,12 +19,6 @@
     padding: 0;
     margin: 0;
 }
-@mixin formInput{
-    margin-right: 10px;
-    width: 75%;
-    border: 1px rgb(201, 201, 201) solid;
-    border-radius: 5px;
-}
 @mixin formLabel{
     margin: 0 5px;
     width: 25%;

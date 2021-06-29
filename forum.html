@@ -24,14 +24,13 @@
             <h2 class="forum__multimedia--titre">Forum multimedia</h2>
             <div id="publication" class="publication">
                 <div id="publication-edit" class="publication__edit">
-                    <span>Écrire une publication...</span>
+                    <span>Exprimez vous...</span>
                     <form id="formulaire-publication" class="form">
                         <div class="form__message">
-                            <label class="form__message--label" for="message">Message: </label>
-                            <textarea id="message" class="form__message--input" rows="5" cols="10"></textarea>
+                            
+                            <textarea id="message" class="form__message--input" rows="5" cols="10" placeholder="Que voulez vous dire..."></textarea>
                         </div>
                         <div class="form__image">
-                            <label class="form__image--label" for="">Joindre une image: </label>
                             <input class="form__image--input" type="file" id="image" accept="image/png, image/jpeg">
                         </div>
                         <input class="form__publier" id="publier" type="submit" value="Publier" for="formulaire-publication" >
@@ -43,9 +42,8 @@
             <h2 class="forum__chat--titre">Forum chat</h2>
             <div id="chat-window" class="chat" >
                 <div class="chat__edit">
-                    <label for="chat-message">Écrire un message...</label>
                     <form id="formulaire-chat" class="chat__edit--form" action="">
-                        <textarea id="chat-message" type="text" rows="2"></textarea>
+                        <textarea id="chat-message" type="text" rows="2" placeholder="Votre message..."></textarea>
                         <input type="submit" value="Envoyer">
                     </form>
                 </div>

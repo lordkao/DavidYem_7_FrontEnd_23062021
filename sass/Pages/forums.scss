@@ -37,6 +37,7 @@
         box-shadow: 0px 5px 5px 1px grey;
         border-radius: 10px;
         padding: 15px 0;
+        overflow: hidden;
         &:hover{
             background-color: #f2f2f2;
             cursor: pointer;
@@ -72,27 +73,27 @@
     &__message{
         @include display;
         @include formBloc;
-        &--label{
-            @include formLabel;
-        }
         &--input{
-            @include formInput;
+            width: 80%;
+            border: 1px rgb(201, 201, 201) solid;
+            border-radius: 5px;
         }
     }
     &__image{
         @include display($direction:column);
         @include formBloc;
-        &--label{
-            width: 100%;
-            margin: 10px 0px 0px 10px;
-        }
         &--input{
-            width: 100%;
-            margin: 10px 0px 10px 10px;
+            width: 80%;
+            margin: 10px 0px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
     }
     &__publier{
-        margin-top: 20px;
+        margin-top: 10px;
+        margin-right: 20px;
+        align-self: flex-end;
         @include auto($width:35%);
     }
 }
@@ -106,8 +107,6 @@
             & textarea{
                 width: 100%;
                 margin: 10px 0;
-            }
-            & input{
             }
         }
     }
