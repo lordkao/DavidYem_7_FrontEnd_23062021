@@ -74,7 +74,8 @@
         @include formBloc;
         &--input{
             width: 95%;
-            border: none;
+            resize: none;
+            border: 1px #959595 solid;
             background-color: #ededed;
             border-radius: 5px;
             &::placeholder{
@@ -95,7 +96,7 @@
         @include display($direction:column);
         @include formBloc;
         &--input{
-            width: 80%;
+            width: 97%;
             margin: 10px 0px;
             overflow: hidden;
             white-space: nowrap;
@@ -110,16 +111,21 @@
     }
 }
 .chat{/*Cadre des message du chat*/
+    @include display($direction:column-reverse);
+
     &__edit{
+        @include auto($width:100%);
         @include display($direction:column);
-        margin: 10px;
         &--form{
             @include auto($width:100%);
+            margin: 10px;
             @include display($direction:column);
             & textarea{
-                width: 100%;
+                width: 91%;
                 margin: 10px 0;
                 border-radius: 5px;
+                resize: none;
+                border: 1px #959595 solid;
                 background-color: #ededed;
                 &::placeholder{
                     transform-origin: left;
@@ -136,20 +142,24 @@
             }
         }
     }
+}
+.container-chat{
+    @include auto($width:100%);
     &__message{
         @include display($direction:column);
         align-items: flex-start;
         margin: 10px;
-        border: 1px black solid;
+        border: 1px #959595 solid;
+        background-color: #ededed;
         border-radius: 5px;
-        &--auteur{
-            margin: 5px;
-            font-size: 1.6rem;
-        }
         &--texte{
             @include nomarge;
             margin: 5px;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
         }
+    }
+    &__auteur{
+        margin: 5px;
+        font-size: 1.4rem;
     }
 }

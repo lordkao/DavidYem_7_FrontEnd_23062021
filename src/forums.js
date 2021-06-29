@@ -57,20 +57,24 @@ function showMessage(){
         console.log(responses)
         
         for(let response of responses){
-            const message = document.createElement('div')
-                message.classList.add('chat__message')
+            const containerMessage = document.createElement('div')
+                containerMessage.classList.add('container-chat')
 
-            const auteur = document.createElement('div')
-                auteur.classList.add('chat__message--auteur')
-                auteur.setAttribute('id','auteur')
-                auteur.innerText = `(${response.date}) ${response.nom}.${response.prenom} : `
+            const message = document.createElement('div')
+                message.classList.add('container-chat__message')
 
             const texte = document.createElement('p')
-                texte.classList.add('chat__message--texte')
+                texte.classList.add('container-chat__message--texte')
                 texte.innerText = `${response.message}`
+                
+            const auteur = document.createElement('div')
+                auteur.classList.add('container-chat__auteur')
+                auteur.setAttribute('id','auteur')
+                auteur.innerText = `(${response.date}) ${response.nom}.${response.prenom} : `    
 
-            chatWindow.appendChild(message)
-            message.appendChild(auteur)
+            chatWindow.appendChild(containerMessage)
+            containerMessage.appendChild(message)
+            containerMessage.appendChild(auteur)
             message.appendChild(texte)
         }
     })
