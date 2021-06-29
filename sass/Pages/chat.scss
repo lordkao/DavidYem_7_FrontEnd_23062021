@@ -1,0 +1,162 @@
+.forum{
+    @include auto;
+    min-height: 500px;
+    margin: 10px 5px;
+    &__multimedia{
+        @include full;
+        @include display($direction:column);
+        display: block;
+        &--titre{
+            @include nomarge;
+            text-align: center;
+        }
+    }
+    &__chat{
+        @include full;
+        @include display($direction:column);
+        display: none;
+        & h2{
+            @include nomarge;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+    }
+}
+.publication{/*Cadre des publications*/
+    @include display($direction:column);
+    border-radius: 10px;
+    margin: 20px 0;
+    @include full;
+    &__edit{
+        @include full;
+        @include display($direction:column);
+        border: 1px #d1d1d1 solid;
+        box-shadow: 0px 5px 5px 1px grey;
+        border-radius: 10px;
+        padding: 15px 0;
+        overflow: hidden;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    &__container{
+        width: 100%;
+        margin: 15px 0px;
+        border: 1px #d1d1d1 solid;
+        box-shadow: 0px 5px 5px 1px grey;
+        border-radius: 10px;
+        &--auteur{
+            margin: 10px;
+        }
+        &--photo{
+            @include display;
+            @include full($height:150px);
+            border-radius: 15px;
+            overflow: hidden;
+            & img{
+                @include full($width:95%);
+            }
+        }
+        &--texte{
+            font-size:1.4rem;
+            margin: 10px;
+        }
+    }
+}
+.form{/*Formulaire des publications*/
+    @include full;
+    @include display($direction:column);
+    &__message{
+        @include display;
+        @include formBloc;
+        &--input{
+            width: 95%;
+            resize: none;
+            border: 1px #959595 solid;
+            background-color: #ededed;
+            border-radius: 5px;
+            &::placeholder{
+                transform-origin: left;
+                transform: scale(0.95);
+                transition: transform 0.2s;
+            }
+            &:focus{
+                background-color: white;
+                &::placeholder{
+                    transform: scale(1);
+                    transition: transform 0.2s;
+                }
+            }
+        }
+    }
+    &__image{
+        @include display($direction:column);
+        @include formBloc;
+        &--input{
+            width: 97%;
+            margin: 10px 0px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+    &__publier{
+        margin-top: 10px;
+        margin-right: 20px;
+        align-self: flex-end;
+        @include auto($width:35%);
+    }
+}
+.chat{/*Cadre des message du chat*/
+    @include display($direction:column-reverse);
+
+    &__edit{
+        @include auto($width:100%);
+        @include display($direction:column);
+        &--form{
+            @include auto($width:100%);
+            margin: 10px;
+            @include display($direction:column);
+            & textarea{
+                width: 91%;
+                margin: 10px 0;
+                border-radius: 5px;
+                resize: none;
+                border: 1px #959595 solid;
+                background-color: #ededed;
+                &::placeholder{
+                    transform-origin: left;
+                    transform: scale(0.95);
+                    transition: transform 0.2s;
+                }
+                &:focus{
+                    background-color: white;
+                    &::placeholder{
+                        transform: scale(1);
+                        transition: transform 0.2s;
+                    }
+                }
+            }
+        }
+    }
+}
+.container-chat{
+    @include auto($width:100%);
+    &__message{
+        @include display($direction:column);
+        align-items: flex-start;
+        margin: 10px;
+        border: 1px #959595 solid;
+        background-color: #ededed;
+        border-radius: 5px;
+        &--texte{
+            @include nomarge;
+            margin: 5px;
+            font-size: 1.4rem;
+        }
+    }
+    &__auteur{
+        margin: 5px;
+        font-size: 1.4rem;
+    }
+}
