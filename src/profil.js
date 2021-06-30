@@ -1,23 +1,19 @@
 const btnMultimedia = document.getElementById("btn-multi")
-const btnProfil = document.getElementById("btn-profil")
+const btnChat = document.getElementById("btn-chat")
 const chat = document.getElementById("chat")
+const deconnexion = document.getElementById("deconnexion")
 const chatWindow = document.getElementById('chat-window')
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
 
-function Redirection(value){
-    window.location = value
-    window.location.reload()
-}
-
 btnMultimedia.addEventListener("click",function(e){
     e.preventDefault()
     document.location.href="multimedia.html"
 })
-btnProfil.addEventListener("click",function(e){
+btnChat.addEventListener("click",function(e){
     e.preventDefault()
-    document.location.href="profil.html"
+    document.location.href="chat.html"
 })
 const urlChat ='http://localhost:3000/api/chat'
 /*Fonction qui affiche tous les messages du chat.*/
@@ -60,7 +56,6 @@ function showMessage(){
 showMessage()
 const nouveauMessage = document.getElementById('chat-message')
 const validationMessage = document.getElementById('validation-message')
-/*Création de message*/
 validationMessage.addEventListener("click",function(e){
     e.preventDefault()
     const objetMessage = { 
@@ -84,8 +79,12 @@ validationMessage.addEventListener("click",function(e){
         }
     })
     .then((response) => {
-        Redirection("chat.html#chat-message")
         console.log(response)
     })
     .catch((err) => console.log({message:err}))
+})
+deconnexion.addEventListener("click",function(e){
+    e.preventDefault()
+    localStorage.clear()
+    document.location.href="index.html"
 })

@@ -46,6 +46,8 @@ function showPublications(){
                 publication.classList.add('publication__container--photo')
 
             const image = document.createElement('img')
+                image.setAttribute('src',`${response.url}`)
+                image.setAttribute('alt','description de l\'image')
 
             const texte = document.createElement('p')
                 texte.classList.add('publication__container--texte')
@@ -65,3 +67,46 @@ function showPublications(){
     })
 }
 showPublications()
+
+/*Création d'une publication.*/
+
+const fileUpload = document.getElementById('fileUpload')/*mon input type file*/
+const formulaire = document.getElementById('formulaire-publication')/*Mon formulaire*/
+const publier = document.getElementById('publier')/*Bouton de validation du formulaire*/
+const message = document.getElementById('message')/*Message de la publication*/
+
+publier.addEventListener('click',function(e){
+    e.preventDefault()
+    let formData = new FormData(formulaire)
+    formData.append('userId',userId)
+    formData.append('message', message.value)
+    /*Fonction qui boucle les éléments de formData dans un array pour visualiser le contenu*/
+    const tableau = () => {
+        let array = []
+        for(let elt of formData.values()){
+        console.log(elt)
+        array.push(elt)
+        }
+        return array
+    }
+    /*visuel dans la console des éléments contenus dans le formData */
+    const test = tableau(formData)
+    console.log(test)
+
+    fetch(urlPublications,{
+        method:'POST',
+        headers:{
+            'Authorization':'Bearer '+token
+        },
+        body:formData
+    })
+    .then((res) => { 
+        return res.json()
+    })
+    .then((response) => {
+        console.log(response)
+    })
+    .catch((error) => { 
+        console.log(error)
+    })
+})

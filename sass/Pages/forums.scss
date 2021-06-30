@@ -5,7 +5,7 @@
     &__multimedia{
         @include full;
         @include display($direction:column);
-        display: block;
+        display: none;
         &--titre{
             @include nomarge;
             text-align: center;
@@ -14,7 +14,7 @@
     &__chat{
         @include full;
         @include display($direction:column);
-        display: none;
+        display: block;
         & h2{
             @include nomarge;
             margin-bottom: 10px;
