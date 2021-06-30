@@ -5,9 +5,10 @@ const publicationWindow = document.getElementById('publication')
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
-const publier = document.getElementById('publier')
-const message = document.getElementById('message')
-const image = document.getElementById('image')
+
+
+
+
 
 /*Matérialise une bordure aux boutons multimédia,chat et profil*/
 btnChat.addEventListener("click",function(e){
@@ -69,28 +70,46 @@ function showPublications(){
 }
 showPublications()
 
-const formPublication = document.getElementById('formulaire-publication')
-
-
 /*Création d'une publication.*/
-publier.addEventListener("click",function(e){
 
+const fileUpload = document.getElementById('fileUpload')/*mon input type file*/
+const formulaire = document.getElementById('formulaire-publication')/*Mon formulaire*/
+const publier = document.getElementById('publier')/*Bouton de validation du formulaire*/
+const message = document.getElementById('message')/*Message de la publication*/
+
+publier.addEventListener('click',function(e){
     e.preventDefault()
-    const publication = {
-        userId:userId,
-        message:message.value,
-        image: image.value
+    let formData = new FormData(formulaire)
+    formData.append('userId',userId)
+    formData.append('image','Lordkao')
+    formData.append('message', message.value)
+    /*Fonction qui boucle les éléments de formData dans un array pour visualiser le contenu*/
+    const tableau = () => {
+        let array = []
+        for(let elt of formData.values()){
+        console.log(elt)
+        array.push(elt)
+        }
+        return array
     }
-    console.log(image.value)
+    /*visuel dans la console des éléments contenus dans le formData */
+    const test = tableau(formData)
+    console.log(test)
+
     fetch(urlPublications,{
-        method: 'POST',
-        headers: {
-            'Accept':'application/json',
-            'Content-Type':'application/json',
-            'Authorization':'Bearer '+ token
+        method:'POST',
+        headers:{
+            'Authorization':'Bearer '+token
         },
-        body: JSON.stringify(publication)
+        body:formData
     })
-    .then(() => console.log('requête passée !'))
-    .catch((err) => console.log( err))
+    .then((res) => res.json())
+    .then((response) => {
+        console.log(response)
+    })
+    .catch((error) => { return res.status(500).json( error )})
+
 })
+/***********************************************/
+
+/*'Content-Type':'multipart/form-data;boundary=----------15645432165185' */
