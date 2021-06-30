@@ -6,6 +6,11 @@ const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
 
+function Redirection(value){
+    window.location = value
+    window.location.reload()
+}
+
 btnMultimedia.addEventListener("click",function(e){
     e.preventDefault()
     document.location.href="multimedia.html"
@@ -55,6 +60,7 @@ function showMessage(){
 showMessage()
 const nouveauMessage = document.getElementById('chat-message')
 const validationMessage = document.getElementById('validation-message')
+/*Création de message*/
 validationMessage.addEventListener("click",function(e){
     e.preventDefault()
     const objetMessage = { 
@@ -78,6 +84,7 @@ validationMessage.addEventListener("click",function(e){
         }
     })
     .then((response) => {
+        Redirection("chat.html#chat-message")
         console.log(response)
     })
     .catch((err) => console.log({message:err}))
