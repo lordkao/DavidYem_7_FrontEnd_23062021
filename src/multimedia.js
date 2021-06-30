@@ -6,10 +6,6 @@ const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
 
-
-
-
-
 /*Matérialise une bordure aux boutons multimédia,chat et profil*/
 btnChat.addEventListener("click",function(e){
     e.preventDefault()
@@ -50,6 +46,8 @@ function showPublications(){
                 publication.classList.add('publication__container--photo')
 
             const image = document.createElement('img')
+                image.setAttribute('src',`${response.url}`)
+                image.setAttribute('alt','description de l\'image')
 
             const texte = document.createElement('p')
                 texte.classList.add('publication__container--texte')
@@ -81,7 +79,6 @@ publier.addEventListener('click',function(e){
     e.preventDefault()
     let formData = new FormData(formulaire)
     formData.append('userId',userId)
-    formData.append('image','Lordkao')
     formData.append('message', message.value)
     /*Fonction qui boucle les éléments de formData dans un array pour visualiser le contenu*/
     const tableau = () => {
@@ -103,13 +100,13 @@ publier.addEventListener('click',function(e){
         },
         body:formData
     })
-    .then((res) => res.json())
+    .then((res) => { 
+        return res.json()
+    })
     .then((response) => {
         console.log(response)
     })
-    .catch((error) => { return res.status(500).json( error )})
-
+    .catch((error) => { 
+        console.log(error)
+    })
 })
-/***********************************************/
-
-/*'Content-Type':'multipart/form-data;boundary=----------15645432165185' */
