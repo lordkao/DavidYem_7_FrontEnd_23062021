@@ -5,6 +5,9 @@ const publicationWindow = document.getElementById('publication')
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
+const publier = document.getElementById('publier')
+const message = document.getElementById('message')
+const image = document.getElementById('image')
 
 /*Matérialise une bordure aux boutons multimédia,chat et profil*/
 btnChat.addEventListener("click",function(e){
@@ -65,3 +68,29 @@ function showPublications(){
     })
 }
 showPublications()
+
+const formPublication = document.getElementById('formulaire-publication')
+
+
+/*Création d'une publication.*/
+publier.addEventListener("click",function(e){
+
+    e.preventDefault()
+    const publication = {
+        userId:userId,
+        message:message.value,
+        image: image.value
+    }
+    console.log(image.value)
+    fetch(urlPublications,{
+        method: 'POST',
+        headers: {
+            'Accept':'application/json',
+            'Content-Type':'application/json',
+            'Authorization':'Bearer '+ token
+        },
+        body: JSON.stringify(publication)
+    })
+    .then(() => console.log('requête passée !'))
+    .catch((err) => console.log( err))
+})
