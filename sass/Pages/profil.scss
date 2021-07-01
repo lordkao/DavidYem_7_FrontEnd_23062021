@@ -13,59 +13,50 @@
         }
     }
 }
-.chat{/*Cadre des message du chat*/
-    @include display($direction:column-reverse);
-    &__edit{
-        @include auto($width:100%);
-        @include display($direction:column);
-        &--form{
-            @include auto($width:100%);
-            margin: 10px;
-            @include display($direction:column);
-            & textarea{
-                width: 91%;
-                margin: 10px 0;
-                border-radius: 5px;
-                resize: none;
-                border: 1px #959595 solid;
-                background-color: #ededed;
-                &::placeholder{
-                    transform-origin: left;
-                    transform: scale(0.95);
-                    transition: transform 0.2s;
-                }
-                &:focus{
-                    background-color: white;
-                    &::placeholder{
-                        transform: scale(1);
-                        transition: transform 0.2s;
-                    }
-                }
-            }
-        }
-    }
-}
-.container-chat{
-    @include auto($width:100%);
-    &__message{
-        @include display($direction:column);
-        align-items: flex-start;
-        margin: 10px;
-        border: 1px #959595 solid;
-        background-color: #ededed;
-        border-radius: 5px;
-        &--texte{
-            @include nomarge;
-            margin: 5px;
-            font-size: 1.4rem;
-        }
-    }
-    &__auteur{
-        margin: 5px;
-        font-size: 1.4rem;
-    }
-}
 .btn.profil{
     border-bottom: none;
     background-color: white;
+}
+.profil{
+    @include auto($width:100%);
+    @include display($direction:column,$align:flex-start);
+    & div{
+        @include auto($width:100%);
+        @include display;
+        margin-top: 20px;
+        & label{
+            @include auto($width:25%);
+        }
+        & input{
+            @include auto($width:75%);
+        }
+    }
+}
+#label-photo{
+    @include auto($width:25%);
+}
+#upload-photo{
+    @include auto($width:25%);
+}
+#cadre-photo{
+    @include auto($width:50%,$height:150px);
+    border: 1px red solid;
+    & img{
+        @include full;
+    }        
+}
+.deconnexion{
+    margin-top: 100px;
+    @include auto($width:100%);
+    @include display;
+    &__btn{
+        @include profilBtn;
+    }
+}
+#btn-modifier{
+    @include profilBtn;
+    margin-right: 10px;
+}
+#btn-valider{
+    @include profilBtn;
 }

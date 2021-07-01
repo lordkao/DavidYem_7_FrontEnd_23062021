@@ -60,9 +60,8 @@ function showPublications(){
                 auteur.innerText = `${response.nom}.${response.prenom}(${response.date})`
     
             publicationWindow.appendChild(container)
-            container.appendChild(auteur)
             container.appendChild(texte)
-
+            container.appendChild(auteur)
         }
     })
     .catch(function(error){
