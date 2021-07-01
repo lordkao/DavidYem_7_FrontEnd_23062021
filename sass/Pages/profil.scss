@@ -29,7 +29,7 @@
     }
 }
 #label-photo{
-    @include profilBtn($width:30%); 
+    @include profilBtn($width:50%); 
     @include display;
     border: 1px black solid;
     margin-right: 35px;
@@ -78,10 +78,10 @@
     @include display($direction:column);
     & p{
         color: red;
-        font-size: 1.8rem;
+        margin: 10px;
     }
     & input{
-        @include profilBtn($height:30px);
+        @include profilBtn($height:30px,$width:35%);
         margin-bottom: 10px;
     }
 }

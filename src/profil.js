@@ -23,6 +23,7 @@ const btnValider = document.getElementById('btn-valider')
 const btnSupprimer = document.getElementById('btn-supprimer')
 const btnAnnuler = document.getElementById('btn-annuler')
 const supprimer = document.getElementById('del-confirm')
+const annuler = document.getElementById('del-cancel')
 const nom = document.getElementById('nom')
 const prenom = document.getElementById('prenom')
 const email = document.getElementById('email')
@@ -59,7 +60,16 @@ btnValider.addEventListener("click",function(){
     disabled(inputs)
 })
 btnSupprimer.addEventListener("click",function(){
+    btnSupprimer.disabled = true
     cadreSupprimer.style.display = 'block'
+    annuler.addEventListener("click",function(){
+        cadreSupprimer.style.display = 'none'
+        btnSupprimer.disabled = false
+    })
+    supprimer.addEventListener("click",function(){
+        localStorage.clear()
+        document.location.href="index.html"
+    })
 })
 deconnexion.addEventListener("click",function(e){
     e.preventDefault()
