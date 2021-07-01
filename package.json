@@ -2,9 +2,9 @@
   "name": "frontend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./public/src/index.js",
   "scripts": {
-    "sass": "sass --watch ./sass/main.scss:./css/style.css --style expanded",
+    "sass": "sass --watch ./sass/main.scss:./public/css/style.css --style compressed",
     "start": "webpack serve"
   },
   "author": "",

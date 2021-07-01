@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./public/css/style.css">
     <script src="https://kit.fontawesome.com/e5b08f2689.js" crossorigin="anonymous"></script>
     <title>Groupomania forums</title>
 </head>
@@ -20,18 +20,34 @@
         </nav>
     </header>
     <section class="forum">
-        <article id="chat" class="forum__chat">
-            <h2 class="forum__chat--titre">Forum chat</h2>
-            <div id="chat-window" class="chat" >
-                <div class="chat__edit">
-                    <form id="formulaire-chat" class="chat__edit--form" action="">
-                        <textarea id="chat-message" type="text" rows="3" placeholder="Votre message..."></textarea>
-                        <input id="validation-message" type="submit" value="Envoyer">
-                    </form>
-                    <button id="deconnexion">Déconnexion</button>
+        <form id="profil" class="profil" action="">
+            <div class="profil__nom">
+                <label for="nom">Nom:</label>
+                <input id="nom" name="nom" type="text" disabled="true">
+            </div>
+            <div class="profil__prenom">
+                <label for="prenom">Prénom:</label>
+                <input id="prenom" name="prenom" type="text" disabled="true">
+            </div>
+            <div class="profil__email">
+                <label for="email">Email:</label>
+                <input id="email" name="email" type="text" disabled="true">
+            </div>
+            <div class="profil__photo">
+                <label id="label-photo" for="photo-profil">Image de Profil:</label>
+                <input id="upload-photo" name="photo-profil" type="file" disabled="true">
+                <div id="cadre-photo">
+                    <img src="" alt="Photo de profil">  
                 </div>
             </div>
-        </article>
+            <div class="profil__update">
+                <input id="btn-modifier" type="button" value="Modifier">
+                <input id="btn-valider" type="button" value="Valider">
+            </div>
+        </form>
+        <div class="deconnexion">
+            <button id="deconnexion" class="deconnexion__btn">Déconnexion</button>
+        </div>
     </section>
     <footer>
         <ul>

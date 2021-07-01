@@ -3,3 +3,8 @@
     background-color: #c5c5c5;
     padding: 0;
 }
+@mixin profilBtn{
+    @include nomarge;
+    height: 40px;
+    width: 35%;
+}

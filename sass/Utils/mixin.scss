@@ -1,11 +1,11 @@
 @mixin bloc-size($height:200px){
     height: $height;
 }
-@mixin display($direction:row){
+@mixin display($direction:row,$justify:center,$align:center){
     flex-direction: $direction;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: $justify;
+    align-items: $align;
 }
 @mixin auto($height:auto,$width:auto){
     width: $width;
@@ -26,4 +26,7 @@
 @mixin formBloc{
     @include auto($width:100%);
     margin-top: 5px;
+}
+@mixin input{
+
 }
