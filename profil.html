@@ -20,8 +20,8 @@
         </nav>
     </header>
     <section class="forum">
-        <h2 class="forum__profil-titre">Votre profil</h2>
-        <form id="profil" class="profil" action="">
+        <h2 class="forum__profil--titre">Votre profil</h2>
+        <form id="profil" class="forum__profil--form profil" action="">
             <div class="profil__nom">
                 <label for="nom">Nom:</label>
                 <input id="nom" name="nom" type="text" disabled="true">
@@ -42,11 +42,19 @@
                 </div>
             </div>
             <div class="profil__update">
+                <input id="btn-annuler" type="button" value="Annuler" disabled="true">
                 <input id="btn-modifier" type="button" value="Modifier">
-                <input id="btn-valider" type="button" value="Valider">
+                <input id="btn-valider" type="button" value="Valider" disabled="true">
                 <input id="btn-supprimer" type="button" value="Supprimer">
             </div>
         </form>
+        <div id="cadre-supprimer" class="forum__profil--supprimer" >
+            <div id="profil-suppression" class="profil-suppression">
+                <p>Êtes vous sûre de vouloir supprimer votre compte?</p>
+                <input id="del-confirm" type="button" value="Je confirme">
+                <input id="del-cancel" type="button" value="Annuler">
+            </div>
+        </div>
         <div class="deconnexion">
             <button id="deconnexion" class="deconnexion__btn">Déconnexion</button>
         </div>
