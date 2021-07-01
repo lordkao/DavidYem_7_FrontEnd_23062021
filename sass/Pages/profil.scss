@@ -2,15 +2,8 @@
     @include auto;
     min-height: 500px;
     margin: 10px 5px;
-    &__chat{
-        @include full;
-        @include display($direction:column);
-        display: block;
-        &--titre{
-            @include nomarge;
-            margin-bottom: 10px;
-            text-align: center;
-        }
+    &__profil-titre{
+        text-align: center;
     }
 }
 .btn.profil{
@@ -58,5 +51,9 @@
     margin-right: 10px;
 }
 #btn-valider{
+    @include profilBtn;
+    margin-right: 10px;
+}
+#btn-supprimer{
     @include profilBtn;
 }
