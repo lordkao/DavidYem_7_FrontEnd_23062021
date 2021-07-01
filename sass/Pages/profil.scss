@@ -2,16 +2,11 @@
     @include auto;
     min-height: 500px;
     margin: 10px 5px;
-    &__chat{
-        @include full;
-        @include display($direction:column);
-        display: block;
+    &__profil{
         &--titre{
-            @include nomarge;
-            margin-bottom: 10px;
-            text-align: center;
+        text-align: center;
         }
-    }
+    }       
 }
 .btn.profil{
     border-bottom: none;
@@ -25,6 +20,7 @@
         @include display;
         margin-top: 20px;
         & label{
+            font-size: 1.8rem;
             @include auto($width:25%);
         }
         & input{
@@ -33,14 +29,18 @@
     }
 }
 #label-photo{
-    @include auto($width:25%);
+    @include profilBtn($width:30%); 
+    @include display;
+    border: 1px black solid;
+    margin-right: 35px;
 }
 #upload-photo{
-    @include auto($width:25%);
+    width:0%;
 }
 #cadre-photo{
     @include auto($width:50%,$height:150px);
-    border: 1px red solid;
+    border: 1px rgb(0, 0, 0) solid;
+    border-radius: 20px;
     & img{
         @include full;
     }        
@@ -50,8 +50,12 @@
     @include auto($width:100%);
     @include display;
     &__btn{
-        @include profilBtn;
+        @include profilBtn($width:30%);
     }
+}
+#btn-annuler{
+    @include profilBtn;
+    margin-right: 10px;
 }
 #btn-modifier{
     @include profilBtn;
@@ -59,4 +63,25 @@
 }
 #btn-valider{
     @include profilBtn;
+    margin-right: 10px;
+}
+#btn-supprimer{
+    @include profilBtn;
+}
+#cadre-supprimer{
+    margin:20px;
+    border: 2px black solid;
+    border-radius: 12px;
+    display: none;
+}
+.profil-suppression{
+    @include display($direction:column);
+    & p{
+        color: red;
+        font-size: 1.8rem;
+    }
+    & input{
+        @include profilBtn($height:30px);
+        margin-bottom: 10px;
+    }
 }

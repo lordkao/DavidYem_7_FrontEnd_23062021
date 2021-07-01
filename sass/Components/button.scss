@@ -3,8 +3,10 @@
     background-color: #c5c5c5;
     padding: 0;
 }
-@mixin profilBtn{
+@mixin profilBtn($width:23%,$radius:12px,$height:40px){
     @include nomarge;
-    height: 40px;
-    width: 35%;
+    height: $height;
+    width: $width;
+    border-radius: $radius;
+    background: $color-btn;
 }

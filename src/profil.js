@@ -17,6 +17,50 @@ btnChat.addEventListener("click",function(e){
 })
 const urlChat ='http://localhost:3000/api/profil'
 
+const cadreSupprimer = document.getElementById('cadre-supprimer')
+const btnModifier = document.getElementById('btn-modifier')
+const btnValider = document.getElementById('btn-valider')
+const btnSupprimer = document.getElementById('btn-supprimer')
+const btnAnnuler = document.getElementById('btn-annuler')
+const supprimer = document.getElementById('del-confirm')
+const nom = document.getElementById('nom')
+const prenom = document.getElementById('prenom')
+const email = document.getElementById('email')
+const uploadPhoto = document.getElementById('upload-photo')
+const inputs = [nom,prenom,email,uploadPhoto]
+
+function actived(values){
+    for(let value of values){
+        value.disabled = false
+    }
+}
+function disabled(values){
+    for(let value of values){
+        value.disabled = true
+    }
+}
+
+btnModifier.addEventListener("click",function(){
+    actived(inputs)
+    btnModifier.disabled = true    
+    btnAnnuler.disabled = false
+    btnValider.disabled =false
+})
+btnAnnuler.addEventListener("click",function(){
+    btnModifier.disabled = false
+    btnAnnuler.disabled = true
+    btnValider.disabled = true
+    disabled(inputs)
+})
+btnValider.addEventListener("click",function(){
+    btnModifier.disabled = false
+    btnAnnuler.disabled = true
+    btnValider.disabled = true
+    disabled(inputs)
+})
+btnSupprimer.addEventListener("click",function(){
+    cadreSupprimer.style.display = 'block'
+})
 deconnexion.addEventListener("click",function(e){
     e.preventDefault()
     localStorage.clear()
