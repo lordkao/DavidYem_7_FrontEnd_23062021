@@ -1,8 +1,6 @@
 const btnMultimedia = document.getElementById("btn-multi")
 const btnChat = document.getElementById("btn-chat")
-const chat = document.getElementById("chat")
 const deconnexion = document.getElementById("deconnexion")
-const chatWindow = document.getElementById('chat-window')
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
@@ -11,7 +9,7 @@ const urlProfil =`http://localhost:3000/api/auth/${userId}`
 
 /*Déclaration des boutons et du bloc de confirmation de suppression profil*/
 /***************************************/
-const cadreSupprimer = document.getElementById('cadre-supprimer')
+const cadreSupprimer = document.getElementById('profil-suppression')
 const btnModifier = document.getElementById('btn-modifier')
 const btnValider = document.getElementById('btn-valider')
 const btnSupprimer = document.getElementById('btn-supprimer')
@@ -28,6 +26,9 @@ const uploadPhoto = document.getElementById('upload-photo')
 const labelPhoto = document.getElementById('label-photo')
 const photo = document.getElementById('photo')
 const inputs = [nom,prenom,uploadPhoto]
+
+/*Importation de fonctions*/
+import { actived,disabled,desactivation } from './functions.js'
 
 /*Récupération des infos du user connecté*/
 function getInfos(){
@@ -62,44 +63,7 @@ btnChat.addEventListener("click",function(e){
     document.location.href="chat.html"
 })
 
-
-function actived(values){
-    for(let value of values){
-        value.disabled = false
-    }
-}
-function disabled(values){
-    for(let value of values){
-        value.disabled = true
-    }
-}
-/*Déclaration d'une classe pour gérer l'affichage des boutons*/
-class desactivation{
-    constructor(bouton1,bouton2,bouton3){
-        this.bouton1 = bouton1
-        this.bouton2 = bouton2
-        this.bouton3 = bouton3
-    }
-    hide1(){
-        labelPhoto.style.display = 'flex'
-        this.bouton1.disabled = true
-        this.bouton2.disabled = false
-        this.bouton3.disabled = false
-    }
-    hide2(){
-        labelPhoto.style.display = 'none'
-        this.bouton1.disabled = false
-        this.bouton2.disabled = true
-        this.bouton3.disabled = true
-    }
-    hide3(){
-        labelPhoto.style.display = 'none'
-        this.bouton1.disabled = false
-        this.bouton2.disabled = true
-        this.bouton3.disabled = true
-    }
-}
-const boutonsProfil = new desactivation(btnModifier,btnAnnuler,btnValider)
+const boutonsProfil = new desactivation(btnModifier,btnAnnuler,btnValider,btnSupprimer,labelPhoto)
 
 btnModifier.addEventListener("click",function(){
     actived(inputs)
@@ -128,19 +92,15 @@ btnValider.addEventListener("click",function(e){
             },
             body:JSON.stringify(form)
         })
+        .then((res) => { if(res.ok){return res.json()}})
+        .then((response) => {
+            console.log(response)
+            getInfos()
+        })
+        .catch((err) => console.log(err))
     }
     else{
         let formData = new FormData(profil)
-        function test(){
-            let array = []
-            for(let elt of formData.values()){
-            console.log(elt)
-            array.push(elt)
-            }
-            return array
-        }
-        const essai = test(formData)
-        console.log(essai)
         fetch(urlProfil,{
             method:'PUT',
             headers:{
@@ -148,11 +108,7 @@ btnValider.addEventListener("click",function(e){
             },
             body:formData
         })
-        .then((res) => {
-            if(res.ok){
-                return res.json()
-            }
-        })
+        .then((res) => { if(res.ok){return res.json()}})
         .then((response) => {
             console.log(response)
             getInfos()
@@ -162,15 +118,25 @@ btnValider.addEventListener("click",function(e){
     disabled(inputs)
 })
 btnSupprimer.addEventListener("click",function(){
-    btnSupprimer.disabled = true
-    cadreSupprimer.style.display = 'block'
+    boutonsProfil.hideAll()
+    cadreSupprimer.style.display = 'flex'
     annuler.addEventListener("click",function(){
         cadreSupprimer.style.display = 'none'
+        boutonsProfil.hide2()
         btnSupprimer.disabled = false
     })
     supprimer.addEventListener("click",function(){
-        localStorage.clear()
-        document.location.href="index.html"
+        fetch(urlProfil,{
+            method:'DELETE',
+            headers:{ 'Authorization':'Bearer '+token}
+        })
+        .then((res) => {if(res.ok){return res.json()}})
+        .then((response) => {
+            console.log(response)
+            localStorage.clear()
+            document.location.href="index.html"
+        })
+        .catch((err) => console.log(err))
     })
 })
 deconnexion.addEventListener("click",function(e){

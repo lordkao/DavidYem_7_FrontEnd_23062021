@@ -72,17 +72,17 @@ btnValidationConnexion.addEventListener("click",function(e){
         .then(function(response){
             try{
                 if(response.userId && response.token){
-                    const access = response
-                    localStorage.setItem('access',JSON.stringify(access))
-                    forum()
+                   const access = response
+                localStorage.setItem('access',JSON.stringify(access))
+                forum() 
                 }
             }
             catch(error){
-                console.log({ error : 'Mot de passe incorrect '})
+                console.log({ error : 'Identifiants incorrect !'})
             }
         })
         .catch(function(err){
-            alert(err)
+            console.log(err)
         })
     }
 })

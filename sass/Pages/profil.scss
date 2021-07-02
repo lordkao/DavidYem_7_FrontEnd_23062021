@@ -70,14 +70,12 @@
 #btn-supprimer{
     @include profilBtn;
 }
-#cadre-supprimer{
+.profil-suppression{
+    @include display($direction:column);
     margin:20px;
     border: 2px black solid;
     border-radius: 12px;
     display: none;
-}
-.profil-suppression{
-    @include display($direction:column);
     & p{
         color: red;
         margin: 10px;
