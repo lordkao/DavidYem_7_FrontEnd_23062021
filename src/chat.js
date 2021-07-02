@@ -5,11 +5,7 @@ const chatWindow = document.getElementById('chat-window')
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
-
-function Redirection(value){
-    window.location = value
-    window.location.reload()
-}
+import { redirection } from './functions.js'
 
 btnMultimedia.addEventListener("click",function(e){
     e.preventDefault()
@@ -84,7 +80,7 @@ validationMessage.addEventListener("click",function(e){
         }
     })
     .then((response) => {
-        Redirection("chat.html#chat-message")
+        redirection("chat.html#chat-message")
         console.log(response)
     })
     .catch((err) => console.log({message:err}))
