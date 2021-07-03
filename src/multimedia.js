@@ -18,8 +18,9 @@ btnProfil.addEventListener("click",function(e){
     btnProfil.style.borderBottom = "transparent"
 })
 /*Fonction pour afficher toutes les publications.*/
-function showPublications(){
-    fetch(urlPublications,{
+let i = 1
+function showPublications(url){
+    fetch(url,{
         headers : {'Authorization':'Bearer '+token}
     })
     .then(function(res){
@@ -30,7 +31,6 @@ function showPublications(){
     .then(function(responses){
         console.log('publication :')
         console.log(responses)
-        let i = 1
         for(let response of responses){
             const container = document.createElement('div')
                 container.classList.add('publication__container')
@@ -103,7 +103,15 @@ function showPublications(){
         console.log({ error })
     })
 }
-showPublications()
+showPublications(urlPublications)
+/*Obtenir plus de publications*/
+const oldPublications = document.getElementById('old-publications')
+let numberOfPublications = 10
+oldPublications.addEventListener('click',function(e){
+    showPublications(`${urlPublications}/${numberOfPublications}`)
+    numberOfPublications += 10
+})
+
 /*Création d'une publication.*/
 const fileUpload = document.getElementById('fileUpload')/*mon input type file*/
 const formulaire = document.getElementById('formulaire-publication')/*Mon formulaire*/
