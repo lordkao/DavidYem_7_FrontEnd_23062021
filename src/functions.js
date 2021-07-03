@@ -2,7 +2,7 @@ function redirection(value){
     document.location.replace(value)
 }
 function reload(){
-    document.location.href="http://localhost:8080/chat.html"
+    document.location.reload()
 }
 function actived(values){
     for(let value of values){

@@ -85,7 +85,7 @@ function showPublications(){
                             }
                         })
                         .then((response) => {
-                            document.location.reload()
+                            reload()
                             console.log(response)
                         })
                         .catch((err) => console.log(err))
