@@ -4,6 +4,7 @@ const chatWindow = document.getElementById('chat-window')
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
+const oldMessages = document.getElementById('old-messages')
 const urlChat ='http://localhost:3000/api/chat'
 import { reload } from './functions.js'
 
@@ -16,8 +17,9 @@ btnProfil.addEventListener("click",function(e){
     document.location.href="profil.html"
 })
 /*Fonction qui affiche tous les messages du chat.*/
-function showMessage(){
-    fetch(urlChat,{
+let i = 1 /*variable qui va permettre de boucler les IDs des boutons de suppression au fur et à mesures de leur matérialisation*/
+function showMessage(url){
+    fetch(url,{
         headers : {'Authorization':'Bearer '+token}
     })
     .then((res) => {
@@ -27,7 +29,6 @@ function showMessage(){
     })
     .then((responses) => {
         console.log(responses)
-        let i = 1
         for(let response of responses){
             const containerMessage = document.createElement('div')
                 containerMessage.classList.add('container-chat')
@@ -72,7 +73,6 @@ function showMessage(){
                     })
                     console.log(name)
                     i++
-                    
             }
             
             chatWindow.appendChild(containerMessage)
@@ -83,7 +83,12 @@ function showMessage(){
     })
     .catch((err) => console.log({message:err}))
 }
-showMessage()
+showMessage(urlChat)
+let numberOfMessages = 10
+oldMessages.addEventListener('click',function(e){
+    showMessage(`${urlChat}/${numberOfMessages}`)
+    numberOfMessages +=10
+})
 const nouveauMessage = document.getElementById('chat-message')
 const validationMessage = document.getElementById('validation-message')
 /*Création de message*/
