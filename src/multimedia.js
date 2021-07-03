@@ -68,7 +68,7 @@ function showPublications(){
                 const countDislikes = document.createElement('div')
                     countDislikes.classList.add('count-dislike')
                     notes.appendChild(countDislikes)    
-                if(response.userId === userId){
+                if(response.userId && response.userId === userId){
                     let name =  `del-publication${i}`
                     let test = document.createElement('input')
                         test.classList.add('publication__container--del')
