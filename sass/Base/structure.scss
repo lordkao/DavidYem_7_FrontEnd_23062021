@@ -9,11 +9,11 @@ body{
 .forum{
     @include auto;
     min-height: 500px;
-    margin: 10px 5px;
+    margin: 10px 0;
+    overflow: hidden;
     &__chat{
         @include full;
         @include display($direction:column);
-        display: block;
         &--titre{
             @include nomarge;
             margin-bottom: 10px;
@@ -28,7 +28,6 @@ body{
     &__multimedia{
         @include full;
         @include display($direction:column);
-        display: block;
         &--titre{
             @include nomarge;
             text-align: center;

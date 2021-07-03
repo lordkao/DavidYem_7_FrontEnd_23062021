@@ -1,13 +1,20 @@
 .chat{/*Cadre des message du chat*/
     @include display($direction:column-reverse);
-    &__edit{
+    @include full;
+    padding-bottom: 140px;
+}
+.formulaire-edit{
+    @include auto($width:100%);
+    @include display($direction:column);
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    border-top: 2px #919191 solid;
+    &__form{
         @include auto($width:100%);
+        margin: 10px;
         @include display($direction:column);
-        &--form{
-            @include auto($width:100%);
-            margin: 10px;
-            @include display($direction:column);
-            & textarea{
+        &--message{
                 width: 91%;
                 margin: 10px 0;
                 border-radius: 5px;
@@ -26,7 +33,9 @@
                         transition: transform 0.2s;
                     }
                 }
-            }
+        }
+        &--old{
+            font-weight: bold;
         }
     }
 }
