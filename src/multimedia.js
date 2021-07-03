@@ -60,6 +60,26 @@ function showPublications(){
                 auteur.classList.add('publication__container--auteur')
                 auteur.innerText = `${response.nom}.${response.prenom}(${response.date})`
 
+            const notes = document.createElement('div')
+                notes.classList.add('publication__container--notes')
+                const like = document.createElement('input')
+                    like.setAttribute('type','button')
+                    like.setAttribute('value','like')
+                    notes.appendChild(like)
+
+                const countLikes = document.createElement('div')
+                    countLikes.classList.add('count-like')
+                    notes.appendChild(countLikes)
+                    
+                const dislike = document.createElement('input')
+                    dislike.setAttribute('type','button')
+                    dislike.setAttribute('value','dislike')
+                    notes.appendChild(dislike)
+
+                const countDislikes = document.createElement('div')
+                    countDislikes.classList.add('count-dislike')
+                    notes.appendChild(countDislikes)    
+
             const del = document.createElement('input')
                 del.classList.add('publication__container--del')
                 del.setAttribute('type','button')
@@ -68,6 +88,7 @@ function showPublications(){
             publicationWindow.appendChild(container)
             container.appendChild(texte)
             container.appendChild(auteur)
+            container.appendChild(notes)
             container.appendChild(del)
         }
     })

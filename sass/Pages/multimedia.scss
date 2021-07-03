@@ -1,17 +1,3 @@
-.forum{
-    @include auto;
-    min-height: 500px;
-    margin: 10px 5px;
-    &__multimedia{
-        @include full;
-        @include display($direction:column);
-        display: block;
-        &--titre{
-            @include nomarge;
-            text-align: center;
-        }
-    }
-}
 .publication{/*Cadre des publications*/
     @include display($direction:column);
     border-radius: 10px;
@@ -55,6 +41,13 @@
             font-size:1.6rem;
             margin: 10px;
         }
+        &--notes{
+            width: 100%;
+            @include display($justify:flex-start);
+            & input{
+                margin: 0 5px 5px;
+            }
+        }
         &--del{
             background-color: white;
             border: none;
@@ -64,8 +57,19 @@
             bottom: 0;
             z-index: 1;
             margin: 0 5px 5px 0;
+            &:active{
+                background-color: #f2f2f2 ;
+            }
         }
     }
+}
+.count-like{
+    background-color: grey;
+    @include auto;
+}
+.count-dislike{
+    background-color: grey;
+    @include auto;
 }
 .form{/*Formulaire des publications*/
     @include full;

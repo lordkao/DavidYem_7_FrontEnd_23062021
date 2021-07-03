@@ -43,11 +43,17 @@ function showMessage(){
             const auteur = document.createElement('div')
                 auteur.classList.add('container-chat__auteur')
                 auteur.setAttribute('id','auteur')
-                auteur.innerText = `(${response.date}) ${response.nom}.${response.prenom} : `    
+                auteur.innerText = `(${response.date}) ${response.nom}.${response.prenom} : `   
+            
+            const del = document.createElement('input')
+                del.classList.add('container-chat__del')
+                del.setAttribute('type','button')
+                del.setAttribute('value','supprimer')
 
             chatWindow.appendChild(containerMessage)
             containerMessage.appendChild(message)
             containerMessage.appendChild(auteur)
+            containerMessage.appendChild(del)
             message.appendChild(texte)
         }
     })

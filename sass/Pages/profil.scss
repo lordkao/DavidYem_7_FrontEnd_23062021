@@ -1,13 +1,3 @@
-.forum{
-    @include auto;
-    min-height: 500px;
-    margin: 10px 5px;
-    &__profil{
-        &--titre{
-        text-align: center;
-        }
-    }       
-}
 .btn.profil{
     border-bottom: none;
     background-color: white;
