@@ -14,7 +14,8 @@
             @include auto($width:25%);
         }
         & input{
-            @include auto($width:75%);
+            @include auto($width:70%);
+            margin-right: 10px;
         }
     }
 }
@@ -43,22 +44,25 @@
     @include display;
     &__btn{
         @include profilBtn($width:30%);
+        margin-bottom: 15px;
     }
 }
 #btn-annuler{
     @include profilBtn;
-    margin-right: 10px;
+    margin-left: 4px;
+    margin-right: 8px;
 }
 #btn-modifier{
     @include profilBtn;
-    margin-right: 10px;
+    margin-right: 8px;
 }
 #btn-valider{
     @include profilBtn;
-    margin-right: 10px;
+    margin-right: 8px;
 }
 #btn-supprimer{
     @include profilBtn;
+    margin-right: 4px;
 }
 .profil-suppression{
     @include display($direction:column);

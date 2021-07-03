@@ -5,7 +5,7 @@ const urlPublications ='http://localhost:3000/api/publications'
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
-import {redirection} from './functions.js'
+import {reload} from './functions.js'
 /*Matérialise une bordure aux boutons multimédia,chat et profil*/
 btnChat.addEventListener("click",function(e){
     e.preventDefault()
@@ -84,7 +84,10 @@ function showPublications(){
                                 'Authorization':'Bearer '+token
                             }
                         })
-                        .then((response) => console.log(response))
+                        .then((response) => {
+                            document.location.reload()
+                            console.log(response)
+                        })
                         .catch((err) => console.log(err))
                     })
                         i++
@@ -126,7 +129,7 @@ publier.addEventListener('click',function(e){
     })
     .then((response) => {
         console.log(response)
-        redirection(urlPublications)
+        reload()
     })
     .catch((error) => { 
         console.log(error)
@@ -161,7 +164,7 @@ publier.addEventListener('click',function(e){
         })
         .then((response) => {
             console.log(response)
-            redirection(urlPublications)
+            reload()
         })
         .catch((error) => { 
             console.log(error)

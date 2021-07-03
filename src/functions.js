@@ -1,6 +1,8 @@
-function redirection (value){
-    window.location = value
-    window.location.reload()
+function redirection(value){
+    document.location.replace(value)
+}
+function reload(){
+    document.location.href="http://localhost:8080/chat.html"
 }
 function actived(values){
     for(let value of values){
@@ -47,4 +49,4 @@ class desactivation{
     }
 }
 
-export { redirection,actived,disabled,desactivation }  
+export { redirection,reload,actived,disabled,desactivation }  

@@ -1,11 +1,11 @@
 const btnMultimedia = document.getElementById("btn-multi")
 const btnProfil = document.getElementById("btn-profil")
-const chat = document.getElementById("chat")
 const chatWindow = document.getElementById('chat-window')
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
-import { redirection } from './functions.js'
+const urlChat ='http://localhost:3000/api/chat'
+import { redirection,reload } from './functions.js'
 
 btnMultimedia.addEventListener("click",function(e){
     e.preventDefault()
@@ -15,7 +15,6 @@ btnProfil.addEventListener("click",function(e){
     e.preventDefault()
     document.location.href="profil.html"
 })
-const urlChat ='http://localhost:3000/api/chat'
 /*Fonction qui affiche tous les messages du chat.*/
 function showMessage(){
     fetch(urlChat,{
@@ -86,7 +85,7 @@ validationMessage.addEventListener("click",function(e){
         }
     })
     .then((response) => {
-        redirection("chat.html#chat-message")
+        reload()
         console.log(response)
     })
     .catch((err) => console.log({message:err}))
