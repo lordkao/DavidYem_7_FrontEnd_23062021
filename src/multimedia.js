@@ -59,10 +59,16 @@ function showPublications(){
             const auteur = document.createElement('h3')
                 auteur.classList.add('publication__container--auteur')
                 auteur.innerText = `${response.nom}.${response.prenom}(${response.date})`
-    
+
+            const del = document.createElement('input')
+                del.classList.add('publication__container--del')
+                del.setAttribute('type','button')
+                del.setAttribute('value','supprimer')
+
             publicationWindow.appendChild(container)
             container.appendChild(texte)
             container.appendChild(auteur)
+            container.appendChild(del)
         }
     })
     .catch(function(error){
