@@ -21,7 +21,7 @@
     </header>
     <section class="forum">
         <h2 class="forum__profil--titre">Votre profil</h2>
-        <form id="profil" class="forum__profil--form profil" action="">
+        <form id="profil" class="forum__profil--form profil" enctype="multipart/form-data">
             <div class="profil__nom">
                 <label for="nom">Nom:</label>
                 <input id="nom" name="nom" type="text" disabled="true">
@@ -32,29 +32,27 @@
             </div>
             <div class="profil__email">
                 <label for="email">Email:</label>
-                <input id="email" name="email" type="text" disabled="true">
+                <input id="email" name="email" type="email" disabled="true">
             </div>
             <div class="profil__photo">
-                <label id="label-photo" for="photo-profil">Image de Profil:</label>
-                <input id="upload-photo" name="photo-profil" type="file" disabled="true">
+                <label id="label-photo" for="upload-photo">Photo de profil:</label>
+                <input id="upload-photo" name="image" type="file" accept="image/png, image/jpeg">
                 <div id="cadre-photo">
-                    <img src="" alt="Photo de profil">  
+                    <img id="photo" src="" alt="Photo de profil">  
                 </div>
             </div>
             <div class="profil__update">
                 <input id="btn-annuler" type="button" value="Annuler" disabled="true">
                 <input id="btn-modifier" type="button" value="Modifier">
-                <input id="btn-valider" type="button" value="Valider" disabled="true">
+                <input id="btn-valider" type="submit" for="profil" value="Valider" disabled="true">
                 <input id="btn-supprimer" type="button" value="Supprimer">
             </div>
         </form>
-        <div id="cadre-supprimer" class="forum__profil--supprimer" >
             <div id="profil-suppression" class="profil-suppression">
                 <p>Êtes vous sûre de vouloir supprimer votre compte?</p>
                 <input id="del-confirm" type="button" value="Je confirme">
                 <input id="del-cancel" type="button" value="Annuler">
             </div>
-        </div>
         <div class="deconnexion">
             <button id="deconnexion" class="deconnexion__btn">Déconnexion</button>
         </div>
@@ -66,6 +64,6 @@
             <li><a href="">Contact</a></li>
         </ul>
     </footer>
-    <script src="./src/profil.js"></script>
+    <script type="module" src="./src/profil.js"></script>
 </body>
 </html>

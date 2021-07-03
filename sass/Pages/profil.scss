@@ -1,13 +1,3 @@
-.forum{
-    @include auto;
-    min-height: 500px;
-    margin: 10px 5px;
-    &__profil{
-        &--titre{
-        text-align: center;
-        }
-    }       
-}
 .btn.profil{
     border-bottom: none;
     background-color: white;
@@ -29,10 +19,11 @@
     }
 }
 #label-photo{
-    @include profilBtn($width:30%); 
+    @include profilBtn($width:50%); 
     @include display;
     border: 1px black solid;
     margin-right: 35px;
+    display: none;
 }
 #upload-photo{
     width:0%;
@@ -41,6 +32,7 @@
     @include auto($width:50%,$height:150px);
     border: 1px rgb(0, 0, 0) solid;
     border-radius: 20px;
+    overflow: hidden;
     & img{
         @include full;
     }        
@@ -68,20 +60,18 @@
 #btn-supprimer{
     @include profilBtn;
 }
-#cadre-supprimer{
+.profil-suppression{
+    @include display($direction:column);
     margin:20px;
     border: 2px black solid;
     border-radius: 12px;
     display: none;
-}
-.profil-suppression{
-    @include display($direction:column);
     & p{
         color: red;
-        font-size: 1.8rem;
+        margin: 10px;
     }
     & input{
-        @include profilBtn($height:30px);
+        @include profilBtn($height:30px,$width:35%);
         margin-bottom: 10px;
     }
 }

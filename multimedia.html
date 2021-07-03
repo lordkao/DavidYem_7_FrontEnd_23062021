@@ -24,7 +24,7 @@
             <h2 class="forum__multimedia--titre">Forum multimedia</h2>
             <div id="publication" class="publication">
                 <div id="publication-edit" class="publication__edit">
-                    <span>Exprimez vous...</span>
+                    <span id="link-edit-publication">Exprimez vous...</span>
                     <form id="formulaire-publication" name="formulaire-publication" class="form" enctype="multipart/form-data">
                         <div class="form__message">
                             <textarea id="message" class="form__message--input" rows="3" placeholder="Que voulez vous dire..."></textarea>
@@ -32,7 +32,10 @@
                         <div class="form__image">
                             <input id="fileUpload" name="image" class="form__image--input" type="file" accept="image/png, image/jpeg">
                         </div>
-                        <input class="form__publier" id="publier" type="submit" value="Publier" for="formulaire-publication" >
+                        <div class="form__validation">
+                            <input class="form__validation--annuler" type="button" value="annuler">
+                            <input class="form__validation--publier" id="publier" type="submit" value="Publier" for="formulaire-publication" >
+                        </div>
                     </form>
                 </div>
             </div>
@@ -45,6 +48,6 @@
             <li><a href="">Contact</a></li>
         </ul>
     </footer>
-    <script src="./src/multimedia.js"></script>
+    <script type="module" src="./src/multimedia.js"></script>
 </body>
 </html>

@@ -6,3 +6,32 @@ body{
     margin:0;
     padding: 0;
 }
+.forum{
+    @include auto;
+    min-height: 500px;
+    margin: 10px 5px;
+    &__chat{
+        @include full;
+        @include display($direction:column);
+        display: block;
+        &--titre{
+            @include nomarge;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+    }
+    &__profil{
+        &--titre{
+        text-align: center;
+        }
+    }  
+    &__multimedia{
+        @include full;
+        @include display($direction:column);
+        display: block;
+        &--titre{
+            @include nomarge;
+            text-align: center;
+        }
+    }
+}

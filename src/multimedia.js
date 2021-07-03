@@ -1,10 +1,11 @@
 const btnChat = document.getElementById("btn-chat")
 const btnProfil = document.getElementById("btn-profil")
-const multimedia = document.getElementById("multimedia")
 const publicationWindow = document.getElementById('publication')
+const urlPublications ='http://localhost:3000/api/publications'
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
+import {redirection} from './functions.js'
 
 /*Matérialise une bordure aux boutons multimédia,chat et profil*/
 btnChat.addEventListener("click",function(e){
@@ -18,7 +19,6 @@ btnProfil.addEventListener("click",function(e){
     btnProfil.style.borderBottom = "transparent"
 })
 
-const urlPublications ='http://localhost:3000/api/publications'
 
 /*Fonction pour afficher toutes les publications.*/
 function showPublications(){
@@ -58,10 +58,37 @@ function showPublications(){
             const auteur = document.createElement('h3')
                 auteur.classList.add('publication__container--auteur')
                 auteur.innerText = `${response.nom}.${response.prenom}(${response.date})`
-    
+
+            const notes = document.createElement('div')
+                notes.classList.add('publication__container--notes')
+                const like = document.createElement('input')
+                    like.setAttribute('type','button')
+                    like.setAttribute('value','like')
+                    notes.appendChild(like)
+
+                const countLikes = document.createElement('div')
+                    countLikes.classList.add('count-like')
+                    notes.appendChild(countLikes)
+                    
+                const dislike = document.createElement('input')
+                    dislike.setAttribute('type','button')
+                    dislike.setAttribute('value','dislike')
+                    notes.appendChild(dislike)
+
+                const countDislikes = document.createElement('div')
+                    countDislikes.classList.add('count-dislike')
+                    notes.appendChild(countDislikes)    
+
+            const del = document.createElement('input')
+                del.classList.add('publication__container--del')
+                del.setAttribute('type','button')
+                del.setAttribute('value','supprimer')
+
             publicationWindow.appendChild(container)
             container.appendChild(texte)
             container.appendChild(auteur)
+            container.appendChild(notes)
+            container.appendChild(del)
         }
     })
     .catch(function(error){
@@ -72,10 +99,16 @@ showPublications()
 
 /*Création d'une publication.*/
 
+const linkEdit = document.getElementById('publication-edit')
 const fileUpload = document.getElementById('fileUpload')/*mon input type file*/
 const formulaire = document.getElementById('formulaire-publication')/*Mon formulaire*/
 const publier = document.getElementById('publier')/*Bouton de validation du formulaire*/
 const message = document.getElementById('message')/*Message de la publication*/
+
+linkEdit.addEventListener('click',function(e){
+    formulaire.style.display ='flex'
+})
+
 
 publier.addEventListener('click',function(e){
     e.preventDefault()
@@ -97,6 +130,7 @@ publier.addEventListener('click',function(e){
     })
     .then((response) => {
         console.log(response)
+        redirection(urlPublications)
     })
     .catch((error) => { 
         console.log(error)
@@ -107,7 +141,7 @@ publier.addEventListener('click',function(e){
         formData.append('userId',userId)
         formData.append('message', message.value)
         /*Fonction qui boucle les éléments de formData dans un array pour visualiser le contenu*/
-        const tableau = () => {
+        function tableau(){
             let array = []
             for(let elt of formData.values()){
             console.log(elt)
@@ -131,6 +165,7 @@ publier.addEventListener('click',function(e){
         })
         .then((response) => {
             console.log(response)
+            redirection(urlPublications)
         })
         .catch((error) => { 
             console.log(error)

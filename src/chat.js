@@ -5,11 +5,7 @@ const chatWindow = document.getElementById('chat-window')
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
-
-function Redirection(value){
-    window.location = value
-    window.location.reload()
-}
+import { redirection } from './functions.js'
 
 btnMultimedia.addEventListener("click",function(e){
     e.preventDefault()
@@ -47,11 +43,17 @@ function showMessage(){
             const auteur = document.createElement('div')
                 auteur.classList.add('container-chat__auteur')
                 auteur.setAttribute('id','auteur')
-                auteur.innerText = `(${response.date}) ${response.nom}.${response.prenom} : `    
+                auteur.innerText = `(${response.date}) ${response.nom}.${response.prenom} : `   
+            
+            const del = document.createElement('input')
+                del.classList.add('container-chat__del')
+                del.setAttribute('type','button')
+                del.setAttribute('value','supprimer')
 
             chatWindow.appendChild(containerMessage)
             containerMessage.appendChild(message)
             containerMessage.appendChild(auteur)
+            containerMessage.appendChild(del)
             message.appendChild(texte)
         }
     })
@@ -84,7 +86,7 @@ validationMessage.addEventListener("click",function(e){
         }
     })
     .then((response) => {
-        Redirection("chat.html#chat-message")
+        redirection("chat.html#chat-message")
         console.log(response)
     })
     .catch((err) => console.log({message:err}))
