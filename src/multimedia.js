@@ -1,6 +1,5 @@
 const btnChat = document.getElementById("btn-chat")
 const btnProfil = document.getElementById("btn-profil")
-const multimedia = document.getElementById("multimedia")
 const publicationWindow = document.getElementById('publication')
 const urlPublications ='http://localhost:3000/api/publications'
 const access = JSON.parse(localStorage.getItem('access'))
@@ -100,10 +99,16 @@ showPublications()
 
 /*Création d'une publication.*/
 
+const linkEdit = document.getElementById('publication-edit')
 const fileUpload = document.getElementById('fileUpload')/*mon input type file*/
 const formulaire = document.getElementById('formulaire-publication')/*Mon formulaire*/
 const publier = document.getElementById('publier')/*Bouton de validation du formulaire*/
 const message = document.getElementById('message')/*Message de la publication*/
+
+linkEdit.addEventListener('click',function(e){
+    formulaire.style.display ='flex'
+})
+
 
 publier.addEventListener('click',function(e){
     e.preventDefault()
