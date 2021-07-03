@@ -3,19 +3,15 @@
     border-radius: 10px;
     margin: 20px 0;
     position: relative;
-    padding-bottom: 40px;
     @include full;
     &__edit{
-        @include full;
+        @include full($width:106%);
         @include display($direction:column);
-        border: 1px #d1d1d1 solid;
-        box-shadow: 0px 5px 5px 1px grey;
-        border-radius: 10px;
-        background: $color-secondary;
-        padding: 15px 0;
+        border: 3px #d1d1d1 solid;
         overflow: hidden;
         transform: scale(0.99);
         transition: transform 0.1s;
+        padding: 15px 10px;
         &:active{
             cursor: pointer;
             transform: scale(1);
@@ -24,10 +20,8 @@
     }
     &__container{
         width: 100%;
-        margin: 15px 0px;
-        border: 1px #d1d1d1 solid;
-        box-shadow: 0px 5px 5px 1px grey;
-        border-radius: 10px;
+        border-bottom: 3px #d1d1d1 solid;
+        margin-bottom: 25px;
         position: relative;
         &--auteur{
             font-size: 1.4rem;
@@ -51,6 +45,7 @@
         &--notes{
             width: 100%;
             @include display($justify:flex-start);
+            margin: 0 0 10px 20px;
             & input{
                 margin: 0 5px 5px;
             }
@@ -70,9 +65,8 @@
         }
     }
     &__old{
-        margin-top: 10px;
         position: absolute;
-        bottom: 0;
+        bottom: -10px;
     }
 }
 .count-like{
@@ -86,13 +80,11 @@
 .form{/*Formulaire des publications*/
     @include full;
     @include display($direction:column);
-    display: none;
-    
     &__message{
         @include display;
         @include formBloc;
         &--input{
-            width: 95%;
+            width: 85%;
             resize: none;
             border: 1px #959595 solid;
             background-color: #ededed;
@@ -115,7 +107,7 @@
         @include display($direction:column);
         @include formBloc;
         &--input{
-            width: 97%;
+            width: 87%;
             margin: 10px 0px;
             overflow: hidden;
             white-space: nowrap;
@@ -123,7 +115,7 @@
         }
     }
     &__validation{
-        @include full;
+        @include full($width:90%);
         @include display($justify:flex-end);
         & input{
             margin: 10px;

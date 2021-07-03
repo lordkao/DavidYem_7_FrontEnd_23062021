@@ -6,7 +6,6 @@ const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
 import {redirection} from './functions.js'
-
 /*Matérialise une bordure aux boutons multimédia,chat et profil*/
 btnChat.addEventListener("click",function(e){
     e.preventDefault()
@@ -18,8 +17,6 @@ btnProfil.addEventListener("click",function(e){
     document.location.href="profil.html"
     btnProfil.style.borderBottom = "transparent"
 })
-
-
 /*Fonction pour afficher toutes les publications.*/
 function showPublications(){
     fetch(urlPublications,{
@@ -33,11 +30,10 @@ function showPublications(){
     .then(function(responses){
         console.log('publication :')
         console.log(responses)
-
+        let i = 1
         for(let response of responses){
             const container = document.createElement('div')
                 container.classList.add('publication__container')
-
             if(response.url){
                 const publication = document.createElement('div')
                 publication.classList.add('publication__container--photo')
@@ -50,45 +46,54 @@ function showPublications(){
                     publication.appendChild(image)
 
             }
-
             const texte = document.createElement('p')
                 texte.classList.add('publication__container--texte')
                 texte.innerText = `${response.message}`
-            
             const auteur = document.createElement('h3')
                 auteur.classList.add('publication__container--auteur')
                 auteur.innerText = `${response.nom}.${response.prenom}(${response.date})`
-
             const notes = document.createElement('div')
                 notes.classList.add('publication__container--notes')
                 const like = document.createElement('input')
                     like.setAttribute('type','button')
                     like.setAttribute('value','like')
                     notes.appendChild(like)
-
                 const countLikes = document.createElement('div')
                     countLikes.classList.add('count-like')
                     notes.appendChild(countLikes)
-                    
                 const dislike = document.createElement('input')
                     dislike.setAttribute('type','button')
                     dislike.setAttribute('value','dislike')
                     notes.appendChild(dislike)
-
                 const countDislikes = document.createElement('div')
                     countDislikes.classList.add('count-dislike')
                     notes.appendChild(countDislikes)    
-
-            const del = document.createElement('input')
-                del.classList.add('publication__container--del')
-                del.setAttribute('type','button')
-                del.setAttribute('value','supprimer')
-
+                if(response.userId === userId){
+                    let name =  `del-publication${i}`
+                    let test = document.createElement('input')
+                        test.classList.add('publication__container--del')
+                        test.setAttribute('id',`${name}`)
+                        test.setAttribute('type','button')
+                        test.setAttribute('value','supprimer') 
+                        container.appendChild(test)
+                    /*boucle des écouteurs d'évènements pour chaques publications correspondantes au userId de l'utilisateur.*/
+                    test.addEventListener('click',function(){
+                        fetch(`${urlPublications}/${response.id}`,{
+                            method:'DELETE',
+                            headers:{
+                                'Authorization':'Bearer '+token
+                            }
+                        })
+                        .then((response) => console.log(response))
+                        .catch((err) => console.log(err))
+                    })
+                        i++
+                }
+            
             publicationWindow.appendChild(container)
             container.appendChild(texte)
             container.appendChild(auteur)
             container.appendChild(notes)
-            container.appendChild(del)
         }
     })
     .catch(function(error){
@@ -96,20 +101,11 @@ function showPublications(){
     })
 }
 showPublications()
-
 /*Création d'une publication.*/
-
-const linkEdit = document.getElementById('publication-edit')
 const fileUpload = document.getElementById('fileUpload')/*mon input type file*/
 const formulaire = document.getElementById('formulaire-publication')/*Mon formulaire*/
 const publier = document.getElementById('publier')/*Bouton de validation du formulaire*/
 const message = document.getElementById('message')/*Message de la publication*/
-
-linkEdit.addEventListener('click',function(e){
-    formulaire.style.display ='flex'
-})
-
-
 publier.addEventListener('click',function(e){
     e.preventDefault()
     if(!fileUpload.value){

@@ -22,24 +22,17 @@
     <section class="forum">
         <article id="chat" class="forum__chat">
             <h2 class="forum__chat--titre">Forum chat</h2>
+            <input id="old-messages" class="old-messages" type="button" value="Afficher les messages plus anciens">
             <div id="chat-window" class="chat" >
-                <div class="chat__edit">
-                    <form id="formulaire-chat" class="chat__edit--form" action="">
-                        <input id="old-messages" type="button" value="Afficher les messages plus anciens">
-                        <textarea id="chat-message" type="text" rows="3" placeholder="Votre message..."></textarea>
-                        <input id="validation-message" type="submit" value="Envoyer">
-                    </form>
-                </div>
+            </div>
+            <div class="formulaire-edit">
+                <form id="formulaire-chat" class="formulaire-edit__form" action="">
+                    <textarea id="chat-message" class="formulaire-edit__form--message" type="text" rows="3" placeholder="Votre message..."></textarea>
+                    <input id="validation-message" class="formulaire-edit__form--validation" type="submit" value="Envoyer">
+                </form>
             </div>
         </article>
     </section>
-    <footer>
-        <ul>
-            <li><a href="">Politique de confidentialité</a></li>
-            <li><a href="">Règlement</a></li>
-            <li><a href="">Contact</a></li>
-        </ul>
-    </footer>
     <script type="module" src="./src/chat.js"></script>
 </body>
 </html>
