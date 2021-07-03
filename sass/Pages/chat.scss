@@ -30,6 +30,9 @@
         }
     }
 }
+#old-messages{
+    font-weight: bold;
+}
 .container-chat{
     @include auto($width:100%);
     position: relative;
