@@ -27,6 +27,17 @@
     @include auto($width:100%);
     margin-top: 5px;
 }
-@mixin input{
-
+@mixin note{
+    @include auto($height:20px);
+    @include display;
+    padding: 0 5px;
+    font-size: 1.4rem;
+}
+@mixin likeDislike($color:black){
+    color: $color;
+    transform: scale(1);
+    transition: transform 0.5s;
+    & i {
+        font-weight: unset;
+    }
 }

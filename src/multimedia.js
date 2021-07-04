@@ -5,7 +5,7 @@ const urlPublications ='http://localhost:3000/api/publications'
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
-import {reload} from './functions.js'
+import {reload,requete} from './functions.js'
 /*Matérialise une bordure aux boutons multimédia,chat et profil*/
 btnChat.addEventListener("click",function(e){
     e.preventDefault()
@@ -18,6 +18,7 @@ btnProfil.addEventListener("click",function(e){
     btnProfil.style.borderBottom = "transparent"
 })
 /*Fonction pour afficher toutes les publications.*/
+
 let i = 1
 function showPublications(url){
     fetch(url,{
@@ -32,6 +33,7 @@ function showPublications(url){
         console.log('publication :')
         console.log(responses)
         for(let response of responses){
+            let note = 0
             const container = document.createElement('div')
                 container.classList.add('publication__container')
             if(response.url){
@@ -54,19 +56,59 @@ function showPublications(url){
                 auteur.innerText = `${response.nom}.${response.prenom}(${response.date})`
             const notes = document.createElement('div')
                 notes.classList.add('publication__container--notes')
-                const like = document.createElement('input')
-                    like.setAttribute('type','button')
-                    like.setAttribute('value','like')
+                const like = document.createElement('span')
+                    like.innerHTML = `<i class="fas fa-thumbs-up"></i>`
+                    like.classList.add('like')
+                    like.setAttribute('id',`like${i}`)
                     notes.appendChild(like)
+                    like.addEventListener('click',function(e){
+                        let urlLike = `${urlPublications}/${response.id}/like`
+                        if(note == 0){
+                            note=1
+                            like.classList.add('scale')
+                        }
+                        else if(note == 1){
+                            note=0
+                            like.classList.remove('scale')
+                        }
+                        let body = { 
+                            like : note,
+                            userId : userId,
+                            id : response.id
+                        }
+                        console.log(body)
+                        requete(urlLike,token,body)
+                    })
                 const countLikes = document.createElement('div')
                     countLikes.classList.add('count-like')
+                    countLikes.textContent = '0' | response.usersLikes
                     notes.appendChild(countLikes)
-                const dislike = document.createElement('input')
-                    dislike.setAttribute('type','button')
-                    dislike.setAttribute('value','dislike')
+                const dislike = document.createElement('span')
+                    dislike.innerHTML =`<i class="fas fa-thumbs-down"></i>`
+                    dislike.classList.add('dislike')
+                    dislike.setAttribute('id',`dislike${i}`)
                     notes.appendChild(dislike)
+                    dislike.addEventListener('click',function(e){
+                        let urlLike = `${urlPublications}/${response.id}/like`
+                        if(note == 0){
+                            note=-1
+                            dislike.classList.add('scale')
+                        }
+                        else if(note == -1){
+                            note=0
+                            dislike.classList.remove('scale')
+                        }
+                        let body = { 
+                            like : note,
+                            userId : userId,
+                            id: response.id
+                        }
+                        console.log(body)
+                        requete(urlLike,token,body)
+                    })
                 const countDislikes = document.createElement('div')
                     countDislikes.classList.add('count-dislike')
+                    countDislikes.textContent= '0' | response.usersDislikes
                     notes.appendChild(countDislikes)    
                 if(response.userId && response.userId === userId){
                     let name =  `del-publication${i}`

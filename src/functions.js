@@ -48,5 +48,16 @@ class desactivation{
         this.bouton4.disabled = true
     }
 }
+function requete(url,token,body){
+    fetch(url,{
+        method:'POST',
+        headers:{
+            'Authorization':'Bearer '+token,
+            'Content-Type':'application/json'},
+        body:JSON.stringify(body)
+    })
+    .then((res) => {if(res.ok){res.json()}})
+    .catch((err) => console.log(err))
+}
 
-export { redirection,reload,actived,disabled,desactivation }  
+export { redirection,reload,actived,disabled,desactivation,requete }  
