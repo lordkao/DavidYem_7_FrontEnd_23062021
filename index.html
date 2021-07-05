@@ -10,11 +10,11 @@
 </head>
 <body>
     <header class="header">
-        <h1 class="header__title"><img src="./images/white_logo.png" alt=""></h1>
+        <h1 class="header__title"><img src="./images/white_logo.png" alt="Logo de la société"></h1>
         <nav class="header__nav">
             <ul class="header__nav--links">
-                <li><button id="connect" role="button"><i class="fas fa-user"></i><span id="connecter">Se connecter</span></button></li>
-                <li><button id="signup" role="button"><i class="fas fa-user-plus"></i><span id="creer">Créer un compte</span></button></li>
+                <li><button id="connect"><i class="fas fa-user"></i><span id="connecter">Se connecter</span></button></li>
+                <li><button id="signup"><i class="fas fa-user-plus"></i><span id="creer">Créer un compte</span></button></li>
             </ul>
         </nav>
     </header>
@@ -25,20 +25,20 @@
             <p>Bienvenue sur le réseau social de Groupomania, celui-ci est à votre disposition afin d'améliorer vos relations professionnelles.</p>
         </div>
         <div id="connexion" class="connexion">
-            <form class="connexion__form" action="">
+            <form class="connexion__form" action="#">
                 <div class="connexion__form--email">
-                    <label for="email">Email:</label>
+                    <label for="email-connect">Email:</label>
                     <input type="email" name="email" id="email-connect" placeholder="ex:test@hotmail.fr">
                 </div>
                 <div class="connexion__form--password">
-                    <label for="password">Password:</label>
+                    <label for="password-connect">Password:</label>
                     <input type="password" name="password" id="password-connect" placeholder="ex:123">
                 </div>
                 <input id="validation-connexion" class="connexion__form--validation" type="submit" value="Validation">
             </form>
         </div>
         <div id="inscription" class="inscription">
-            <form class="inscription__form" action="">
+            <form class="inscription__form" action="#">
                 <div class="inscription__form--nom">
                     <label for="nom">Nom:</label>
                     <input type="text" name="nom" id="nom" placeholder="ex:Legrand">
@@ -48,11 +48,11 @@
                     <input type="text" name="prenom" id="prenom" placeholder="ex:David">
                 </div>
                 <div class="inscription__form--email">
-                    <label for="email">Email:</label>
+                    <label for="email-inscription">Email:</label>
                     <input type="email" name="email" id="email-inscription" placeholder="ex:test@hotmail.fr">
                 </div>
                 <div class="inscription__form--password">
-                    <label for="password">Password:</label>
+                    <label for="password-inscription">Password:</label>
                     <input type="password" name="password" id="password-inscription" placeholder="ex:123">
                 </div>
                 <input id="validation-creation" class="inscription__form--inscription" type="submit" value="Inscription">

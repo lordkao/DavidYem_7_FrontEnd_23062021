@@ -10,12 +10,12 @@
 </head>
 <body>
     <header class="header">
-        <h1 class="header__title"><img src="./images/white_logo.png" alt=""></h1>
+        <h1 class="header__title"><img src="./images/white_logo.png" alt="Logo de la société"></h1>
         <nav class="header__nav">
             <ul class="header__nav--links">
-                <li><button id="btn-multi" role="button"><i class="fas fa-home"></i><span>Accueil</span></button></li>
-                <li><button id="btn-chat"  role="button"><i class="fas fa-comments"></i><span>Chat</span></button></li>
-                <li><button id="btn-profil" class="btn profil" role="button"><i class="fas fa-user-circle"></i><span>Profil</span></button></li>
+                <li><button id="btn-multi"><i class="fas fa-home"></i><span>Accueil</span></button></li>
+                <li><button id="btn-chat" ><i class="fas fa-comments"></i><span>Chat</span></button></li>
+                <li><button id="btn-profil" class="btn profil"><i class="fas fa-user-circle"></i><span>Profil</span></button></li>
             </ul>
         </nav>
     </header>
@@ -24,27 +24,27 @@
         <form id="profil" class="forum__profil--form profil" enctype="multipart/form-data">
             <div class="profil__nom">
                 <label for="nom">Nom:</label>
-                <input id="nom" name="nom" type="text" disabled="true">
+                <input id="nom" name="nom" type="text" disabled>
             </div>
             <div class="profil__prenom">
                 <label for="prenom">Prénom:</label>
-                <input id="prenom" name="prenom" type="text" disabled="true">
+                <input id="prenom" name="prenom" type="text" disabled>
             </div>
             <div class="profil__email">
                 <label for="email">Email:</label>
-                <input id="email" name="email" type="email" disabled="true">
+                <input id="email" name="email" type="email" disabled>
             </div>
             <div class="profil__photo">
                 <label id="label-photo" for="upload-photo">Photo de profil:</label>
                 <input id="upload-photo" name="image" type="file" accept="image/png, image/jpeg">
                 <div id="cadre-photo">
-                    <img id="photo" src="" alt="Photo de profil">  
+                    <img id="photo" src="#" alt="Photo de profil">  
                 </div>
             </div>
             <div class="profil__update">
-                <input id="btn-annuler" type="button" value="Annuler" disabled="true">
+                <input id="btn-annuler" type="button" value="Annuler" disabled>
                 <input id="btn-modifier" type="button" value="Modifier">
-                <input id="btn-valider" type="submit" for="profil" value="Valider" disabled="true">
+                <input id="btn-valider" type="submit" value="Valider" disabled>
                 <input id="btn-supprimer" type="button" value="Supprimer">
             </div>
         </form>

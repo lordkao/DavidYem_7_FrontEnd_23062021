@@ -101,7 +101,7 @@ const prenom = document.getElementById('prenom')
 const emailSignup = document.getElementById('email-inscription')
 const passwordSignup = document.getElementById('password-inscription')
 
-/*Validation du formulaire via le bouton Inscription */
+/*Validation du formulaire via le bouton Inscription en vérifiant avec les regexs*/
 /*************************************************/
 btnValidationCreation.addEventListener("click",function(e){
     e.preventDefault()
@@ -171,5 +171,4 @@ btnValidationCreation.addEventListener("click",function(e){
             alert(err)
         })
     }
-    
 })
