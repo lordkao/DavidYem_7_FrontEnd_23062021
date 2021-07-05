@@ -77,7 +77,25 @@ btnAnnuler.addEventListener("click",function(){
 btnValider.addEventListener("click",function(e){
     boutonsProfil.hide3()
     e.preventDefault()
-    if(!uploadPhoto.value){
+    if(nom.value == '' || null || undefined){
+        alert('il manque le nom')
+        getInfos()
+    }
+    else if((/[a-zA-Zéèçà][-]{1,}$/.test(nom.value))||(/[^a-zA-Zéèçà-]/.test(nom.value))){
+        console.log("Veuillez renseigner votre nom seulement avec des lettres.(ex: David)")
+        alert("Veuillez renseigner votre nom seulement avec des lettres.(ex: David)")
+        getInfos()
+    }
+    else if(prenom.value == '' || null || undefined){
+        alert('il manque le prenom')
+        getInfos()
+    }
+    else if((/[a-zA-Zéèçà][-]{1,}$/.test(prenom.value))||(/[^a-zA-Zéèçà-]/.test(prenom.value))){
+        console.log("Veuillez renseigner votre prénom seulement avec des lettres.(ex: David)")
+        alert("Veuillez renseigner votre prénom seulement avec des lettres.(ex: David)")
+        getInfos()
+    }
+    else if(!uploadPhoto.value){
         const form = { 
             nom: nom.value,
             prenom: prenom.value,
