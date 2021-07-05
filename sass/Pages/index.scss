@@ -80,7 +80,7 @@
     &__form{
         @include display($direction:column);
         align-items: unset;
-        padding: 90px 20px;
+        padding: 20px 20px;/*padding: 90px 20px;*/
         &--email{
             @include display;
             margin-bottom: 10px;
@@ -103,6 +103,9 @@
         }
         &--validation{
             @include full($height:35px,$width: 50%);
+            &:hover{
+                cursor: pointer;
+            }
             align-self: center;
         }
     }
@@ -162,9 +165,15 @@
         &--inscription{
             @include full($height:35px,$width: 50%);
             align-self: center;
+            &:hover{
+                cursor: pointer;
+            }
             @media screen and (min-width:1024px){
                 width: 25%;
             }
         }
     }
+}
+.help-message{
+    color: red;
 }

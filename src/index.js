@@ -2,7 +2,7 @@ let connect = document.getElementById("connect")
 let signup = document.getElementById("signup")
 let connexion = document.getElementById("connexion")
 let inscription = document.getElementById("inscription")
-
+import {invalidInputText,blocErreur} from "./functions.js"
 const urlUsersConnect ='http://localhost:3000/api/auth/login'
 const urlUsersSignup ='http://localhost:3000/api/auth/signup'
 
@@ -42,21 +42,25 @@ let passwordConnect = document.getElementById('password-connect')
 
 /*Validation du formulaire via le bouton valider */
 /*************************************************/
+
+/*Création des messages d'erreurs à afficher*/
+let errorEmail = invalidInputText('connexion','Veuillez renseigner un email valide.(ex: jean@hotmail.com)')
+let errorPassword = invalidInputText('connexion','Veuillez renseigner un password valide.(les caractères spéciaux ne sont pas autorisés)')
+let nonAutorise = invalidInputText("connexion","Identifiants incorrect !")
+/*Évènement sur le bouton de validation de login*/
 btnValidationConnexion.addEventListener("click",function(e){
     e.preventDefault()
     if(emailConnect.value == '' || null || undefined){
-        alert('il manque l\'email !')
+        blocErreur(errorEmail,errorPassword,nonAutorise)
     }
     else if((/^([\w.-]+)[@]{1}([\w]+)[.]{1}([a-z]){2,5}$/.test(emailConnect.value))===false){
-        console.log({ message:'Veuillez renseigner un email valide.(ex: jean@hotmail.com'})
-        alert('Veuillez renseigner un email valide.(ex: jean@hotmail.com')
+        blocErreur(errorEmail,errorPassword,nonAutorise)
     }
     else if(passwordConnect.value == '' || null || undefined){
-        alert('il manque le mot de passe !')
+        blocErreur(errorPassword,errorEmail,nonAutorise)
     }
     else if(/([^a-zA-Z0-9@]+)/.test(passwordConnect.value)){
-        console.log({ message:'Veuillez renseigner un password valide.(les caractères spéciaux ne sont pas autorisés)'})
-        alert('Veuillez renseigner un password valide.(les caractères spéciaux ne sont pas autorisés)')
+        blocErreur(errorPassword,errorEmail,nonAutorise)
     }
     else{
         let form = {
@@ -85,7 +89,7 @@ btnValidationConnexion.addEventListener("click",function(e){
                 }
             }
             catch(error){
-                console.log({ error : 'Identifiants incorrect !'})
+                blocErreur(nonAutorise,errorEmail,errorPassword)
             }
         })
         .catch(function(err){
