@@ -18,7 +18,7 @@
         @media screen and(min-width:1440px) {
             width: 40%;
         }
-        &:active{
+        &:hover{
             cursor: pointer;
             transform: scale(1);
             transition: transform 0.1s;

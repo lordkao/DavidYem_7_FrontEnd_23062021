@@ -44,18 +44,25 @@ let passwordConnect = document.getElementById('password-connect')
 /*************************************************/
 btnValidationConnexion.addEventListener("click",function(e){
     e.preventDefault()
-    let form = {
-        email : emailConnect.value,
-        password : passwordConnect.value
-    }  
     if(emailConnect.value == '' || null || undefined){
         alert('il manque l\'email !')
+    }
+    else if((/^([\w.-]+)[@]{1}([\w]+)[.]{1}([a-z]){2,5}$/.test(emailConnect.value))===false){
+        console.log({ message:'Veuillez renseigner un email valide.(ex: jean@hotmail.com'})
+        alert('Veuillez renseigner un email valide.(ex: jean@hotmail.com')
     }
     else if(passwordConnect.value == '' || null || undefined){
         alert('il manque le mot de passe !')
     }
+    else if(/([^a-zA-Z0-9@]+)/.test(passwordConnect.value)){
+        console.log({ message:'Veuillez renseigner un password valide.(les caractères spéciaux ne sont pas autorisés)'})
+        alert('Veuillez renseigner un password valide.(les caractères spéciaux ne sont pas autorisés)')
+    }
     else{
-        /*console.log(form)*/
+        let form = {
+            email : emailConnect.value,
+            password : passwordConnect.value
+        } 
         fetch(urlUsersConnect,{
             method: "POST",
             headers:{
@@ -107,14 +114,30 @@ btnValidationCreation.addEventListener("click",function(e){
     if(nom.value == '' || null || undefined){
         alert('il manque le nom')
     }
+    else if((/[a-zA-Zéèçà][-]{1,}$/.test(nom.value))||(/[^a-zA-Zéèçà-]/.test(nom.value))){
+        console.log("Veuillez renseigner votre nom seulement avec des lettres.(ex: David)")
+        alert("Veuillez renseigner votre nom seulement avec des lettres.(ex: David)")
+    }
     else if(prenom.value == '' || null || undefined){
         alert('il manque le prenom')
+    }
+    else if((/[a-zA-Zéèçà][-]{1,}$/.test(prenom.value))||(/[^a-zA-Zéèçà-]/.test(prenom.value))){
+        console.log("Veuillez renseigner votre prénom seulement avec des lettres.(ex: David)")
+        alert("Veuillez renseigner votre prénom seulement avec des lettres.(ex: David)")
     }
     else if(emailSignup.value == '' || null || undefined){
         alert('il manque l\'adresse email')
     }
+    else if((/^([\w.-]+)[@]{1}([\w]+)[.]{1}([a-z]){2,5}$/.test(emailSignup.value))===false){
+        console.log({ message:'Veuillez renseigner un email valide.(ex: jean@hotmail.com'})
+        alert('Veuillez renseigner un email valide.(ex: jean@hotmail.com')
+    }
     else if(passwordSignup.value == '' || null || undefined){
         alert('il manque le password')
+    }
+    else if(/([^a-zA-Z0-9@]+)/.test(passwordSignup.value)){
+        console.log({ message:'Veuillez renseigner un password valide.(les caractères spéciaux ne sont pas autorisés)'})
+        alert('Veuillez renseigner un password valide.(les caractères spéciaux ne sont pas autorisés)')
     }
     else{
         console.log(form)
