@@ -17,6 +17,12 @@
         @include display;
         @include full($height:35%);
         padding: 0;
+        @media screen and(min-width:1024px) {
+            width: 80%;
+        }
+        @media screen and(min-width:1440px) {
+            width: 70%;
+        }
         &--links{
             @include display;
             list-style-type: none;
