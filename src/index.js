@@ -9,11 +9,11 @@ const urlUsersSignup ='http://localhost:3000/api/auth/signup'
 
 connect.addEventListener("click",function(e){
     e.preventDefault()
-    if(connexion.style.display == "block"){
+    if(connexion.style.display == "flex"){
         connexion.style.display = "none"
     }
     else{
-        connexion.style.display = "block"
+        connexion.style.display = "flex"
     }
     inscription.style.display = "none"
 })

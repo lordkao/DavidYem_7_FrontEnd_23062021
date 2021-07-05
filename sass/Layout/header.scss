@@ -2,6 +2,9 @@
     @include display($direction:column);
     @include bloc-size($height:100px);
     background: $color-primary;
+    @media screen and (min-width:768px){
+        height: 180px;
+    }
     &__title{
         @include auto($height:65%);
         overflow: hidden;
