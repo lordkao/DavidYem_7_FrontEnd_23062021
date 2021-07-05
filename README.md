@@ -15,10 +15,10 @@ Node.js en version 14.16.1 ainsi que npm qui devrait s'installer automatiquement
 
 -installer les dépendances enregistrées dans le fichier 'package.json' en exécutant la commande 'npm install' dans votre terminal.
 
--Si vous ne l'avez pas vou aurez également besoin de Sass si vous voulez manipuler le code(il vous suffit d'exécuter la commande'npm i --save sass' 
+-Si vous ne l'avez pas, vous aurez également besoin de Sass si vous voulez manipuler le code(il vous suffit d'exécuter la commande'npm i --save sass' 
 
 -installer webpack et ses différents modules afin de lancer l'application sur un serveur local
-(exécuter la commande 'npm install --save webpack webpack-cli webpack-serve')
+(exécuter la commande 'npm install --save')
 
 -et pour en finir avec ces téléchargement, 'npm install --save webpack-dev-server'
 
