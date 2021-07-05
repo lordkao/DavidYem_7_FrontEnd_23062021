@@ -5,7 +5,7 @@ const urlPublications ='http://localhost:3000/api/publications'
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
-import {reload,requete} from './functions.js'
+import {reload,requete,getLikes,getNote} from './functions.js'
 /*Matérialise une bordure aux boutons multimédia,chat et profil*/
 btnChat.addEventListener("click",function(e){
     e.preventDefault()
@@ -18,8 +18,9 @@ btnProfil.addEventListener("click",function(e){
     btnProfil.style.borderBottom = "transparent"
 })
 /*Fonction pour afficher toutes les publications.*/
-
 let i = 1
+let note = `notes${i}`
+note = 0
 function showPublications(url){
     fetch(url,{
         headers : {'Authorization':'Bearer '+token}
@@ -32,8 +33,14 @@ function showPublications(url){
     .then(function(responses){
         console.log('publication :')
         console.log(responses)
+        /*Boucle qui va créer les publications à partir des données reçues*/
         for(let response of responses){
-            let note = 0
+            const urlLike = `${urlPublications}/${response.id}/like`
+            const urlDislike = `${urlPublications}/${response.id}/dislike`
+            const urlNoteLike = `${urlPublications}/${response.id}/like/${userId}`
+            const urlNoteDislike = `${urlPublications}/${response.id}/dislike/${userId}`
+            
+            
             const container = document.createElement('div')
                 container.classList.add('publication__container')
             if(response.url){
@@ -61,8 +68,9 @@ function showPublications(url){
                     like.classList.add('like')
                     like.setAttribute('id',`like${i}`)
                     notes.appendChild(like)
+                    getNote(urlNoteLike,token,like,"1")
+                    
                     like.addEventListener('click',function(e){
-                        let urlLike = `${urlPublications}/${response.id}/like`
                         if(note == 0){
                             note=1
                             like.classList.add('scale')
@@ -74,22 +82,21 @@ function showPublications(url){
                         let body = { 
                             like : note,
                             userId : userId,
-                            id : response.id
                         }
-                        console.log(body)
                         requete(urlLike,token,body)
                     })
                 const countLikes = document.createElement('div')
                     countLikes.classList.add('count-like')
-                    countLikes.textContent = '0' | response.usersLikes
                     notes.appendChild(countLikes)
+                    getLikes(urlLike,token,countLikes)
                 const dislike = document.createElement('span')
                     dislike.innerHTML =`<i class="fas fa-thumbs-down"></i>`
                     dislike.classList.add('dislike')
                     dislike.setAttribute('id',`dislike${i}`)
                     notes.appendChild(dislike)
+                    getNote(urlNoteDislike,token,dislike,"-1")
+
                     dislike.addEventListener('click',function(e){
-                        let urlLike = `${urlPublications}/${response.id}/like`
                         if(note == 0){
                             note=-1
                             dislike.classList.add('scale')
@@ -101,15 +108,14 @@ function showPublications(url){
                         let body = { 
                             like : note,
                             userId : userId,
-                            id: response.id
                         }
-                        console.log(body)
                         requete(urlLike,token,body)
                     })
                 const countDislikes = document.createElement('div')
                     countDislikes.classList.add('count-dislike')
-                    countDislikes.textContent= '0' | response.usersDislikes
                     notes.appendChild(countDislikes)    
+                    getLikes(urlDislike,token,countDislikes)
+                    /*Affichage de supprimer si l'utilisateur à créer la publication*/
                 if(response.userId && response.userId === userId){
                     let name =  `del-publication${i}`
                     let test = document.createElement('input')
@@ -139,13 +145,28 @@ function showPublications(url){
             container.appendChild(texte)
             container.appendChild(auteur)
             container.appendChild(notes)
+
+
+            /*Définis si le user a liké ou disliké la publication
+            if(response.like == 1){
+                like.classList.add('scale')
+            }
+            else if(response.like == -1){
+                dislike.classList.add('scale')
+            }
+            else if(response.like == 0){
+                like.classList.remove('scale')
+                dislike.classList.remove('scale')
+            }*/
         }
+        console.log(note)
     })
     .catch(function(error){
         console.log({ error })
     })
 }
 showPublications(urlPublications)
+
 /*Obtenir plus de publications*/
 const oldPublications = document.getElementById('old-publications')
 let numberOfPublications = 10
@@ -221,3 +242,5 @@ publier.addEventListener('click',function(e){
         })
     }
 })
+
+               
