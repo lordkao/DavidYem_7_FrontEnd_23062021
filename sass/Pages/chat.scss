@@ -40,6 +40,9 @@
     bottom: 0;
     background-color: white;
     border-top: 2px #919191 solid;
+    &:hover{
+        cursor: pointer;
+    }
     @media screen and(min-width:768px) {
         width: 70%;
     }
@@ -72,6 +75,9 @@
         }
         &--old{
             font-weight: bold;
+            &:hover{
+                cursor: pointer;
+            }
         }
     }
 }
