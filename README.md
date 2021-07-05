@@ -3,7 +3,8 @@ Bonjour et bienvenue sur ce projet qui est une réalisation d'une application Fr
 Pour ce premier MVP vous aurez donc besoin de récupérer plusieurs choses avant de pouvoir tester l'application.
 Tout d'abord:
 -Il vous faut:
-Node.js en version 14.16.1 ainsi que npm qui devrait s'installer automatiquement lorsque vous télécharger Node.js.(https://nodejs.org/en/download/releases/)<== lien Node.js
+Node.js en version 14.16.1 ainsi que npm qui devrait s'installer automatiquement lorsque vous télécharger Node.js.
+(https://nodejs.org/en/download/releases/)<== lien Node.js
 -ensuite cloner ce repository sur votre machine
 (voici le lien = https://github.com/lordkao/DavidYem_7_Frontend_23062021.git)
 -exécuter la commande 'npm init' dans votre terminal afin d'initialiser votre projet dans un fichier package.json
@@ -15,4 +16,4 @@ Node.js en version 14.16.1 ainsi que npm qui devrait s'installer automatiquement
 
 Une fois tous ces téléchargement effectués sur votre machine,copier-coller ces 2 lignes de scripts dans la section "scripts" du fichier package.json afin de pouvoir utiliser les commandes 'npm run sass' pour lancer SASS et 'npm start' pour lancer votre serveur qui devrait se lancer sur le http://localhost:8080/.
 
-C'est terminé pour la partie Frontend à installer...maintenant le Backend
+C'est terminé pour la partie Frontend à installer...maintenant le Backend,je vous invite à cette adresse pour télécharger la suite ==> https://github.com/lordkao/DavidYem_7_Backend_25062021.git
