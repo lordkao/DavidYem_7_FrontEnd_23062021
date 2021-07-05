@@ -1,11 +1,12 @@
 const btnMultimedia = document.getElementById("btn-multi")
 const btnProfil = document.getElementById("btn-profil")
-const chat = document.getElementById("chat")
 const chatWindow = document.getElementById('chat-window')
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
-import { redirection } from './functions.js'
+const oldMessages = document.getElementById('old-messages')
+const urlChat ='http://localhost:3000/api/chat'
+import { reload } from './functions.js'
 
 btnMultimedia.addEventListener("click",function(e){
     e.preventDefault()
@@ -15,10 +16,10 @@ btnProfil.addEventListener("click",function(e){
     e.preventDefault()
     document.location.href="profil.html"
 })
-const urlChat ='http://localhost:3000/api/chat'
 /*Fonction qui affiche tous les messages du chat.*/
-function showMessage(){
-    fetch(urlChat,{
+let i = 1 /*variable qui va permettre de boucler les IDs des boutons de suppression au fur et à mesures de leur matérialisation*/
+function showMessage(url){
+    fetch(url,{
         headers : {'Authorization':'Bearer '+token}
     })
     .then((res) => {
@@ -28,7 +29,6 @@ function showMessage(){
     })
     .then((responses) => {
         console.log(responses)
-        
         for(let response of responses){
             const containerMessage = document.createElement('div')
                 containerMessage.classList.add('container-chat')
@@ -45,21 +45,50 @@ function showMessage(){
                 auteur.setAttribute('id','auteur')
                 auteur.innerText = `(${response.date}) ${response.nom}.${response.prenom} : `   
             
-            const del = document.createElement('input')
-                del.classList.add('container-chat__del')
-                del.setAttribute('type','button')
-                del.setAttribute('value','supprimer')
-
+            if(response.userId && response.userId == userId){
+                let name = `del-message${i}`
+                let del = document.createElement('input')
+                    del.classList.add('container-chat__del')
+                    del.setAttribute('id',`${name}`)
+                    del.setAttribute('type','button')
+                    del.setAttribute('value','supprimer')
+                    containerMessage.appendChild(del)
+                    del.addEventListener('click',function(){
+                        fetch(`${urlChat}/${response.id}`,{
+                            method:'DELETE',
+                            headers:{
+                                'Authorization':'Bearer '+token
+                            }
+                        })
+                        .then((res) => {
+                            if(res.ok){
+                                return res.json()
+                            }
+                        })
+                        .then((response) => {
+                            reload()
+                            console.log(response)
+                        })
+                        .catch((err) => console.log({message:err}))
+                    })
+                    console.log(name)
+                    i++
+            }
+            
             chatWindow.appendChild(containerMessage)
             containerMessage.appendChild(message)
             containerMessage.appendChild(auteur)
-            containerMessage.appendChild(del)
             message.appendChild(texte)
         }
     })
     .catch((err) => console.log({message:err}))
 }
-showMessage()
+showMessage(urlChat)
+let numberOfMessages = 10
+oldMessages.addEventListener('click',function(e){
+    showMessage(`${urlChat}/${numberOfMessages}`)
+    numberOfMessages +=10
+})
 const nouveauMessage = document.getElementById('chat-message')
 const validationMessage = document.getElementById('validation-message')
 /*Création de message*/
@@ -68,7 +97,6 @@ validationMessage.addEventListener("click",function(e){
     const objetMessage = { 
         message:nouveauMessage.value,
         userId:userId,
-        token:token
         }
     console.log(objetMessage)
     fetch(urlChat,{
@@ -86,7 +114,7 @@ validationMessage.addEventListener("click",function(e){
         }
     })
     .then((response) => {
-        redirection("chat.html#chat-message")
+        reload()
         console.log(response)
     })
     .catch((err) => console.log({message:err}))

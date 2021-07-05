@@ -3,7 +3,7 @@
     border-radius: 10px;
     margin: 20px 0;
     position: relative;
-    @include full;
+    @include auto($width:100%);
     &__edit{
         @include full($width:106%);
         @include display($direction:column);
@@ -12,6 +12,12 @@
         transform: scale(0.99);
         transition: transform 0.1s;
         padding: 15px 10px;
+        @media screen and(min-width:768px) {
+            width:70%;
+        }
+        @media screen and(min-width:1440px) {
+            width: 40%;
+        }
         &:active{
             cursor: pointer;
             transform: scale(1);
@@ -22,7 +28,29 @@
         width: 100%;
         border-bottom: 3px #d1d1d1 solid;
         margin-bottom: 25px;
+        transform: scale(0.9);
+        transition:transform 0.2s;
         position: relative;
+        @media screen and(min-width:1024px) {
+            width: 70%;
+        }
+        @media screen and(min-width:1440px) {
+            width: 50%;
+        }
+        @media screen and(min-width:1800px) {
+            width: 40%;
+        }
+        &:hover{
+            transform: scale(1);
+            transition:transform 0.4s;
+            cursor: pointer;
+        }
+        &::after{
+            content: '';
+            @include full;
+            border: 2px black solid;
+            display: none;
+        }
         &--auteur{
             font-size: 1.4rem;
             text-transform:lowercase;
@@ -34,6 +62,9 @@
             @include full($height:250px);
             border-radius: 15px;
             overflow: hidden;
+            @media screen and(min-width:768px) {
+                height: 350px;
+            }
             & img{
                 @include full($width:95%);
             }
@@ -45,18 +76,16 @@
         &--notes{
             width: 100%;
             @include display($justify:flex-start);
-            margin: 0 0 10px 20px;
-            & input{
-                margin: 0 5px 5px;
+            & span{
+                margin: 0 5px 0 20px;
             }
         }
         &--del{
             background-color: white;
             border: none;
-            color: red;
             position: absolute;
-            right: 0;
-            bottom: 0;
+            right: 10px;
+            bottom: 10px;
             z-index: 1;
             margin: 0 5px 5px 0;
             &:active{
@@ -69,13 +98,17 @@
         bottom: -10px;
     }
 }
+.like{
+    @include likeDislike($color:#00a900);
+}
+.dislike{
+    @include likeDislike($color:#df0000);
+}
 .count-like{
-    background-color: grey;
-    @include auto;
+    @include note;
 }
 .count-dislike{
-    background-color: grey;
-    @include auto;
+    @include note;
 }
 .form{/*Formulaire des publications*/
     @include full;
@@ -126,4 +159,9 @@
 .btn.multi{
     border-bottom: none;
     background-color: white;
+}
+.scale{
+    transform: scale(1.2);
+    transition : transform  0.2s, 0.3s;
+    font-weight: bold;
 }

@@ -1,6 +1,8 @@
-function redirection (value){
-    window.location = value
-    window.location.reload()
+function redirection(value){
+    document.location.replace(value)
+}
+function reload(){
+    document.location.reload()
 }
 function actived(values){
     for(let value of values){
@@ -46,5 +48,50 @@ class desactivation{
         this.bouton4.disabled = true
     }
 }
-
-export { redirection,actived,disabled,desactivation }  
+function requete(url,token,body){
+    fetch(url,{
+        method:'POST',
+        headers:{
+            'Authorization':'Bearer '+token,
+            'Content-Type':'application/json'},
+        body:JSON.stringify(body)
+    })
+    .then((res) => {if(res.ok){res.json()}})
+    .catch((err) => console.log(err))
+}
+function getLikes(url,token,compteur){
+    fetch(url,{headers:{'Authorization':'Bearer '+token}})
+    .then((res)=>{
+        if(res.ok){return res.json()}
+    })
+    .then((response)=>{
+        compteur.textContent = response.compteur
+    })
+    .catch((err)=>console.log(err))
+} 
+function getNote(url,token,like){
+    fetch(url,{headers:{'Authorization':'Bearer '+token}})
+    .then((res)=>{
+        if(res.ok){return res.json()}
+    })
+    .then((response)=>{
+        let value = response.note
+        if(value == 1){
+            like.classList.add('scale')
+            return value
+        }
+        else if(value == -1){
+            like.classList.add('scale')
+            return value
+        }
+        else if(value == 0){
+            like.classList.remove('scale')
+            return value
+        }
+    })
+    .then((note) => {
+        console.log(note)
+    })
+    .catch((err)=>console.log(err))
+} 
+export { redirection,reload,actived,disabled,desactivation,requete,getLikes,getNote }  

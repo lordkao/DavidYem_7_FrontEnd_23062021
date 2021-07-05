@@ -5,7 +5,7 @@ const urlPublications ='http://localhost:3000/api/publications'
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
-import {redirection} from './functions.js'
+import {reload,requete,getLikes,getNote} from './functions.js'
 /*Matérialise une bordure aux boutons multimédia,chat et profil*/
 btnChat.addEventListener("click",function(e){
     e.preventDefault()
@@ -18,8 +18,11 @@ btnProfil.addEventListener("click",function(e){
     btnProfil.style.borderBottom = "transparent"
 })
 /*Fonction pour afficher toutes les publications.*/
-function showPublications(){
-    fetch(urlPublications,{
+let i = 1
+let note = `notes${i}`
+note = 0
+function showPublications(url){
+    fetch(url,{
         headers : {'Authorization':'Bearer '+token}
     })
     .then(function(res){
@@ -30,8 +33,14 @@ function showPublications(){
     .then(function(responses){
         console.log('publication :')
         console.log(responses)
-        let i = 1
+        /*Boucle qui va créer les publications à partir des données reçues*/
         for(let response of responses){
+            const urlLike = `${urlPublications}/${response.id}/like`
+            const urlDislike = `${urlPublications}/${response.id}/dislike`
+            const urlNoteLike = `${urlPublications}/${response.id}/like/${userId}`
+            const urlNoteDislike = `${urlPublications}/${response.id}/dislike/${userId}`
+            
+            
             const container = document.createElement('div')
                 container.classList.add('publication__container')
             if(response.url){
@@ -54,21 +63,60 @@ function showPublications(){
                 auteur.innerText = `${response.nom}.${response.prenom}(${response.date})`
             const notes = document.createElement('div')
                 notes.classList.add('publication__container--notes')
-                const like = document.createElement('input')
-                    like.setAttribute('type','button')
-                    like.setAttribute('value','like')
+                const like = document.createElement('span')
+                    like.innerHTML = `<i class="fas fa-thumbs-up"></i>`
+                    like.classList.add('like')
+                    like.setAttribute('id',`like${i}`)
                     notes.appendChild(like)
+                    getNote(urlNoteLike,token,like,"1")
+                    
+                    like.addEventListener('click',function(e){
+                        if(note == 0){
+                            note=1
+                            like.classList.add('scale')
+                        }
+                        else if(note == 1){
+                            note=0
+                            like.classList.remove('scale')
+                        }
+                        let body = { 
+                            like : note,
+                            userId : userId,
+                        }
+                        requete(urlLike,token,body)
+                    })
                 const countLikes = document.createElement('div')
                     countLikes.classList.add('count-like')
                     notes.appendChild(countLikes)
-                const dislike = document.createElement('input')
-                    dislike.setAttribute('type','button')
-                    dislike.setAttribute('value','dislike')
+                    getLikes(urlLike,token,countLikes)
+                const dislike = document.createElement('span')
+                    dislike.innerHTML =`<i class="fas fa-thumbs-down"></i>`
+                    dislike.classList.add('dislike')
+                    dislike.setAttribute('id',`dislike${i}`)
                     notes.appendChild(dislike)
+                    getNote(urlNoteDislike,token,dislike,"-1")
+
+                    dislike.addEventListener('click',function(e){
+                        if(note == 0){
+                            note=-1
+                            dislike.classList.add('scale')
+                        }
+                        else if(note == -1){
+                            note=0
+                            dislike.classList.remove('scale')
+                        }
+                        let body = { 
+                            like : note,
+                            userId : userId,
+                        }
+                        requete(urlLike,token,body)
+                    })
                 const countDislikes = document.createElement('div')
                     countDislikes.classList.add('count-dislike')
                     notes.appendChild(countDislikes)    
-                if(response.userId === userId){
+                    getLikes(urlDislike,token,countDislikes)
+                    /*Affichage de supprimer si l'utilisateur à créer la publication*/
+                if(response.userId && response.userId === userId){
                     let name =  `del-publication${i}`
                     let test = document.createElement('input')
                         test.classList.add('publication__container--del')
@@ -84,7 +132,10 @@ function showPublications(){
                                 'Authorization':'Bearer '+token
                             }
                         })
-                        .then((response) => console.log(response))
+                        .then((response) => {
+                            reload()
+                            console.log(response)
+                        })
                         .catch((err) => console.log(err))
                     })
                         i++
@@ -94,13 +145,36 @@ function showPublications(){
             container.appendChild(texte)
             container.appendChild(auteur)
             container.appendChild(notes)
+
+
+            /*Définis si le user a liké ou disliké la publication
+            if(response.like == 1){
+                like.classList.add('scale')
+            }
+            else if(response.like == -1){
+                dislike.classList.add('scale')
+            }
+            else if(response.like == 0){
+                like.classList.remove('scale')
+                dislike.classList.remove('scale')
+            }*/
         }
+        console.log(note)
     })
     .catch(function(error){
         console.log({ error })
     })
 }
-showPublications()
+showPublications(urlPublications)
+
+/*Obtenir plus de publications*/
+const oldPublications = document.getElementById('old-publications')
+let numberOfPublications = 10
+oldPublications.addEventListener('click',function(e){
+    showPublications(`${urlPublications}/${numberOfPublications}`)
+    numberOfPublications += 10
+})
+
 /*Création d'une publication.*/
 const fileUpload = document.getElementById('fileUpload')/*mon input type file*/
 const formulaire = document.getElementById('formulaire-publication')/*Mon formulaire*/
@@ -126,7 +200,7 @@ publier.addEventListener('click',function(e){
     })
     .then((response) => {
         console.log(response)
-        redirection(urlPublications)
+        reload()
     })
     .catch((error) => { 
         console.log(error)
@@ -161,10 +235,12 @@ publier.addEventListener('click',function(e){
         })
         .then((response) => {
             console.log(response)
-            redirection(urlPublications)
+            reload()
         })
         .catch((error) => { 
             console.log(error)
         })
     }
 })
+
+               

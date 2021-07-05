@@ -3,6 +3,11 @@
     z-index: 0;
     @include bloc-size($height:500px);
     padding: 10px;
+    @media screen and (min-width:768px){
+        height: 585px;
+    }
+    @media screen and (min-width:1024px){
+    }
     &__titre{
         @include display;
         @include full($height:10%);
@@ -13,10 +18,23 @@
     }
     &__presentation{
         @include full($height:90%);
+        @media screen and (min-width:1024px){
+            height: 80%;
+        }
         & div{
+            @include display;
             @include full($height:70%);
             & img{
                 @include full;
+                @media screen and (min-width:768px){
+                    width: 70%;
+                }
+                @media screen and (min-width:1024px){
+                    width: 45%;
+                }
+                @media screen and (min-width:1024px){
+                    width: 30%;
+                }
             }
         }
         & p{
@@ -26,6 +44,10 @@
             text-align: center;
             font-size: 1.8rem;
             border: 1px black solid;
+            @media screen and (min-width:1024px){
+                width: 75%;
+                margin-left: 13%;
+            }
         }
     }
 }
@@ -39,6 +61,22 @@
     left: 0px;
     display: none;
     background:$color-secondary;
+    @media screen and (min-width:768px){
+        @include auto($height:330px,$width:80%);
+        margin: 0 10%;
+        border-radius: 30px;
+    }
+    @media screen and (min-width:1024px){
+        height: 270px;
+        margin: 0 22%;
+        width: 570px;    
+    }
+    @media screen and (min-width:1440px){
+        margin: 0 30%;
+    }
+    @media screen and (min-width:1670px){
+        margin: 0 35%;
+    }
     &__form{
         @include display($direction:column);
         align-items: unset;
@@ -79,53 +117,54 @@
     left: 0px;
     display: none;
     background:$color-tertiary;
+    @media screen and (min-width:768px){
+        @include auto($height:330px,$width:80%);
+        margin-left: 10%;
+        border-radius: 30px;
+    }
+    @media screen and (min-width:1024px){
+        height: 270px;
+        margin: 0 22%;
+        width: 570px;    
+    }  
+    @media screen and (min-width:1440px){
+        margin: 0 30%;
+    }
+    @media screen and (min-width:1670px){
+        margin: 0 35%;
+    }
     &__form{
         @include display($direction:column);
         align-items: unset;
         padding: 60px 20px;
-        &--prenom{
-            @include display;
-            margin-bottom: 10px;
-            & label{
-                width: 32%;
-            }
-            & input{
-                width: 68%;
-            }
+        @media screen and (min-width:768px){
+            margin-top: 35px;
         }
-        &--nom{
-            @include display;
-            margin-bottom: 10px;
-            & label{
-                width: 32%;
-            }
-            & input{
-                width: 68%;
-            }
+        @media screen and (min-width:1024px){
+            margin-top: 0;
         }
-        &--email{
+        & div{
             @include display;
             margin-bottom: 10px;
             & label{
                 width: 32%;
+                @media screen and (min-width:768px){
+                    width: 12%;
+                }
             }
             & input{
                 width: 68%;
-            }
-        }
-        &--password{
-            @include display;
-            margin-bottom: 10px;
-            & label{
-                width: 32%;
-            }
-            & input{
-                width: 68%;
+                @media screen and (min-width:768px){
+                    width: 37%;
+                }
             }
         }
         &--inscription{
             @include full($height:35px,$width: 50%);
             align-self: center;
+            @media screen and (min-width:1024px){
+                width: 25%;
+            }
         }
     }
 }

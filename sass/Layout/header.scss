@@ -2,6 +2,9 @@
     @include display($direction:column);
     @include bloc-size($height:100px);
     background: $color-primary;
+    @media screen and (min-width:768px){
+        height: 180px;
+    }
     &__title{
         @include auto($height:65%);
         overflow: hidden;
@@ -14,6 +17,12 @@
         @include display;
         @include full($height:35%);
         padding: 0;
+        @media screen and(min-width:1024px) {
+            width: 80%;
+        }
+        @media screen and(min-width:1440px) {
+            width: 70%;
+        }
         &--links{
             @include display;
             list-style-type: none;

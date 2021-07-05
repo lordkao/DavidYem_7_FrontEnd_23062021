@@ -9,12 +9,32 @@
         @include auto($width:100%);
         @include display;
         margin-top: 20px;
+        
         & label{
             font-size: 1.8rem;
             @include auto($width:25%);
+            @media screen and(min-width:425px) {
+                width:20%
+            }
+            @media screen and(min-width:768px) {
+                width:10%
+            }
+            @media screen and(min-width:1440px) {
+                width:5%
+            }
         }
         & input{
-            @include auto($width:75%);
+            @include auto($width:70%);
+            margin-right: 10px;
+            @media screen and(min-width:425px) {
+                width:50%
+            }
+            @media screen and(min-width:768px) {
+                width:40%
+            }
+            @media screen and(min-width:1440px) {
+                width:20%
+            }
         }
     }
 }
@@ -33,6 +53,18 @@
     border: 1px rgb(0, 0, 0) solid;
     border-radius: 20px;
     overflow: hidden;
+    @media screen and(min-width:768px) {
+        height: 300px;
+    }
+    @media screen and(min-width:1024px) {
+        width: 40%;
+    }
+    @media screen and(min-width:1440px) {
+        height: 400px;
+    }
+    @media screen and(min-width:1800px) {
+        width: 30%;
+    }
     & img{
         @include full;
     }        
@@ -43,22 +75,25 @@
     @include display;
     &__btn{
         @include profilBtn($width:30%);
+        margin-bottom: 15px;
     }
 }
 #btn-annuler{
     @include profilBtn;
-    margin-right: 10px;
+    margin-left: 4px;
+    margin-right: 8px;
 }
 #btn-modifier{
     @include profilBtn;
-    margin-right: 10px;
+    margin-right: 8px;
 }
 #btn-valider{
     @include profilBtn;
-    margin-right: 10px;
+    margin-right: 8px;
 }
 #btn-supprimer{
     @include profilBtn;
+    margin-right: 4px;
 }
 .profil-suppression{
     @include display($direction:column);
