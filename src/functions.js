@@ -99,6 +99,13 @@ function blocErreur(flex,none1,none2){/*Affiche ou cache invalid*/
     none1.style.display='none'
     none2.style.display='none'
 }
+function blocErreur2(flex,none1,none2,none3,none4){/*Affiche ou cache invalid*/
+    flex.style.display='flex'
+    none1.style.display='none'
+    none2.style.display='none'
+    none3.style.display='none'
+    none4.style.display='none'
+}
 function invalidInputText(id,message){/*Créer un bloc erreur*/
     let invalid = document.createElement("div")
     invalid.classList.add("help-message")
@@ -108,4 +115,4 @@ function invalidInputText(id,message){/*Créer un bloc erreur*/
     invalid.style.display = "none"
     return invalid
 }
-export { redirection,reload,actived,disabled,desactivation,requete,getLikes,getNote,blocErreur,invalidInputText }  
+export { redirection,reload,actived,disabled,desactivation,requete,getLikes,getNote,blocErreur,blocErreur2,invalidInputText }  

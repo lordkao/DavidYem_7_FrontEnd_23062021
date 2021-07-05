@@ -2,7 +2,7 @@ let connect = document.getElementById("connect")
 let signup = document.getElementById("signup")
 let connexion = document.getElementById("connexion")
 let inscription = document.getElementById("inscription")
-import {invalidInputText,blocErreur} from "./functions.js"
+import {invalidInputText,blocErreur,blocErreur2} from "./functions.js"
 const urlUsersConnect ='http://localhost:3000/api/auth/login'
 const urlUsersSignup ='http://localhost:3000/api/auth/signup'
 
@@ -44,23 +44,23 @@ let passwordConnect = document.getElementById('password-connect')
 /*************************************************/
 
 /*Création des messages d'erreurs à afficher*/
-let errorEmail = invalidInputText('connexion','Veuillez renseigner un email valide.(ex: jean@hotmail.com)')
-let errorPassword = invalidInputText('connexion','Veuillez renseigner un password valide.(les caractères spéciaux ne sont pas autorisés)')
-let nonAutorise = invalidInputText("connexion","Identifiants incorrect !")
+let errorEmailConnexion = invalidInputText('connexion','Veuillez renseigner un email valide.(ex: jean@hotmail.com)')
+let errorPasswordConnexion = invalidInputText('connexion','Veuillez renseigner un password valide.(les caractères spéciaux ne sont pas autorisés)')
+let nonAutoriseConnexion = invalidInputText("connexion","Identifiants incorrect !")
 /*Évènement sur le bouton de validation de login*/
 btnValidationConnexion.addEventListener("click",function(e){
     e.preventDefault()
     if(emailConnect.value == '' || null || undefined){
-        blocErreur(errorEmail,errorPassword,nonAutorise)
+        blocErreur(errorEmailConnexion,errorPasswordConnexion,nonAutoriseConnexion)
     }
     else if((/^([\w.-]+)[@]{1}([\w]+)[.]{1}([a-z]){2,5}$/.test(emailConnect.value))===false){
-        blocErreur(errorEmail,errorPassword,nonAutorise)
+        blocErreur(errorEmailConnexion,errorPasswordConnexion,nonAutoriseConnexion)
     }
     else if(passwordConnect.value == '' || null || undefined){
-        blocErreur(errorPassword,errorEmail,nonAutorise)
+        blocErreur(errorPasswordConnexion,errorEmailConnexion,nonAutoriseConnexion)
     }
     else if(/([^a-zA-Z0-9@]+)/.test(passwordConnect.value)){
-        blocErreur(errorPassword,errorEmail,nonAutorise)
+        blocErreur(errorPasswordConnexion,errorEmailConnexion,nonAutoriseConnexion)
     }
     else{
         let form = {
@@ -89,7 +89,7 @@ btnValidationConnexion.addEventListener("click",function(e){
                 }
             }
             catch(error){
-                blocErreur(nonAutorise,errorEmail,errorPassword)
+                blocErreur(nonAutoriseConnexion,errorEmailConnexion,errorPasswordConnexion)
             }
         })
         .catch(function(err){
@@ -105,45 +105,48 @@ const prenom = document.getElementById('prenom')
 const emailSignup = document.getElementById('email-inscription')
 const passwordSignup = document.getElementById('password-inscription')
 
+/*Création des messages d'erreurs à afficher*/
+let errorNomInscription = invalidInputText('inscription','Veuillez renseigner votre nom seulement avec des lettres.(ex: Legrand)')
+let errorrPrenomInscription = invalidInputText('inscription','Veuillez renseigner votre prénom seulement avec des lettres.(ex: David)')
+let errorEmailInscription = invalidInputText('inscription','Veuillez renseigner un email valide.(ex: jean@hotmail.com)')
+let errorPasswordInscription = invalidInputText('inscription','Veuillez renseigner un password valide.(les caractères spéciaux ne sont pas autorisés)')
+let nonAutoriseInscription = invalidInputText("inscription","Identifiants incorrect !")
+
 /*Validation du formulaire via le bouton Inscription en vérifiant avec les regexs*/
 /*************************************************/
 btnValidationCreation.addEventListener("click",function(e){
     e.preventDefault()
-    let form = { 
-        nom: nom.value,
-        prenom: prenom.value,
-        email: emailSignup.value,
-        password : passwordSignup.value,
-    }
     if(nom.value == '' || null || undefined){
-        alert('il manque le nom')
+        blocErreur2(errorNomInscription,errorPasswordInscription,errorEmailInscription,errorrPrenomInscription,nonAutoriseInscription)
     }
     else if((/[a-zA-Zéèçà][-]{1,}$/.test(nom.value))||(/[^a-zA-Zéèçà-]/.test(nom.value))){
-        console.log("Veuillez renseigner votre nom seulement avec des lettres.(ex: David)")
-        alert("Veuillez renseigner votre nom seulement avec des lettres.(ex: David)")
+        blocErreur2(errorNomInscription,errorPasswordInscription,errorEmailInscription,errorrPrenomInscription,nonAutoriseInscription)
     }
     else if(prenom.value == '' || null || undefined){
-        alert('il manque le prenom')
+        blocErreur2(errorrPrenomInscription,errorNomInscription,errorPasswordInscription,errorEmailInscription,nonAutoriseInscription)
     }
     else if((/[a-zA-Zéèçà][-]{1,}$/.test(prenom.value))||(/[^a-zA-Zéèçà-]/.test(prenom.value))){
-        console.log("Veuillez renseigner votre prénom seulement avec des lettres.(ex: David)")
-        alert("Veuillez renseigner votre prénom seulement avec des lettres.(ex: David)")
+        blocErreur2(errorrPrenomInscription,errorNomInscription,errorPasswordInscription,errorEmailInscription,nonAutoriseInscription)
     }
     else if(emailSignup.value == '' || null || undefined){
-        alert('il manque l\'adresse email')
+        blocErreur2(errorEmailInscription,errorrPrenomInscription,errorNomInscription,errorPasswordInscription,nonAutoriseInscription)
     }
     else if((/^([\w.-]+)[@]{1}([\w]+)[.]{1}([a-z]){2,5}$/.test(emailSignup.value))===false){
-        console.log({ message:'Veuillez renseigner un email valide.(ex: jean@hotmail.com'})
-        alert('Veuillez renseigner un email valide.(ex: jean@hotmail.com')
+        blocErreur2(errorEmailInscription,errorrPrenomInscription,errorNomInscription,errorPasswordInscription,nonAutoriseInscription)
     }
     else if(passwordSignup.value == '' || null || undefined){
-        alert('il manque le password')
+        blocErreur2(errorPasswordInscription,errorEmailInscription,errorrPrenomInscription,errorNomInscription,nonAutoriseInscription)
     }
     else if(/([^a-zA-Z0-9@]+)/.test(passwordSignup.value)){
-        console.log({ message:'Veuillez renseigner un password valide.(les caractères spéciaux ne sont pas autorisés)'})
-        alert('Veuillez renseigner un password valide.(les caractères spéciaux ne sont pas autorisés)')
+        blocErreur2(errorPasswordInscription,errorEmailInscription,errorrPrenomInscription,errorNomInscription,nonAutoriseInscription)
     }
     else{
+        let form = { 
+            nom: nom.value,
+            prenom: prenom.value,
+            email: emailSignup.value,
+            password : passwordSignup.value,
+        }
         console.log(form)
         fetch(urlUsersSignup,{
             method: "POST",
@@ -168,7 +171,7 @@ btnValidationCreation.addEventListener("click",function(e){
                     }
                 }
                 catch(error){
-                    console.log({ error : 'Adresse mail déjà utilisée'})
+                    blocErreur2(nonAutoriseInscription,errorPasswordInscription,errorEmailInscription,errorrPrenomInscription,errorNomInscription)
                 }
         })
         .catch(function(err){

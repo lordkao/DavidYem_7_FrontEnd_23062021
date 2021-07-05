@@ -139,7 +139,7 @@
     &__form{
         @include display($direction:column);
         align-items: unset;
-        padding: 60px 20px;
+        padding: 20px 20px;
         @media screen and (min-width:768px){
             margin-top: 35px;
         }
@@ -175,5 +175,6 @@
     }
 }
 .help-message{
+    @include display;
     color: red;
 }
