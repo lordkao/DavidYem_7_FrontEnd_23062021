@@ -5,7 +5,7 @@ const urlPublications ='http://localhost:3000/api/publications'
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
-import {reload,requete,getLikes,getNote} from './functions.js'
+import {reload,requete,getLikes,getNote,blocErreur,invalidInputText} from './functions.js'
 /*Matérialise une bordure aux boutons multimédia,chat et profil*/
 btnChat.addEventListener("click",function(e){
     e.preventDefault()
@@ -180,9 +180,16 @@ const fileUpload = document.getElementById('fileUpload')/*mon input type file*/
 const formulaire = document.getElementById('formulaire-publication')/*Mon formulaire*/
 const publier = document.getElementById('publier')/*Bouton de validation du formulaire*/
 const message = document.getElementById('message')/*Message de la publication*/
+/*Définition de message d'erreur à afficher*/
+const errorMessage = invalidInputText('publication-edit','Veuillez renseignez un message ou envoyer un fichier pour pouvoir publier')
+
 publier.addEventListener('click',function(e){
     e.preventDefault()
-    if(!fileUpload.value){
+    if(message.value == false & fileUpload.value == false){
+        errorMessage.style.display='flex'
+    }
+    else if(!fileUpload.value){
+        errorMessage.style.display = "none"
         const publication = {
             userId : userId,
             message: message.value
@@ -207,6 +214,7 @@ publier.addEventListener('click',function(e){
     })
     }
     else{
+        errorMessage.style.display = "none"
         let formData = new FormData(formulaire)
         formData.append('userId',userId)
         formData.append('message', message.value)

@@ -34,3 +34,8 @@ body{
         }
     }
 }
+.help-message{
+    width: 80%;
+    @include display;
+    color: red;
+}
