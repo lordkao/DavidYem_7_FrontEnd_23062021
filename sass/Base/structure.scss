@@ -34,3 +34,10 @@ body{
         }
     }
 }
+.help-message{
+    font-size: 1.4rem;
+    @include display;
+    color: red;
+    margin-bottom: 20px;
+    text-align: center;
+}

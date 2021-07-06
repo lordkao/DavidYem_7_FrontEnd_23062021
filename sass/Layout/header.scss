@@ -38,6 +38,7 @@
                     @include button;
                     @include full;
                     text-align: center;
+                    
                     & i{
                         transform: scale(1.5);
                         color: $color-icone;

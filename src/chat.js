@@ -6,7 +6,7 @@ const userId = access.userId
 const token = access.token
 const oldMessages = document.getElementById('old-messages')
 const urlChat ='http://localhost:3000/api/chat'
-import { reload } from './functions.js'
+import { reload,invalidInputText } from './functions.js'
 
 btnMultimedia.addEventListener("click",function(e){
     e.preventDefault()
@@ -16,6 +16,7 @@ btnProfil.addEventListener("click",function(e){
     e.preventDefault()
     document.location.href="profil.html"
 })
+const plusDeMessages = invalidInputText('chat','Il n\'y a pas plus de messages')
 /*Fonction qui affiche tous les messages du chat.*/
 let i = 1 /*variable qui va permettre de boucler les IDs des boutons de suppression au fur et à mesures de leur matérialisation*/
 function showMessage(url){
@@ -28,6 +29,7 @@ function showMessage(url){
         }
     })
     .then((responses) => {
+        plusDeMessages.style.display="none"
         console.log(responses)
         for(let response of responses){
             const containerMessage = document.createElement('div')
@@ -81,7 +83,11 @@ function showMessage(url){
             message.appendChild(texte)
         }
     })
-    .catch((err) => console.log({message:err}))
+    .catch((err) => {
+        plusDeMessages.style.display="flex"
+        erreurChat.style.display='none'
+        console.log(err)
+    })
 }
 showMessage(urlChat)
 let numberOfMessages = 10
@@ -92,30 +98,40 @@ oldMessages.addEventListener('click',function(e){
 const nouveauMessage = document.getElementById('chat-message')
 const validationMessage = document.getElementById('validation-message')
 /*Création de message*/
+const erreurChat = invalidInputText('bloc-edit','Veuillez saisir un message')
 validationMessage.addEventListener("click",function(e){
     e.preventDefault()
-    const objetMessage = { 
-        message:nouveauMessage.value,
-        userId:userId,
-        }
-    console.log(objetMessage)
-    fetch(urlChat,{
-        method : 'POST',
-        headers: {
-            'Accept':'application/json',
-            'Content-Type':'application/json',
-            'Authorization': 'Bearer '+token
-        },
-        body:JSON.stringify(objetMessage)
-    })
-    .then((res) => {
-        if(res.ok){
-            return res.json()
-        }
-    })
-    .then((response) => {
-        reload()
-        console.log(response)
-    })
-    .catch((err) => console.log({message:err}))
+    if(nouveauMessage.value ==false){
+        plusDeMessages.style.display="none"
+        erreurChat.style.display='flex'
+    }
+    else{
+        plusDeMessages.style.display="none"
+        erreurChat.style.display='none'
+        const objetMessage = { 
+            message:nouveauMessage.value,
+            userId:userId,
+            }
+        console.log(objetMessage)
+        fetch(urlChat,{
+            method : 'POST',
+            headers: {
+                'Accept':'application/json',
+                'Content-Type':'application/json',
+                'Authorization': 'Bearer '+token
+            },
+            body:JSON.stringify(objetMessage)
+        })
+        .then((res) => {
+            if(res.ok){
+                return res.json()
+            }
+        })
+        .then((response) => {
+            reload()
+            console.log(response)
+        })
+        .catch((err) => console.log({message:err}))
+    }
+    
 })

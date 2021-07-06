@@ -2,6 +2,9 @@
     border: 1px #b4b4b4 solid;
     background-color: #c5c5c5;
     padding: 0;
+    &:hover{
+        cursor: pointer;
+    }
 }
 @mixin profilBtn($width:23%,$radius:12px,$height:40px){
     @include nomarge;

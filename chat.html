@@ -10,7 +10,7 @@
 </head>
 <body>
     <header class="header">
-        <h1 class="header__title"><img src="./images/white_logo.png" alt="Logo"></h1>
+        <h1 class="header__title"><img src="./images/white_logo.png" alt="Logo de la société"></h1>
         <nav class="header__nav">
             <ul class="header__nav--links">
                 <li><button id="btn-multi"><i class="fas fa-home"></i><span>Accueil</span></button></li>
@@ -25,8 +25,9 @@
             <input id="old-messages" class="old-messages" type="button" value="Afficher les messages plus anciens">
             <div id="chat-window" class="chat" >
             </div>
-            <div class="formulaire-edit">
+            <div id="bloc-edit" class="formulaire-edit">
                 <form id="formulaire-chat" class="formulaire-edit__form" action="#">
+                    <label for="chat-message">Message</label>
                     <textarea id="chat-message" class="formulaire-edit__form--message" rows="3" placeholder="Votre message..."></textarea>
                     <input id="validation-message" class="formulaire-edit__form--validation" type="submit" value="Envoyer">
                 </form>
