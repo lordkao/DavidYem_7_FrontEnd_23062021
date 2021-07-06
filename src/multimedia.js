@@ -5,6 +5,8 @@ const urlPublications ='http://localhost:3000/api/publications'
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
+
+const userIdAdmin = "16255488235661am4i4dwskqrlsrnz"
 import {reload,requete,getLikes,getNote,invalidInputText} from './functions.js'
 /*Matérialise une bordure aux boutons multimédia,chat et profil*/
 btnChat.addEventListener("click",function(e){
@@ -19,7 +21,7 @@ btnProfil.addEventListener("click",function(e){
 })
 /*Fonction pour afficher toutes les publications.*/
 let i = 1
-async function showPublications(url){
+function showPublications(url){
     fetch(url,{
         headers : {'Authorization':'Bearer '+token}
     })
@@ -123,7 +125,7 @@ async function showPublications(url){
                     notes.appendChild(countDislikes)    
                     getLikes(urlDislikes,token,countDislikes)
                     /*Affichage de supprimer si l'utilisateur à créer la publication*/
-                if(response.userId && response.userId === userId){
+                if(response.userId && response.userId === userId || userId === userIdAdmin){
                     let name =  `del-publication${i}`
                     let test = document.createElement('input')
                         test.classList.add('publication__container--del')

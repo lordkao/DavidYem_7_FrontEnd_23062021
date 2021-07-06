@@ -6,6 +6,7 @@ const userId = access.userId
 const token = access.token
 const oldMessages = document.getElementById('old-messages')
 const urlChat ='http://localhost:3000/api/chat'
+const userIdAdmin = "16255488235661am4i4dwskqrlsrnz"
 import { reload,invalidInputText } from './functions.js'
 
 btnMultimedia.addEventListener("click",function(e){
@@ -47,7 +48,7 @@ function showMessage(url){
                 auteur.setAttribute('id','auteur')
                 auteur.innerText = `(${response.date}) ${response.nom}.${response.prenom} : `   
             
-            if(response.userId && response.userId == userId){
+            if(response.userId && response.userId == userId || userId === userIdAdmin){
                 let name = `del-message${i}`
                 let del = document.createElement('input')
                     del.classList.add('container-chat__del')
