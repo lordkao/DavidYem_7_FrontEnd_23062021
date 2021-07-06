@@ -5,7 +5,6 @@ const urlPublications ='http://localhost:3000/api/publications'
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
-
 const userIdAdmin = "16255488235661am4i4dwskqrlsrnz"
 import {reload,requete,getLikes,getNote,invalidInputText} from './functions.js'
 /*Matérialise une bordure aux boutons multimédia,chat et profil*/
