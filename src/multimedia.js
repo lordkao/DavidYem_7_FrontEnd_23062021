@@ -21,6 +21,7 @@ btnProfil.addEventListener("click",function(e){
 })
 /*Fonction pour afficher toutes les publications.*/
 let i = 1
+const plusDePublications = invalidInputText('bottom-link','Il n\'y a pas plus de publications')
 function showPublications(url){
     fetch(url,{
         headers : {'Authorization':'Bearer '+token}
@@ -31,8 +32,7 @@ function showPublications(url){
         }
     })
     .then(function(responses){
-        console.log('publication :')
-        console.log(responses)
+        plusDePublications.style.display='none'
         /*Boucle qui va créer les publications à partir des données reçues*/
         for(let response of responses){
             const urlLikes = `${urlPublications}/${response.id}/likes`
@@ -148,6 +148,7 @@ function showPublications(url){
     })
     .catch(function(error){
         console.log({ error })
+        plusDePublications.style.display='flex'
     })
 }
 showPublications(urlPublications)
