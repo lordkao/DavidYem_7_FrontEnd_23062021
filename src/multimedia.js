@@ -185,11 +185,16 @@ publier.addEventListener('click',function(e){
         body:JSON.stringify(publication)
     })
     .then((res) => { 
-        return res.json()
-    })
-    .then((response) => {
-        console.log(response)
-        reload()
+        if(res.ok){
+            return res.json()
+            .then(() => {
+                console.log('Publication créer avec succès !')
+                reload()
+            })
+        }
+        else{
+            console.log('Mauvaise requête !')
+        }
     })
     .catch((error) => { 
         console.log(error)
@@ -221,11 +226,16 @@ publier.addEventListener('click',function(e){
             body:formData
         })
         .then((res) => { 
-            return res.json()
-        })
-        .then((response) => {
-            console.log(response)
-            reload()
+            if(res.ok){
+                return res.json()
+                .then((response) => {
+                    console.log('Publication créer avec succès !')
+                    reload()
+                })
+            }
+            else{
+                console.log('mauvaise requête !')
+            }
         })
         .catch((error) => { 
             console.log(error)
