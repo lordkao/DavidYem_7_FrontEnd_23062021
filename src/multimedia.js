@@ -19,8 +19,7 @@ btnProfil.addEventListener("click",function(e){
 })
 /*Fonction pour afficher toutes les publications.*/
 let i = 1
-
-function showPublications(url){
+async function showPublications(url){
     fetch(url,{
         headers : {'Authorization':'Bearer '+token}
     })
@@ -34,11 +33,9 @@ function showPublications(url){
         console.log(responses)
         /*Boucle qui va créer les publications à partir des données reçues*/
         for(let response of responses){
-            
             const urlLikes = `${urlPublications}/${response.id}/likes`
             const urlDislikes = `${urlPublications}/${response.id}/dislikes`
             const urlUserLike = `${urlLikes}/${userId}`
-            
             const container = document.createElement('div')
                 container.classList.add('publication__container')
             if(response.url){
@@ -67,7 +64,13 @@ function showPublications(url){
                     like.setAttribute('id',`like${i}`)
                     notes.appendChild(like)
                     let note = 0
-                    console.log(note)
+                    /*fetch(urlUserLike,{headers:{'Authorization':'Bearer '+token}})
+                    .then((res)=>res.json())
+                    .then((response)=>{
+                        note = response.like
+                        console.log(response.like)  
+                    })
+                    .catch((err)=>console.log(err))*/
                     like.addEventListener('click',function(e){
                         
                         if(note == 0){
@@ -142,26 +145,12 @@ function showPublications(url){
                         })
                         .catch((err) => console.log(err))
                     })
-                        i++
+                    i++
                 }
-            
             publicationWindow.appendChild(container)
             container.appendChild(texte)
             container.appendChild(auteur)
             container.appendChild(notes)
-
-
-            /*Définis si le user a liké ou disliké la publication
-            if(response.like == 1){
-                like.classList.add('scale')
-            }
-            else if(response.like == -1){
-                dislike.classList.add('scale')
-            }
-            else if(response.like == 0){
-                like.classList.remove('scale')
-                dislike.classList.remove('scale')
-            }*/
         }
     })
     .catch(function(error){
@@ -169,7 +158,6 @@ function showPublications(url){
     })
 }
 showPublications(urlPublications)
-
 /*Obtenir plus de publications*/
 const oldPublications = document.getElementById('old-publications')
 let numberOfPublications = 10
@@ -177,7 +165,6 @@ oldPublications.addEventListener('click',function(e){
     showPublications(`${urlPublications}/${numberOfPublications}`)
     numberOfPublications += 10
 })
-
 /*Création d'une publication.*/
 const fileUpload = document.getElementById('fileUpload')/*mon input type file*/
 const formulaire = document.getElementById('formulaire-publication')/*Mon formulaire*/
@@ -185,7 +172,6 @@ const publier = document.getElementById('publier')/*Bouton de validation du form
 const message = document.getElementById('message')/*Message de la publication*/
 /*Définition de message d'erreur à afficher*/
 const errorMessage = invalidInputText('publication-edit','Veuillez renseignez un message ou envoyer un fichier pour pouvoir publier')
-
 publier.addEventListener('click',function(e){
     e.preventDefault()
     if(message.value == false & fileUpload.value == false){
