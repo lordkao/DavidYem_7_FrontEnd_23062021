@@ -66,15 +66,7 @@ function showPublications(url){
                     like.setAttribute('id',`like${i}`)
                     notes.appendChild(like)
                     let note = 0
-                    /*fetch(urlUserLike,{headers:{'Authorization':'Bearer '+token}})
-                    .then((res)=>res.json())
-                    .then((response)=>{
-                        note = response.like
-                        console.log(response.like)  
-                    })
-                    .catch((err)=>console.log(err))*/
                     like.addEventListener('click',function(e){
-                        
                         if(note == 0){
                             note=1
                             like.classList.add('scale')
@@ -102,7 +94,6 @@ function showPublications(url){
                     dislike.setAttribute('id',`dislike${i}`)
                     notes.appendChild(dislike)
                     dislike.addEventListener('click',function(e){
-                        
                         if(note == 0){
                             note=-1
                             dislike.classList.add('scale')

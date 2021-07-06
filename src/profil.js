@@ -6,7 +6,7 @@ const userId = access.userId
 const token = access.token
 const profil = document.getElementById('profil')
 const urlProfil =`http://localhost:3000/api/auth/${userId}`
-
+console.log(userId)
 /*Déclaration des boutons et du bloc de confirmation de suppression profil*/
 /***************************************/
 const cadreSupprimer = document.getElementById('profil-suppression')

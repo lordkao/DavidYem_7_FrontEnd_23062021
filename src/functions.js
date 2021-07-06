@@ -57,6 +57,7 @@ function requete(url,token,body){/*Exécution d'une simple requête POST*/
         body:JSON.stringify(body)
     })
     .then((res) => {if(res.ok){res.json()}})
+    .then(() => document.location.reload())
     .catch((err) => console.log(err))
 }
 function getLikes(url,token,compteur){/*Exécution d'une requête GET et affiche le resultat dans compteur*/
