@@ -24,12 +24,13 @@
             <h2 class="forum__multimedia--titre">Forum multimedia</h2>
             <div id="publication" class="publication">
                 <div id="publication-edit" class="publication__edit">
-                    <span id="link-edit-publication">Exprimez vous...</span>
+                    <label id="link-edit-publication" for="message">Exprimez vous...</label>
                     <form id="formulaire-publication" name="formulaire-publication" class="form" enctype="multipart/form-data">
                         <div class="form__message">
                             <textarea id="message" class="form__message--input" rows="3" placeholder="Que voulez vous dire..."></textarea>
                         </div>
                         <div class="form__image">
+                            <label for="fileUpload" class="form__image--label">Partager :</label>
                             <input id="fileUpload" name="image" class="form__image--input" type="file" accept="image/png, image/jpeg">
                         </div>
                         <div class="form__validation">

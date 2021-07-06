@@ -139,12 +139,23 @@
     &__image{
         @include display($direction:column);
         @include formBloc;
+        @media screen and(min-width:768px){
+            flex-direction: row;
+        }
+        &--label{
+            @media screen and(min-width:768px){
+                margin-right: 10px;
+            }
+        }
         &--input{
             width: 87%;
             margin: 10px 0px;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
+            @media screen and(min-width:768px){
+                width: 50%;
+            }
         }
     }
     &__validation{
