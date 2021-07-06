@@ -5,7 +5,6 @@ const urlPublications ='http://localhost:3000/api/publications'
 const access = JSON.parse(localStorage.getItem('access'))
 const userId = access.userId
 const token = access.token
-
 const userIdAdmin = "16255488235661am4i4dwskqrlsrnz"
 import {reload,requete,getLikes,getNote,invalidInputText} from './functions.js'
 /*Matérialise une bordure aux boutons multimédia,chat et profil*/
@@ -186,11 +185,16 @@ publier.addEventListener('click',function(e){
         body:JSON.stringify(publication)
     })
     .then((res) => { 
-        return res.json()
-    })
-    .then((response) => {
-        console.log(response)
-        reload()
+        if(res.ok){
+            return res.json()
+            .then(() => {
+                console.log('Publication créer avec succès !')
+                reload()
+            })
+        }
+        else{
+            console.log('Mauvaise requête !')
+        }
     })
     .catch((error) => { 
         console.log(error)
@@ -222,11 +226,16 @@ publier.addEventListener('click',function(e){
             body:formData
         })
         .then((res) => { 
-            return res.json()
-        })
-        .then((response) => {
-            console.log(response)
-            reload()
+            if(res.ok){
+                return res.json()
+                .then((response) => {
+                    console.log('Publication créer avec succès !')
+                    reload()
+                })
+            }
+            else{
+                console.log('mauvaise requête !')
+            }
         })
         .catch((error) => { 
             console.log(error)
