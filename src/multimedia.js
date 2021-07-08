@@ -112,25 +112,7 @@ function showPublications(url){
                     })
                     i++
                 }
-
-                /*getOneLike(urlUserLike,token,note,like,dislike)Vérification de la présence de like ou dislike du user pour chaques publications*/
-                /*function get(){
-                    fetch(urlUserLike,{headers:{'Authorization':'Bearer '+token}})
-                    .then((res)=>{
-                        if(res.ok){return res.json()}
-                    })
-                    .then((response)=>{
-                        note = response.note
-                        if(note == 1){
-                            like.classList.add('scale')
-                        }
-                        else if(note == -1){
-                            dislike.classList.add('scale')
-                        }
-                        console.log(note)
-                })
-                .catch((err)=>console.log(err))  
-                }*/
+                
                 fetch(urlUserLike,{headers:{'Authorization':'Bearer '+token}})
                 .then((res)=>{
                     if(res.ok){return res.json()}

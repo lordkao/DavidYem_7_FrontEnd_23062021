@@ -31,6 +31,7 @@
         transform: scale(0.9);
         transition:transform 0.2s;
         position: relative;
+        padding-bottom: 10px;
         @media screen and(min-width:1024px) {
             width: 70%;
         }
