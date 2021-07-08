@@ -48,7 +48,7 @@ class desactivation{/*Création d'une classe pour gérer l'affichage des boutons
         this.bouton4.disabled = true
     }
 }
-function requete(url,token,body){/*Exécution d'une simple requête POST*/
+function postLike(url,token,body,note,compteur){/*Exécution d'une simple requête POST pour envoyer le like*/
     fetch(url,{
         method:'POST',
         headers:{
@@ -56,8 +56,19 @@ function requete(url,token,body){/*Exécution d'une simple requête POST*/
             'Content-Type':'application/json'},
         body:JSON.stringify(body)
     })
-    .then((res) => {if(res.ok){res.json()}})
-    .then(() => document.location.reload())
+    .then((res) => {
+        if(res.ok){
+            res.json()
+            .then((response) => {
+                console.log(response.like)
+                note = response.like
+                getLikes(url,token,compteur)
+            })
+        }
+        else{
+            console.log(res)
+        }
+    })
     .catch((err) => console.log(err))
 }
 function getLikes(url,token,compteur){/*Exécution d'une requête GET et affiche le resultat dans compteur*/
@@ -70,27 +81,19 @@ function getLikes(url,token,compteur){/*Exécution d'une requête GET et affiche
     })
     .catch((err)=>console.log(err))
 } 
-function getNote(url,token,like){/*Exécution d'une requête GET et return value*/
+function getOneLike(url,token,note,like,dislike){/*Exécution d'une requête GET et return value*/
     fetch(url,{headers:{'Authorization':'Bearer '+token}})
     .then((res)=>{
         if(res.ok){return res.json()}
     })
     .then((response)=>{
-        let value = response.note
-        if(value == 1){
+        note = response.note
+        if(note == 1){
             like.classList.add('scale')
-            return value
         }
-        else if(value == -1){
-            like.classList.add('scale')
-            return value
+        else if(note == -1){
+            dislike.classList.add('scale')
         }
-        else if(value == 0){
-            like.classList.remove('scale')
-            return value
-        }
-    })
-    .then((note) => {
         console.log(note)
     })
     .catch((err)=>console.log(err))
@@ -116,4 +119,4 @@ function invalidInputText(id,message){/*Créer un bloc erreur*/
     invalid.style.display = "none"
     return invalid
 }
-export { redirection,reload,actived,disabled,desactivation,requete,getLikes,getNote,blocErreur,blocErreur2,invalidInputText }  
+export { redirection,reload,actived,disabled,desactivation,postLike,getLikes,blocErreur,blocErreur2,invalidInputText,getOneLike }  
