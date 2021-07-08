@@ -65,8 +65,13 @@
             @media screen and(min-width:768px) {
                 height: 350px;
             }
-            & img{
-                @include full($width:95%);
+            & a{
+                @include display;
+                @include full($width:auto);
+                & img{
+                    @include full($width:auto);
+                    object-fit: contain;
+                }
             }
         }
         &--texte{

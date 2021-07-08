@@ -1,10 +1,15 @@
 html{
     font-size: 62.5%;
 }
+@font-face{
+    font-family: "Akira Expanded";
+    src: url("Akira.otf");
+}
 body{
     font-size: 1.6rem;
     margin:0;
     padding: 0;
+    font-family:"Trebuchet MS",Arial,"Courier New",Verdana,Georgia,"Arial Black";
 }
 .forum{
     @include auto;
@@ -18,11 +23,14 @@ body{
             @include nomarge;
             margin-bottom: 10px;
             text-align: center;
+            font-family:"Akira Expanded";
         }
     }
     &__profil{
         &--titre{
+            @include nomarge;
         text-align: center;
+        font-family:"Akira Expanded";
         }
     }  
     &__multimedia{
@@ -31,6 +39,7 @@ body{
         &--titre{
             @include nomarge;
             text-align: center;
+            font-family:"Akira Expanded";
         }
     }
 }
