@@ -46,12 +46,17 @@ function showPublications(url){
                 const publication = document.createElement('div')
                 publication.classList.add('publication__container--photo')
 
+                const linkImage = document.createElement('a')
+                linkImage.setAttribute('href',`${response.url}`)
+                linkImage.setAttribute('target','_blank')
+
                 const image = document.createElement('img')
                     image.setAttribute('src',`${response.url}`)
                     image.setAttribute('alt','description de l\'image')
 
                     container.appendChild(publication)
-                    publication.appendChild(image)
+                    publication.appendChild(linkImage)
+                    linkImage.appendChild(image)
 
             }
             const texte = document.createElement('p')
@@ -109,7 +114,23 @@ function showPublications(url){
                 }
 
                 /*getOneLike(urlUserLike,token,note,like,dislike)Vérification de la présence de like ou dislike du user pour chaques publications*/
-
+                /*function get(){
+                    fetch(urlUserLike,{headers:{'Authorization':'Bearer '+token}})
+                    .then((res)=>{
+                        if(res.ok){return res.json()}
+                    })
+                    .then((response)=>{
+                        note = response.note
+                        if(note == 1){
+                            like.classList.add('scale')
+                        }
+                        else if(note == -1){
+                            dislike.classList.add('scale')
+                        }
+                        console.log(note)
+                })
+                .catch((err)=>console.log(err))  
+                }*/
                 fetch(urlUserLike,{headers:{'Authorization':'Bearer '+token}})
                 .then((res)=>{
                     if(res.ok){return res.json()}
