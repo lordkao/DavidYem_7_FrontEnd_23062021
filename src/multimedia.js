@@ -37,7 +37,7 @@ function showPublications(url){
             const urlLikes = `${urlPublications}/${response.id}/likes`
             const urlDislikes = `${urlPublications}/${response.id}/dislikes`
             const urlUserLike = `${urlLikes}/${userId}`
-
+            console.log(response.original_date)
             let note = 0
 
             const container = document.createElement('div')
@@ -64,7 +64,7 @@ function showPublications(url){
                 texte.innerText = `${response.message}`
             const auteur = document.createElement('h3')
                 auteur.classList.add('publication__container--auteur')
-                auteur.innerText = `${response.nom}.${response.prenom}(${response.date})`
+                auteur.innerHTML = `${response.date}</br>publié par ${response.nom} ${response.prenom}`
             const notes = document.createElement('div')
                 notes.classList.add('publication__container--notes')
                 const like = document.createElement('span')
@@ -185,7 +185,6 @@ function showPublications(url){
                     }
                     postLike(urlDislikes,token,body,note,countDislikes)
                 })
-                
 
             publicationWindow.appendChild(container)
             container.appendChild(texte)
