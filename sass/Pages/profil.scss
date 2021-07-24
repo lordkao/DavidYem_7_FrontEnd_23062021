@@ -24,7 +24,7 @@
             }
         }
         & input{
-            @include auto($width:70%);
+            @include auto($width:60%);
             margin-right: 10px;
             @media screen and(min-width:425px) {
                 width:50%
