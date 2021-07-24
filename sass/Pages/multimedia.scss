@@ -36,9 +36,9 @@
             width: 70%;
         }
         @media screen and(min-width:1440px) {
-            width: 50%;
+            width: 60%;
         }
-        @media screen and(min-width:1800px) {
+        @media screen and(min-width:2000px) {
             width: 40%;
         }
         &:hover{
@@ -78,6 +78,9 @@
         &--texte{
             font-size:1.6rem;
             margin: 10px;
+            padding: 20px 20px;
+            border: 2px #dbdbdb solid;
+            border-radius: 10px;
         }
         &--notes{
             width: 100%;
