@@ -3,6 +3,7 @@
     @include auto($width:100%,$height:300px);
     overflow-y: auto;
     border-top: 2px rgb(100, 100, 100) solid;
+    background-color: #f2f2f2;
     @media screen and(min-width:320px) {
         height: 600px;
     }
@@ -101,8 +102,9 @@
         align-items: flex-start;
         margin: 10px;
         border: 1px #959595 solid;
-        background-color: #ededed;
+        background-color: #ffffff;
         border-radius: 5px;
+        padding: 10px;
         &--texte{
             @include nomarge;
             margin: 5px;
@@ -110,7 +112,8 @@
         }
     }
     &__auteur{
-        margin: 5px;
+        padding-left: 10px;
+        margin: 10px;
         font-size: 1.4rem;
     }
     &__del{
