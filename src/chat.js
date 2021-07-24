@@ -130,6 +130,7 @@ validationMessage.addEventListener("click",function(e){
         })
         .then((response) => {
             reload()
+            nouveauMessage.value=''
             console.log(response)
         })
         .catch((err) => console.log({message:err}))

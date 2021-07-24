@@ -219,6 +219,7 @@ publier.addEventListener('click',function(e){
             .then(() => {
                 console.log('Publication créer avec succès !')
                 reload()
+                message.value=''
             })
         }
         else{
@@ -260,6 +261,8 @@ publier.addEventListener('click',function(e){
                 .then((response) => {
                     console.log('Publication créer avec succès !')
                     reload()
+                    fileUpload.value=''
+                    message.value=''
                 })
             }
             else{
