@@ -15,13 +15,19 @@
     &:hover{
         cursor: pointer;
     }
+    @media screen and(min-width:400px) {
+        width:35%
+    }
+    @media screen and(min-width:500px) {
+        width:30%
+    }
+    @media screen and(min-width:700px) {
+        width:22%
+    }
     @media screen and(min-width:768px) {
         width:17%
     }
-    @media screen and(min-width:1024px) {
+    @media screen and(min-width:1400px) {
         width:10%
-    }
-    @media screen and(min-width:1440px) {
-        width:7%
     }
 }
